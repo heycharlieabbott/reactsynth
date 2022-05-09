@@ -1,17 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Osc1 from './osc1';
+import Verbo from './verbo';
+import * as Tone from 'tone';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+function App(){
+
+  const volume1 = new Tone.Volume(-10);
+
+  // const [s1, setS1] = useState(hey);
+
+
+
+      return (
+        <div>
+          
+        <Verbo input={volume1} output={Tone.Destination} />
+        <Osc1 sound= 'hey' output={volume1}/>
+        <Osc1 sound= 'hey' output={volume1}/>
+
+
+        </div>
+      )
+    
+  }
+  
+  // ========================================
+  
+  const root = ReactDOM.createRoot(document.getElementById("root"));
+  root.render(<App />);
