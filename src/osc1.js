@@ -15,16 +15,18 @@ const synth = new Tone.AMSynth().connect(props.output);
 const synth2 = new Tone.AMSynth().connect(props.output);
 
     function playSynth(){
-        synth.triggerAttackRelease(3000 * Math.random(),.01);
+        // synth.triggerAttackRelease(3000 * Math.random(),.01);
         
-        setTimeout( () => synth2.triggerAttackRelease(2000  * Math.random(),.01),500);
+        // setTimeout( () => synth2.triggerAttackRelease(2000  * Math.random(),.01),500);
+
+        synth.triggerAttackRelease(props.freq,0.1);
 
     }
 
     return(
         <div>
     
-            <button  className="card1" onClick={playSynth}> AHAHAHAHAH</button>
+            <button  className="card1" onClick={playSynth}> PLAY SYNTH</button>
            
 
         </div>

@@ -9,5 +9,5 @@ export default function Verbo(props){
 
 
 
-    // return verb;
+   
 }
