@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import * as Tone from 'tone';
 
 const synth = new Tone.AMSynth();
@@ -17,13 +17,31 @@ export default function Osc1(props){
 
     function playSynth(){
 
+          
+                
             synth.triggerAttackRelease(props.freq,0.1);
             synth2.triggerAttackRelease(props.freq * Math.random(),0.1);   
+            
+
    
 
     }
 
-    useEffect(()=> {playSynth()},[props.trigger])
+    const ref = useRef(false);
+
+    useEffect(()=> {
+        if (ref.current){
+            playSynth();
+            
+        }
+        
+        else{
+            ref.current = true;
+        }
+
+
+        
+        },[props.trigger])
 
     
 

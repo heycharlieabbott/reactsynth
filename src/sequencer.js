@@ -36,6 +36,8 @@ const stopclock = () => {
 }
 
 
+
+
 return(
     <div  className="sequencer">
         <Chain freq={props.freq} vol={props.vol} vol2={props.vol2} ctrl={props.ctrl} trigger={steps} clockstatus={clockstatus}/>
