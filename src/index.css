@@ -6,3 +6,22 @@
   text-align: center;
   margin: 30px;
 }
+
+.uielement{
+  background-color: black;
+  width: 15vw;
+  color: white;
+  border-radius: 10px;
+}
+
+ .uielement > p {
+  padding: 20px;
+}
+
+.sequencer{
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: green;
+
+}
