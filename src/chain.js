@@ -5,17 +5,24 @@ import Verbo from './verbo';
 import * as Tone from 'tone';
 
 
+
+const volume1 = new Tone.Volume();
+
+
+
+
 export default function Chain(props){
 
-//   const volume1 = new Tone.Volume(props.vol);
-
+ 
+ 
+  volume1.volume.value = (props.vol);
 
 
       return (
         <div>
           
-        {/* <Verbo input={volume1} output={Tone.Destination} /> */}
-        <Osc1 sound= 'hey' output={Tone.Destination} freq={props.vol}/>
+        <Verbo input={volume1} output={Tone.Destination} roomSize={props.vol2} />
+        <Osc1 output={volume1} freq={props.freq}/>
         
 
 
