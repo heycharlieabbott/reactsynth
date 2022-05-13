@@ -13,7 +13,7 @@ const volume1 = new Tone.Volume();
 
 export default function Chain(props){
 
- 
+ console.log(props.trigger);
  
   volume1.volume.value = (props.vol);
 
@@ -22,7 +22,7 @@ export default function Chain(props){
         <div>
           
         <Verbo input={volume1} output={Tone.Destination} roomSize={props.vol2} />
-        <Osc1 output={volume1} freq={props.freq}/>
+        <Osc1 ctrl={props.ctrl} output={volume1} freq={props.freq} trigger={props.trigger}/>
         
 
 
