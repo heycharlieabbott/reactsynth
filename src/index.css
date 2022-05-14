@@ -1,8 +1,8 @@
 .card1{
   color: red;
   background-color: blue;
-  font-size: 50px;
-  max-width: 200px;
+  font-size: 2em;
+  max-width: 140px;
   text-align: center;
   margin: 30px;
 }
@@ -20,8 +20,77 @@
 
 .sequencer{
   position: absolute;
-  top: 40px;
+  top: 50%;
   right: 0;
   background-color: green;
+  transform: translate(0, -50%);
 
+
+}
+
+.centerui{
+  position: absolute;
+  display: flex;
+  top: 50%;
+  left: 50%;
+  font-size: 2em;
+  transform: translate(-50%,-80%);
+  justify-content: center;
+  align-items: center;
+
+  padding: 10px;
+  
+
+}
+
+
+.centerui > button{
+  position: absolute;
+  font-size: 2em;
+
+
+}
+.centerui > button:hover{
+  background-color: red;
+}
+
+.centerui > ul > li{
+  position: relative;
+  top: 120px;
+  font-size: 2rem;
+  border: solid;
+  margin: 10px;
+  padding: 5px;
+}
+
+li:hover{
+  background-color: green;
+}
+
+ul{
+  list-style-type: none;
+}
+
+.dropdown{
+  display: none;
+}
+
+.steps > ul{
+  display: flex;
+  
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 70px;
+  
+}
+
+.steps > ul > li {
+  border: solid;
+  border-width: 1px;
+  list-style-type: none;
+  width: 70px;
+  height: 70px;
+ 
+  
 }

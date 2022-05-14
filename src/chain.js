@@ -21,9 +21,7 @@ export default function Chain(props){
         <div>
           
           <Verbo input={volume1} output={Tone.Destination} roomSize={props.vol2} />
-          <Osc1 ctrl={props.ctrl} output={volume1} freq={props.freq} trigger={props.trigger}/>
-        
-
+          <Osc1 ctrl={props.ctrl} output={volume1} freq={props.freq} trigger={props.trigger} looptime={props.looptime}/>
 
         </div>
       )

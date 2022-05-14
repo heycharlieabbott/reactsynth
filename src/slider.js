@@ -43,6 +43,25 @@ export default function Slider(props){
         vol: volslide, 
         vol2: vol2slide
     };
+
+
+
+const [isdropped, setDroppped] = useState(false);
+
+    
+    const dropdowntoggle = () => {
+        
+        setDroppped(() => !isdropped);
+
+        if (isdropped){
+            document.querySelector('.dropdown').style.display = 'block';
+
+        }
+        else{
+            document.querySelector('.dropdown').style.display = '';
+        }
+        
+    }
     
 
     return(
@@ -71,6 +90,15 @@ export default function Slider(props){
         <p>TEMPO: {temposlide}</p>
         </div>
         
+        <div className="centerui">
+            <button onClick={dropdowntoggle}>STYLE</button>
+            <ul className="dropdown">
+            <li>RHYTHM</li>
+            <li>DRONE</li>
+            </ul>
+
+
+        </div>
         
         
         <Sequencer freq={freqslide} vol={volslide} vol2={vol2slide} ctrl={ctrlinterface} tempo={temposlide}/>

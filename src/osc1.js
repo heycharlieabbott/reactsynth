@@ -11,27 +11,40 @@ export default function Osc1(props){
     synth.connect(props.output);
     synth2.connect(props.output);
 
-    console.log(props.ctrl);
+    // console.log(props.ctrl);
 
 
 
-    function playSynth(){
+    function playSynth(time){
 
           
                 
-            synth.triggerAttackRelease(props.freq,0.1);
-            synth2.triggerAttackRelease(props.freq * Math.random(),0.1);   
+            synth.triggerAttackRelease(props.freq,0.1, time);
+            synth2.triggerAttackRelease(props.freq * Math.random(),0.1, time);   
             
 
    
 
     }
 
+    function playSynthButton(){
+
+          
+                
+        synth.triggerAttackRelease(props.freq,0.1);
+        synth2.triggerAttackRelease(props.freq * Math.random(),0.1);   
+        
+
+
+
+}
+
     const ref = useRef(false);
 
     useEffect(()=> {
         if (ref.current){
-            playSynth();
+            playSynth(props.looptime);
+            
             
         }
         
@@ -39,16 +52,13 @@ export default function Osc1(props){
             ref.current = true;
         }
 
-
-        
-        },[props.trigger])
-
+        },[props.trigger]);
     
 
     return(
         <div>
     
-            <button  className="card1" onClick={playSynth}> PLAY NOTE</button>
+            <button className="card1" onClick={playSynthButton}> PLAY NOTE</button>
            
 
         </div>
