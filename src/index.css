@@ -1,3 +1,11 @@
+.app{
+  position: relative;
+  background-color: white;
+  margin: 0;
+  padding: 0;
+  top: 0;
+}
+
 .card1{
   color: red;
   background-color: blue;
@@ -61,6 +69,17 @@
 
 }
 
+.centerui > ul > button{
+  position: relative;
+  top: 220px;
+  font-size: 2rem;
+  border: solid;
+  margin: 10px;
+  padding: 5px;
+  z-index: 1000;
+
+}
+
 li:hover{
   background-color: green;
 }
@@ -70,7 +89,7 @@ ul{
 }
 
 .dropdown{
-  opacity: 0;
+  opacity: 100;
   transition: opacity 300ms; 
   
 }
@@ -116,13 +135,33 @@ ul{
 }
 
 .sqa{
-  background-color: red;
+  position: relative;
+  background-color: yellow;
+  top: -10px;
+  z-index: 20;
+  box-shadow: 0 0 100px blue;
+  
 }
 
 .sqtst{
   background-color: yellow;
 }
 
+/* sequncerui */
+.sequencerui{
+  display: block;
+  position: absolute;
+  right: 0;
+  top:50%;
+
+  background-color: black;
+  width: 15vw;
+  color: white;
+  border-radius: 10px;
+  padding: 20px;
+
+  
+}
 
 
 

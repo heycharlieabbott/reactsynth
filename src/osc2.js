@@ -7,7 +7,7 @@ const synth2 = new Tone.AMSynth();
 const osc = new Tone.Oscillator(440, 'sine');
 const osc2 = new Tone.Oscillator(900, 'sine');
 
-export default function Osc1(props){
+export default function Osc2(props){
     
     
     const callback = () =>{
@@ -23,7 +23,7 @@ export default function Osc1(props){
     }
 
     osc.start();
-    // osc2.start(); 
+    osc2.start(); 
 
 
     // synth.connect(props.output);

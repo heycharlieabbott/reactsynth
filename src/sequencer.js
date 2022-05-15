@@ -8,14 +8,27 @@ import { Note, Scale } from "@tonaljs/tonal";
 const loop = new Tone.Loop();
 
 
+
 export default function(props){
 
-const notes = Scale.get('c5 mixolydian').notes;
+
+
+const [notes, setNotes] = useState(Scale.get('c5 mixolydian').notes);
+
+if (props.scale === 1){
+    setNotes(Scale.get('b4 ionian').notes)
+}
 
 
 
 const [note,setNote] = useState(notes[0]);
 const [note2,setNote2] = useState(notes[1]);
+
+const [offsetslider, setOffsetSliderVal] = useState(0);
+
+function slideOffset(event){
+    setOffsetSliderVal(() => event.target.value);  
+}
 
 
 
@@ -29,6 +42,7 @@ const [looptime, setLoopTime] = useState(0);
 const [steplight, setStepLight] = useState(0);
 
 const [_STEPS, set_STEPS] = useState(8);
+
 
 Tone.Transport.bpm.value = props.tempo;
 
@@ -102,16 +116,38 @@ return(
     <div>
 
     <div  className="sequencer">
-        <Chain freq={props.freq} vol={props.vol} vol2={props.vol2} ctrl={props.ctrl} trigger={steps} clockstatus={clockstatus} looptime={looptime} a={props.a} d ={props.d} s={props.s} r={props.r} note={note} note2={note2} transport={Tone.Transport}/>
+        <Chain freq={props.freq} vol={props.vol} vol2={props.vol2} ctrl={props.ctrl} trigger={steps} clockstatus={clockstatus} looptime={looptime} a={props.a} d ={props.d} s={props.s} r={props.r} note={note} note2={note2} transport={Tone.Transport} offset={offsetslider}/>
         <button className="card1" onClick={() => startclock()}>START LOOOP</button>
         <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button>
+        
     </div>
+
+    <div className="sequencerui">
+        <input type="range" min="-.5" max=".5" value={offsetslider} onChange={slideOffset} class="slider"  step={0.1} ></input>
+        <p>OFFSET</p>
+        </div>
+       
 
     <div className="steps">
         <ul>
         {stepburgh}
         </ul>
     </div>
+
+    <ul className="dropdown">
+            <li>RHYTHM</li>
+            <li onClick={() => console.log('hey')}>DRONE</li>
+            <li>POLYRHYTHM</li>
+            <li>SAMPLE</li>
+            <li>POLYSAMPLE</li>
+
+            {/* <button>RHYTHM</button>
+            <button onClick={console.log('hey')}>DRONE</button>
+            <button>POLYRHYTHM</button>
+            <button>SAMPLE</button>
+            <button>POLYSAMPLE</button> */}
+
+            </ul>
 
     </div>
 )

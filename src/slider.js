@@ -17,7 +17,7 @@ export default function Slider(props){
     }
 
     //Osc Volume Slider
-    const [volslide, setVolSliderVal] = useState(-10);
+    const [volslide, setVolSliderVal] = useState(-20);
 
     function slideVol(event){
         setVolSliderVal(() => event.target.value);  
@@ -31,7 +31,7 @@ export default function Slider(props){
     }
 
 
-       //Verb roomSize Slider
+       //Tempo Slider
        const [temposlide, setTempoSliderVal] = useState(120);
 
        function slideTempo(event){
@@ -97,10 +97,30 @@ const [isdropped, setDroppped] = useState(true);
         }
         
     }
+
+    const [scale, setScale] = useState(0);
+
+    function click1(event){
+        console.log('click1')
+        setScale(1);
+        
+    }
+
+    function click0(event){
+        setScale(0);
+        console.log('click0')
+    }
+
+    // useEffect(() =>{
+    //     setScale();
+        
+    // },[])
+
+
     
 
     return(
-        <div>
+        <div className="app">
 
         <div className="sliders">
 
@@ -113,7 +133,7 @@ const [isdropped, setDroppped] = useState(true);
         
 
         <div className="uielement">
-        <input type="range" min="-30" max="0" value={volslide} onChange={slideVol} class="slider"></input>
+        <input type="range" min="-80" max="-10" value={volslide} onChange={slideVol} class="slider"></input>
         <p>VOLUME</p>
         </div>
         
@@ -164,19 +184,29 @@ const [isdropped, setDroppped] = useState(true);
         
         <div className="centerui">
             <button onClick={() => dropdowntoggle()}>STYLE</button>
+            
             <ul className="dropdown">
             <li>RHYTHM</li>
             <li>DRONE</li>
             <li>POLYRHYTHM</li>
             <li>SAMPLE</li>
             <li>POLYSAMPLE</li>
+
+            {/* <button>RHYTHM</button>
+            <button onClick={console.log('hey')}>DRONE</button>
+            <button>POLYRHYTHM</button>
+            <button>SAMPLE</button>
+            <button>POLYSAMPLE</button> */}
+
             </ul>
+            
+
 
 
         </div>
         
         
-        <Sequencer freq={freqslide} vol={volslide} vol2={vol2slide} ctrl={ctrlinterface} tempo={temposlide} a={Aslide} d ={Dslide} s={Sslide} r={Rslide}/>
+        <Sequencer freq={freqslide} vol={volslide} vol2={vol2slide} ctrl={ctrlinterface} tempo={temposlide} a={Aslide} d ={Dslide} s={Sslide} r={Rslide} scale={scale}/>
         
        
        
