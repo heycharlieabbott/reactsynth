@@ -1,58 +1,50 @@
 .card1{
   color: red;
   background-color: blue;
-  font-size: 2em;
+  font-size: 2rem;
   max-width: 140px;
   text-align: center;
   margin: 30px;
 }
-
-.uielement{
-  background-color: black;
-  width: 15vw;
-  color: white;
-  border-radius: 10px;
-}
-
- .uielement > p {
-  padding: 20px;
-}
-
 .sequencer{
   position: absolute;
-  top: 50%;
+  top: 20%;
   right: 0;
-  background-color: green;
+ 
   transform: translate(0, -50%);
- 
- 
-
 
 }
+
+.chain{
+  transform: translate(25%);
+  padding: 0;
+  margin: 0;
+}
+
+
+
+/* centerui */
 
 .centerui{
   position: absolute;
   display: flex;
-  top: 50%;
+  top: 0;
   left: 50%;
   font-size: 2em;
-  transform: translate(-50%,-80%);
+  transform: translate(-50%,-0%);
   justify-content: center;
   align-items: center;
 
-  padding: 10px;
-
- 
-
-  
+  padding: 0px;
+  margin: 0;
+  height: 100px;
+  background-color: aqua;
 
 }
-
-
 .centerui > button{
   position: absolute;
   font-size: 2em;
-
+  z-index: 10;
 
 }
 .centerui > button:hover{
@@ -61,11 +53,12 @@
 
 .centerui > ul > li{
   position: relative;
-  top: 120px;
+  top: 220px;
   font-size: 2rem;
   border: solid;
   margin: 10px;
   padding: 5px;
+
 }
 
 li:hover{
@@ -77,18 +70,24 @@ ul{
 }
 
 .dropdown{
-  display: none;
-  
+  opacity: 100;
+  transition: opacity 300ms; 
   
 }
 
+
+
+
+/* stepseq */
+
+
 .steps > ul{
   display: flex;
-  
-  justify-content: space-between;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 70px;
+  justify-content: center;
+  /* margin-left: 10px;
+  margin-right: 10px; */
+  margin-top: 50px;
+
   
   
 }
@@ -100,6 +99,7 @@ ul{
   width: 70px;
   height: 70px;
   border-radius: 10px;
+ margin-left: 30px;
  
  
   
@@ -108,5 +108,40 @@ ul{
 .steps > ul > li:hover{
   background-color: aquamarine;
   
+}
+
+
+.sq{
+  background-color: green;
+}
+
+.sqa{
+  background-color: red;
+}
+
+.sqtst{
+  background-color: yellow;
+}
+
+
+
+
+
+/* sliders */
+.sliders{
+  display: grid;
+  grid-template-columns: 200px 200px;
+  
+}
+
+.uielement{
+  background-color: black;
+  width: 15vw;
+  color: white;
+  border-radius: 10px;
+}
+
+ .uielement > p {
+  padding: 20px;
 }
 
