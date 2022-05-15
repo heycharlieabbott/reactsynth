@@ -8,6 +8,7 @@ import * as Tone from 'tone';
 
 const volume1 = new Tone.Volume();
 const env = new Tone.AmplitudeEnvelope();
+const lim = new Tone.Limiter(-50);
 
 
 
@@ -20,9 +21,14 @@ export default function Chain(props){
   env.release = props.r;
 
  env.connect(volume1);
+ lim.connect(Tone.Destination);
 
 const playSynth = (time) =>{
-  env.triggerAttackRelease(1, time);
+  setTimeout(() =>{
+    env.triggerAttackRelease(1, time);
+  },100);
+
+
 }
  
   volume1.volume.value = (props.vol);
@@ -54,8 +60,8 @@ const playSynth = (time) =>{
       return (
         <div className='chain'>
           
-          <Verbo input={volume1} output={Tone.Destination} roomSize={props.vol2} />
-          <Osc1 ctrl={props.ctrl} output={env} freq={props.freq} trigger={props.trigger} looptime={props.looptime}/>
+          <Verbo input={volume1} output={lim} roomSize={props.vol2} />
+          <Osc1 ctrl={props.ctrl} output={env} freq={props.freq} trigger={props.trigger} looptime={props.looptime} note={props.note} note2={props.note2} transport={props.transport}/>
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
         </div>
       )

@@ -80,7 +80,7 @@ export default function Slider(props){
 
 
 
-const [isdropped, setDroppped] = useState(false);
+const [isdropped, setDroppped] = useState(true);
 
     
     const dropdowntoggle = () => {
@@ -92,7 +92,7 @@ const [isdropped, setDroppped] = useState(false);
             document.querySelector('.dropdown').style.opacity = '100';
 
         }
-        else{
+        if (isdropped === false){
             document.querySelector('.dropdown').style.opacity= '0';
         }
         
@@ -125,7 +125,7 @@ const [isdropped, setDroppped] = useState(false);
       
         
         <div className="uielement">
-        <input type="range" min="50" max="300" value={temposlide} onChange={slideTempo} class="slider"   ></input>
+        <input type="range" min="50" max="700" value={temposlide} onChange={slideTempo} class="slider"   ></input>
         <p>TEMPO: {temposlide}</p>
         </div>
 
@@ -163,7 +163,7 @@ const [isdropped, setDroppped] = useState(false);
         </div>
         
         <div className="centerui">
-            <button onClick={dropdowntoggle}>STYLE</button>
+            <button onClick={() => dropdowntoggle()}>STYLE</button>
             <ul className="dropdown">
             <li>RHYTHM</li>
             <li>DRONE</li>
