@@ -88,34 +88,53 @@ const [isdropped, setDroppped] = useState(true);
         setDroppped(() => !isdropped);
        
         
-        if (isdropped){
-            document.querySelector('.dropdown').style.opacity = '100';
+        // if (isdropped){
+        //     document.querySelector('.dropdown').style.opacity = '100';
 
-        }
-        if (isdropped === false){
-            document.querySelector('.dropdown').style.opacity= '0';
-        }
+        // }
+        // if (isdropped === false){
+        //     document.querySelector('.dropdown').style.opacity= '0';
+        // }
         
     }
 
     const [scale, setScale] = useState(0);
 
+    function click0(event){
+        setScale(0);
+        
+    }
+
     function click1(event){
-        console.log('click1')
+    
         setScale(1);
         
     }
 
-    function click0(event){
-        setScale(0);
-        console.log('click0')
+
+
+    const [liststyle, setListStyle] = useState({
+        'opacity': 0 });
+
+    function changestyle() {
+        
+        setListStyle({'opacity': 100})
     }
 
-    // useEffect(() =>{
-    //     setScale();
+    function changestyle2(){
         
-    // },[])
+        setListStyle({'opacity': 0})
+    }
 
+    const[toggle, setToggle] = useState(true);
+
+    function toggler(){
+        setToggle(!toggle);
+        toggle ? changestyle() : changestyle2();
+       
+        
+        
+    }
 
     
 
@@ -183,30 +202,20 @@ const [isdropped, setDroppped] = useState(true);
         </div>
         
         <div className="centerui">
-            <button onClick={() => dropdowntoggle()}>STYLE</button>
+            <button onClick={() => toggler()}>STYLE</button>
             
-            <ul className="dropdown">
-            <li>RHYTHM</li>
-            <li>DRONE</li>
+            <ul className="dropdown" style={liststyle}>
+            <li onClick={() => click0()}>RHYTHM</li>
+            <li onClick={() => click1()}>DRONE</li>
             <li>POLYRHYTHM</li>
             <li>SAMPLE</li>
             <li>POLYSAMPLE</li>
-
-            {/* <button>RHYTHM</button>
-            <button onClick={console.log('hey')}>DRONE</button>
-            <button>POLYRHYTHM</button>
-            <button>SAMPLE</button>
-            <button>POLYSAMPLE</button> */}
-
             </ul>
-            
-
-
 
         </div>
         
         
-        <Sequencer freq={freqslide} vol={volslide} vol2={vol2slide} ctrl={ctrlinterface} tempo={temposlide} a={Aslide} d ={Dslide} s={Sslide} r={Rslide} scale={scale}/>
+        <Sequencer freq={freqslide} vol={volslide} vol2={vol2slide} ctrl={ctrlinterface} tempo={temposlide} a={Aslide} d ={Dslide} s={Sslide} r={Rslide} scaler={scale}/>
         
        
        

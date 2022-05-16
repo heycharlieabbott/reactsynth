@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as Tone from "tone";
 import Chain from "./chain";
 import { Note, Scale } from "@tonaljs/tonal";
+import userEvent from "@testing-library/user-event";
 
 
 
@@ -15,9 +16,18 @@ export default function(props){
 
 const [notes, setNotes] = useState(Scale.get('c5 mixolydian').notes);
 
-if (props.scale === 1){
-    setNotes(Scale.get('b4 ionian').notes)
-}
+useEffect(() =>{
+    if (props.scaler === 1){
+        setNotes(Scale.get('b4 ionian').notes)
+       
+    }
+    if (props.scaler === 0){
+        setNotes(Scale.get('c5 mixolydian').notes)
+    }
+
+},[props.scaler])
+
+
 
 
 
@@ -133,21 +143,6 @@ return(
         {stepburgh}
         </ul>
     </div>
-
-    <ul className="dropdown">
-            <li>RHYTHM</li>
-            <li onClick={() => console.log('hey')}>DRONE</li>
-            <li>POLYRHYTHM</li>
-            <li>SAMPLE</li>
-            <li>POLYSAMPLE</li>
-
-            {/* <button>RHYTHM</button>
-            <button onClick={console.log('hey')}>DRONE</button>
-            <button>POLYRHYTHM</button>
-            <button>SAMPLE</button>
-            <button>POLYSAMPLE</button> */}
-
-            </ul>
 
     </div>
 )
