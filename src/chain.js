@@ -70,9 +70,29 @@ const playSynth = (time, offset) =>{
       return (
         <div className='chain'>
           
-          <Verbo input={volume1} output={lim} roomSize={props.vol2} />
-          <Osc1 ctrl={props.ctrl} output={env} freq={props.freq} trigger={props.trigger} looptime={props.looptime} note={props.note} note2={props.note2} transport={props.transport}/>
-          <Osc2 ctrl={props.ctrl} output={env2} freq={props.freq} trigger={props.trigger} looptime={props.looptime} note={props.note2} note2={props.note2} transport={props.transport}/>
+          <Verbo input={volume1} 
+          output={lim} 
+          roomSize={props.vol2} />
+
+          <Osc1   ctrl={props.ctrl} 
+                  output={env} 
+                  freq={props.freq} 
+                  trigger={props.trigger} 
+                  looptime={props.looptime} 
+                  note={props.note} 
+                  note2={props.note2} 
+                  transport={props.transport}
+                  detune={props.freq}/>
+          
+          <Osc2 
+          ctrl={props.ctrl} 
+          output={env2} 
+          freq={props.freq} 
+          trigger={props.trigger} 
+          looptime={props.looptime} 
+          note={props.note2} 
+          note2={props.note2} 
+          transport={props.transport}/>
           
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
         </div>

@@ -16,21 +16,17 @@ export default function Osc2(props){
         })
     
         osc2.set({
-          frequency: props.note2
+          
       })
        
 
     }
 
     osc.start();
-    osc2.start(); 
-
-
-    // synth.connect(props.output);
-    // // synth2.connect(props.output);
+    osc2.start();
 
     osc.connect(props.output);
-    osc2.connect(props.output);
+    // osc2.connect(props.output);
 
     const ref = useRef(false);
 

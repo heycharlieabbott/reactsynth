@@ -168,6 +168,11 @@ const [isdropped, setDroppped] = useState(true);
         <p>TEMPO: {temposlide}</p>
         </div>
 
+        <div className="uielement">
+        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
+        <p>RELEASE</p>
+        </div>
+
         </div>
 
         <div className="sliderset2">
@@ -196,6 +201,12 @@ const [isdropped, setDroppped] = useState(true);
         </div>
 
 
+        <div className="uielement">
+        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
+        <p>RELEASE</p>
+        </div>
+        
+
         </div>
         
 
@@ -215,7 +226,16 @@ const [isdropped, setDroppped] = useState(true);
         </div>
         
         
-        <Sequencer freq={freqslide} vol={volslide} vol2={vol2slide} ctrl={ctrlinterface} tempo={temposlide} a={Aslide} d ={Dslide} s={Sslide} r={Rslide} scaler={scale}/>
+        <Sequencer freq={freqslide} 
+                    vol={volslide} 
+                    vol2={vol2slide} 
+                    ctrl={ctrlinterface} 
+                    tempo={temposlide} 
+                    a={Aslide} 
+                    d ={Dslide} 
+                    s={Sslide} 
+                    r={Rslide} 
+                    scaler={scale}/>
         
        
        

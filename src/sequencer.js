@@ -99,6 +99,7 @@ function loopstep(time){
     setSteps(steps + 1);
     setStepLight(steps % _STEPS);
     setLoopTime(time);
+
     setNote(Tone.Frequency(notes[steps % notes.length]).toFrequency());
     setNote2(Tone.Frequency(notes[(steps + 5) % notes.length]).toFrequency());
     
@@ -137,8 +138,15 @@ return(
         <p>OFFSET</p>
         </div>
        
+        
 
     <div className="steps">
+
+        <div className="notelength">
+        <input type="range" min="200" max="1000"  class="slider"></input>
+        <p>NOTE LENGTH</p>
+        </div>
+
         <ul>
         {stepburgh}
         </ul>
