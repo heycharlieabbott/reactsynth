@@ -92,7 +92,8 @@ const playSynth = (time, offset) =>{
           looptime={props.looptime} 
           note={props.note2} 
           note2={props.note2} 
-          transport={props.transport}/>
+          transport={props.transport}
+          detune={props.freq}/>
           
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
         </div>

@@ -1,15 +1,27 @@
 .app{
   position: relative;
-  background-color: white;
+  padding: 0px;
+  top: 0;
+  width: 100%;
+ 
+}
+
+body{
   margin: 0;
   padding: 0;
-  top: 0;
-  margin: 0;
+  /* background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%); */
+  /* background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%); */
+
+  background-color: #CDDCDC;
+ background-image: radial-gradient(at 50% 100%, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0.25) 100%);
+ background-blend-mode: screen, overlay;
+
 }
 
 .card1{
-  color: red;
-  background-color: blue;
+  color: white;
+  background-color: #318AAD;
+  border-radius: 5px;
   font-size: 2rem;
   max-width: 140px;
   text-align: center;
@@ -19,7 +31,7 @@
   position: absolute;
   top: 0%;
   right: 0;
-  background-color: yellow;
+  /* background-color: yellow; */
   
  
 
@@ -49,7 +61,7 @@
   padding: 0px;
   margin: 0;
   height: 100px;
-  background-color: aqua;
+  /* background-color: aqua; */
 
 }
 .centerui > button{
@@ -64,7 +76,7 @@
 
 .centerui > ul > li{
   position: relative;
-  top: 220px;
+  top: 200px;
   font-size: 2rem;
   border: solid;
   margin: 10px;
@@ -105,6 +117,7 @@ ul{
 .notelength{
   position: absolute;
   bottom: 0;
+  margin: 20px;
 }
 
 .steps{
@@ -112,7 +125,7 @@ ul{
   position: absolute;
   width: 100%;
   top: 70vh;
-  background-color: black;
+  /* background-color: black; */
 }
 
 
@@ -149,15 +162,17 @@ ul{
 
 
 .sq{
-  background-color: green;
+  background-color: #1B4D61;
+  
 }
 
 .sqa{
   position: relative;
-  background-color: yellow;
+  background-color: #85CAE6;
   top: -10px;
   z-index: 20;
-  box-shadow: 0 0 100px blue;
+  box-shadow: 0 0 150px #385561;
+  
   
 }
 
@@ -166,11 +181,19 @@ ul{
 }
 
 /* sequncerui */
-.sequencerui{
+.rightpatternctrl{
+  position: absolute;
+  right: 0;
+  top: 75%;
+  width: 40%;
+ 
+}
+
+.offsetslider{
   display: block;
   position: absolute;
   right: 0;
-  top:50vh;
+  
 
   background-color: black;
   width: 12vw;
@@ -185,12 +208,23 @@ ul{
 
 
 
+.shufflebutton{
+  font-size: 1.5rem;
+  padding: 10px;
+  position: absolute;
+  top: 10px;
+  left: 100px;
+  
+}
+
+
 
 /* sliders */
 .sliders{
   display: grid;
   grid-template-columns: 200px 200px;
-  background-color: aqua;
+  margin: 20px;
+  /* background-color: aqua; */
   
 }
 
@@ -199,6 +233,7 @@ ul{
   width: 15vw;
   color: white;
   border-radius: 10px;
+  font-family: sans-serif;
 }
 
  .uielement > p {

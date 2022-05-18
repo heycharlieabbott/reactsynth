@@ -12,7 +12,8 @@ export default function Osc2(props){
     
     const callback = () =>{
         osc.set({
-            frequency: props.note
+            frequency: props.note,
+            detune: props.detune
         })
     
         osc2.set({

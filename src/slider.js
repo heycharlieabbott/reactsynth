@@ -146,32 +146,31 @@ const [isdropped, setDroppped] = useState(true);
         <div className="sliderset1">
 
         <div className="uielement">
-        <input type="range" min="200" max="1000" value={freqslide} onChange={slideFreq} class="slider"></input>
-        <p>FREQUENCY</p>
-        </div>
-        
-
-        <div className="uielement">
         <input type="range" min="-80" max="-10" value={volslide} onChange={slideVol} class="slider"></input>
         <p>VOLUME</p>
         </div>
-        
 
-        <div className="uielement">
-        <input type="range" min="0" max="1" value={vol2slide} onChange={slideVol2} class="slider" step={0.01}></input>
-        <p>ROOM SIZE</p>
-        </div>
-      
-        
         <div className="uielement">
         <input type="range" min="50" max="700" value={temposlide} onChange={slideTempo} class="slider"   ></input>
         <p>TEMPO: {temposlide}</p>
         </div>
 
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
-        <p>RELEASE</p>
+        <input type="range" min="200" max="1000" value={freqslide} onChange={slideFreq} class="slider"></input>
+        <p>DETUNE</p>
         </div>
+        
+    
+        <div className="uielement">
+        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
+        <p>MODULATION</p>
+        </div>
+
+        <div className="uielement">
+        <input type="range" min="0" max="1" value={vol2slide} onChange={slideVol2} class="slider" step={0.01}></input>
+        <p>VERB TIME</p>
+        </div>     
+
 
         </div>
 
@@ -203,7 +202,7 @@ const [isdropped, setDroppped] = useState(true);
 
         <div className="uielement">
         <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
-        <p>RELEASE</p>
+        <p>EFFECT PAR 2</p>
         </div>
         
 
@@ -216,11 +215,11 @@ const [isdropped, setDroppped] = useState(true);
             <button onClick={() => toggler()}>STYLE</button>
             
             <ul className="dropdown" style={liststyle}>
-            <li onClick={() => click0()}>RHYTHM</li>
-            <li onClick={() => click1()}>DRONE</li>
-            <li>POLYRHYTHM</li>
-            <li>SAMPLE</li>
-            <li>POLYSAMPLE</li>
+            <li onClick={() => click0()}>SCALE 1</li>
+            <li onClick={() => click1()}>SCALE 2</li>
+            <li>SCALE 3</li>
+            <li>SCALE 4</li>
+            <li>SCALE 5</li>
             </ul>
 
         </div>

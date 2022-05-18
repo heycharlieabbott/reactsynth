@@ -133,12 +133,18 @@ return(
         
     </div>
 
-    <div className="sequencerui">
+    <div className="rightpatternctrl">
+
+  
+        <button className="shufflebutton"> NOTE SHUFFLE</button>
+      
+
+    <div className="offsetslider">
         <input type="range" min="-.5" max=".5" value={offsetslider} onChange={slideOffset} class="slider"  step={0.1} ></input>
         <p>OFFSET</p>
         </div>
        
-        
+    </div>  
 
     <div className="steps">
 
