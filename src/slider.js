@@ -146,28 +146,28 @@ const [isdropped, setDroppped] = useState(true);
         <div className="sliderset1">
 
         <div className="uielement">
-        <input type="range" min="-80" max="-10" value={volslide} onChange={slideVol} class="slider"></input>
+        <input type="range" min="-80" max="-10" value={volslide} onChange={slideVol} className="slider"></input>
         <p>VOLUME</p>
         </div>
 
         <div className="uielement">
-        <input type="range" min="50" max="700" value={temposlide} onChange={slideTempo} class="slider"   ></input>
+        <input type="range" min="50" max="700" value={temposlide} onChange={slideTempo} className="slider"   ></input>
         <p>TEMPO: {temposlide}</p>
         </div>
 
         <div className="uielement">
-        <input type="range" min="200" max="1000" value={freqslide} onChange={slideFreq} class="slider"></input>
+        <input type="range" min="200" max="1000" value={freqslide} onChange={slideFreq} className="slider"></input>
         <p>DETUNE</p>
         </div>
         
     
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
+        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} className="slider" step={0.01}  ></input>
         <p>MODULATION</p>
         </div>
 
         <div className="uielement">
-        <input type="range" min="0" max="1" value={vol2slide} onChange={slideVol2} class="slider" step={0.01}></input>
+        <input type="range" min="0" max="1" value={vol2slide} onChange={slideVol2} className="slider" step={0.01}></input>
         <p>VERB TIME</p>
         </div>     
 
@@ -177,31 +177,31 @@ const [isdropped, setDroppped] = useState(true);
         <div className="sliderset2">
 
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Aslide} onChange={slideA} class="slider" step={0.01}></input>
+        <input type="range" min="0" max="3" value={Aslide} onChange={slideA} className="slider" step={0.01}></input>
         <p>ATTACK</p>
         </div>
         
 
         <div className="uielement">
-        <input type="range" min="0.01" max="3" value={Dslide} onChange={slideD} class="slider" step={0.01}></input>
+        <input type="range" min="0.01" max="3" value={Dslide} onChange={slideD} className="slider" step={0.01}></input>
         <p>DECAY</p>
         </div>
         
 
         <div className="uielement">
-        <input type="range" min="0" max="1" value={Sslide} onChange={slideS} class="slider" step={0.01}></input>
+        <input type="range" min="0" max="1" value={Sslide} onChange={slideS} className="slider" step={0.01}></input>
         <p>SUSTAIN</p>
         </div>
       
         
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
+        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} className="slider" step={0.01}  ></input>
         <p>RELEASE</p>
         </div>
 
 
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} class="slider" step={0.01}  ></input>
+        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} className="slider" step={0.01}  ></input>
         <p>EFFECT PAR 2</p>
         </div>
         
