@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as Tone from "tone";
 import Chain from "./chain";
-import { Note, Scale } from "@tonaljs/tonal";
-import userEvent from "@testing-library/user-event";
+import { Scale } from "@tonaljs/tonal";
 
 
 
@@ -12,6 +11,24 @@ const loop = new Tone.Loop();
 
 export default function(props){
 
+    function shuffle(array) {
+        var m = array.length, t, i;
+      
+        // While there remain elements to shuffle…
+        while (m) {
+      
+          // Pick a remaining element…
+          i = Math.floor(Math.random() * m--);
+      
+          // And swap it with the current element.
+          t = array[m];
+          array[m] = array[i];
+          array[i] = t;
+        }
+      
+        return array;
+      }
+
 
 
 const [notes, setNotes] = useState(Scale.get('c5 mixolydian').notes);
@@ -20,9 +37,36 @@ useEffect(() =>{
     if (props.scaler === 1){
         setNotes(Scale.get('b4 ionian').notes)
        
+       
     }
     if (props.scaler === 0){
-        setNotes(Scale.get('c5 mixolydian').notes)
+        setNotes(Scale.get('c5 pentatonic').notes)
+    
+
+    }
+
+    if (props.scaler === 2){
+        setNotes(Scale.get('f3 pentatonic').notes)
+    
+
+    }
+
+    if (props.scaler === 3){
+        setNotes(Scale.get('d4 malkos raga').notes)
+    
+
+    }
+
+    if (props.scaler === 4){
+        setNotes(Scale.get('g4 phrygian').notes)
+    
+
+    }
+
+    if (props.scaler === 5){
+        setNotes(Scale.get('e2 dorian').notes)
+    
+
     }
 
 },[props.scaler])
@@ -95,11 +139,6 @@ const stopclock = () => {
     setClockStatus(false);
 }
 
-// useEffect(() => {
-//     // loopstep(0);
-//     // setSteps(0);
-// },[]);
-
 function loopstep(time){
     
     setSteps(steps + 1);
@@ -117,12 +156,8 @@ function loopstep(time){
         stepburgh[steplight - 1].ref.current.className = 'sq';
          
     }
-
     
-    
-    stepburgh[steplight].ref.current.className = 'sqa';
-   
-  
+    stepburgh[steplight].ref.current.className = 'sqa';   
   
 }
 
@@ -134,6 +169,8 @@ return(
     <div>
 
     <div  className="sequencer">
+    <button className="shufflebutton" onClick={() => setNotes(shuffle(notes))}> SHUFFLE</button>
+    
         <Chain freq={props.freq} 
                 vol={props.vol} 
                 vol2={props.vol2} 
@@ -146,17 +183,20 @@ return(
                 transport={Tone.Transport} 
                 offset={offsetslider}
                 notelength={notelength}
-                mod={props.mod}/>
+                mod={props.mod}
+                par2={props.par2}
+                filter={props.filter}/>
 
         <button className="card1" onClick={() => startclock()}>START LOOOP</button>
         <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button>
+        
         
     </div>
 
     <div className="rightpatternctrl">
 
   
-        <button className="shufflebutton"> NOTE SHUFFLE</button>
+        
       
 
     <div className="offsetslider">

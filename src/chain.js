@@ -11,7 +11,7 @@ const volume1 = new Tone.Volume();
 const env = new Tone.AmplitudeEnvelope();
 const env2 = new Tone.AmplitudeEnvelope();
 const lim = new Tone.Limiter(-50);
-const merge = new Tone.Mono();
+
 
 
 
@@ -31,7 +31,7 @@ export default function Chain(props){
  env.connect(volume1);
  env2.connect(volume1);
 //  volume1.connect(merge);
-merge.connect(lim);
+//merge.connect(lim);
  lim.connect(Tone.Destination);
 
 const playSynth = (time, offset) =>{
@@ -75,8 +75,12 @@ const playSynth = (time, offset) =>{
         <div className='chain'>
           
           <Verbo input={volume1} 
-          output={merge} 
-          roomSize={props.vol2} />
+          output={lim} 
+          roomSize={props.vol2}
+          par2={props.par2}
+          filter={props.filter}
+          note={props.note}
+          trigger={props.trigger} />
 
           <Osc1   ctrl={props.ctrl} 
                   output={env} 

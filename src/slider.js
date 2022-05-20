@@ -10,7 +10,7 @@ export default function Slider(props){
     //SLIDERBANK1
 
     //Frequency Slider
-    const [freqslide, setFreqSliderVal] = useState(500);
+    const [freqslide, setFreqSliderVal] = useState(-200);
 
     function slideFreq(event){
         setFreqSliderVal(() => event.target.value);  
@@ -38,7 +38,7 @@ export default function Slider(props){
            setTempoSliderVal(() => event.target.value);  
        }
 
-       const [modslide, setModSliderVal] = useState(0);
+       const [modslide, setModSliderVal] = useState(0.);
 
        function slideMod(event){
            setModSliderVal(() => event.target.value);  
@@ -75,6 +75,25 @@ export default function Slider(props){
            setRSliderVal(() => event.target.value);  
        }
 
+       //DRY / WET Slider
+       const [Par2slide, setPar2SliderVal] = useState(0);
+
+       function slidePar2(event){
+           if (event.target.value >= 0.09){
+            setPar2SliderVal(() => event.target.value);
+           }
+            else setPar2SliderVal(0);
+       }
+
+       //Filter Slider
+       const [filterslide, setFilterSliderVal] = useState(0.5);
+
+       function slideFilter(event){
+         
+            setFilterSliderVal(() => event.target.value);
+         
+       }
+
 
 
 
@@ -95,6 +114,24 @@ export default function Slider(props){
     function click1(event){
     
         setScale(1);
+        
+    }
+
+    function click2(event){
+    
+        setScale(2);
+        
+    }
+
+    function click3(event){
+    
+        setScale(3);
+        
+    }
+
+    function click4(event){
+    
+        setScale(4);
         
     }
 
@@ -143,8 +180,8 @@ export default function Slider(props){
         </div>
 
         <div className="uielement">
-        <input type="range" min="200" max="1000" value={freqslide} onChange={slideFreq} className="slider"></input>
-        <p>DETUNE</p>
+        <input type="range" min="-2000" max="2000" value={freqslide} onChange={slideFreq} className="slider"></input>
+        <p>PITCH</p>
         </div>
         
     
@@ -188,11 +225,18 @@ export default function Slider(props){
 
 
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} className="slider" step={0.01}  ></input>
-        <p>EFFECT PAR 2</p>
+        <input type="range" min="0" max="1" value={Par2slide} onChange={slidePar2} className="slider" step={0.01}  ></input>
+        <p>DRY / WET</p>
         </div>
+
+       
         
 
+        </div>
+
+        <div className="uielement2">
+        <input type="range" min="0.1" max="1" value={filterslide} onChange={slideFilter} className="slider" step={0.01}  ></input>
+        <p>FILTER DELAY</p>
         </div>
         
 
@@ -204,9 +248,9 @@ export default function Slider(props){
             <ul className="dropdown" style={liststyle}>
             <li onClick={() => click0()}>SCALE 1</li>
             <li onClick={() => click1()}>SCALE 2</li>
-            <li>SCALE 3</li>
-            <li>SCALE 4</li>
-            <li>SCALE 5</li>
+            <li onClick={() => click2()}>SCALE 3</li>
+            <li onClick={() => click3()}>SCALE 4</li>
+            <li onClick={() => click4()}>SCALE 5</li>
             </ul>
 
         </div>
@@ -222,7 +266,9 @@ export default function Slider(props){
                     s={Sslide} 
                     r={Rslide} 
                     scaler={scale}
-                    mod={modslide}/>
+                    mod={modslide}
+                    par2={Par2slide}
+                    filter={filterslide}/>
         
        
        
