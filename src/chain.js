@@ -11,6 +11,7 @@ const volume1 = new Tone.Volume();
 const env = new Tone.AmplitudeEnvelope();
 const env2 = new Tone.AmplitudeEnvelope();
 const lim = new Tone.Limiter(-50);
+const merge = new Tone.Mono();
 
 
 
@@ -29,12 +30,14 @@ export default function Chain(props){
 
  env.connect(volume1);
  env2.connect(volume1);
+//  volume1.connect(merge);
+merge.connect(lim);
  lim.connect(Tone.Destination);
 
 const playSynth = (time, offset) =>{
   setTimeout(() =>{
-    env.triggerAttackRelease(1, time);
-    env2.triggerAttackRelease(1, time - offset);
+    env.triggerAttackRelease(props.notelength, time);
+    env2.triggerAttackRelease(props.notelength, time - offset);
     
   },100);
 
@@ -61,17 +64,18 @@ const playSynth = (time, offset) =>{
 
     
       const playNote = () =>{
-        env.triggerAttackRelease(1);
+        env.triggerAttackRelease(props.notelength);
+        env2.triggerAttackRelease(props.notelength);
       }
 
-  
+ 
 
 
       return (
         <div className='chain'>
           
           <Verbo input={volume1} 
-          output={lim} 
+          output={merge} 
           roomSize={props.vol2} />
 
           <Osc1   ctrl={props.ctrl} 
@@ -82,7 +86,9 @@ const playSynth = (time, offset) =>{
                   note={props.note} 
                   note2={props.note2} 
                   transport={props.transport}
-                  detune={props.freq}/>
+                  detune={props.freq}
+                  notelength={props.notelength}
+                  mod={props.mod}/>
           
           <Osc2 
           ctrl={props.ctrl} 
@@ -93,9 +99,12 @@ const playSynth = (time, offset) =>{
           note={props.note2} 
           note2={props.note2} 
           transport={props.transport}
-          detune={props.freq}/>
+          detune={props.freq}
+          notelength={props.notelength}
+          mod={props.mod}/>
           
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
+
         </div>
       )
 

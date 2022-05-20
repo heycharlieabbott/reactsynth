@@ -40,6 +40,12 @@ function slideOffset(event){
     setOffsetSliderVal(() => event.target.value);  
 }
 
+const [notelength, setNoteLengthSliderVal] = useState(1);
+
+function slideNoteLength(event){
+    setNoteLengthSliderVal(() => event.target.value);  
+}
+
 
 
 
@@ -101,7 +107,7 @@ function loopstep(time){
     setLoopTime(time);
 
     setNote(Tone.Frequency(notes[steps % notes.length]).toFrequency());
-    setNote2(Tone.Frequency(notes[(steps + 5) % notes.length]).toFrequency());
+    setNote2(Tone.Frequency(notes[(steps + 1) % notes.length]).toFrequency());
     
     if (stepburgh[0].ref.current.className = 'sqa'){
         stepburgh[stepburgh.length-1].ref.current.className = 'sq';
@@ -115,6 +121,7 @@ function loopstep(time){
     
     
     stepburgh[steplight].ref.current.className = 'sqa';
+   
   
   
 }
@@ -127,7 +134,20 @@ return(
     <div>
 
     <div  className="sequencer">
-        <Chain freq={props.freq} vol={props.vol} vol2={props.vol2} ctrl={props.ctrl} trigger={steps} clockstatus={clockstatus} looptime={looptime} a={props.a} d ={props.d} s={props.s} r={props.r} note={note} note2={note2} transport={Tone.Transport} offset={offsetslider}/>
+        <Chain freq={props.freq} 
+                vol={props.vol} 
+                vol2={props.vol2} 
+                ctrl={props.ctrl} 
+                trigger={steps} 
+                clockstatus={clockstatus} 
+                looptime={looptime} 
+                a={props.a} d ={props.d} s={props.s} r={props.r} 
+                note={note} note2={note2} 
+                transport={Tone.Transport} 
+                offset={offsetslider}
+                notelength={notelength}
+                mod={props.mod}/>
+
         <button className="card1" onClick={() => startclock()}>START LOOOP</button>
         <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button>
         
@@ -149,7 +169,7 @@ return(
     <div className="steps">
 
         <div className="notelength">
-        <input type="range" min="200" max="1000"  class="slider"></input>
+        <input type="range" min="0.01" max="4" value={notelength} onChange={slideNoteLength} class="slider" step={0.01}></input>
         <p>NOTE LENGTH</p>
         </div>
 

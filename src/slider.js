@@ -38,6 +38,12 @@ export default function Slider(props){
            setTempoSliderVal(() => event.target.value);  
        }
 
+       const [modslide, setModSliderVal] = useState(0);
+
+       function slideMod(event){
+           setModSliderVal(() => event.target.value);  
+       }
+
     //SLIDERBANK2
 
     //Attack Slider
@@ -78,25 +84,6 @@ export default function Slider(props){
         vol2: vol2slide
     };
 
-
-
-const [isdropped, setDroppped] = useState(true);
-
-    
-    const dropdowntoggle = () => {
-        
-        setDroppped(() => !isdropped);
-       
-        
-        // if (isdropped){
-        //     document.querySelector('.dropdown').style.opacity = '100';
-
-        // }
-        // if (isdropped === false){
-        //     document.querySelector('.dropdown').style.opacity= '0';
-        // }
-        
-    }
 
     const [scale, setScale] = useState(0);
 
@@ -162,7 +149,7 @@ const [isdropped, setDroppped] = useState(true);
         
     
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} className="slider" step={0.01}  ></input>
+        <input type="range" min="0" max="1" value={modslide} onChange={slideMod} className="slider" step={0.01}  ></input>
         <p>MODULATION</p>
         </div>
 
@@ -234,7 +221,8 @@ const [isdropped, setDroppped] = useState(true);
                     d ={Dslide} 
                     s={Sslide} 
                     r={Rslide} 
-                    scaler={scale}/>
+                    scaler={scale}
+                    mod={modslide}/>
         
        
        

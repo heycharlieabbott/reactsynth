@@ -4,8 +4,8 @@ import * as Tone from 'tone';
 const synth = new Tone.AMSynth();
 const synth2 = new Tone.AMSynth();
 
-const osc = new Tone.Oscillator(440, 'sine');
-const osc2 = new Tone.LFO(1, 100,1000);
+const osc = new Tone.Oscillator(700, 'sine');
+const osc2 = new Tone.LFO(1000, 0,1000);
 
 export default function Osc1(props){
     
@@ -13,10 +13,13 @@ export default function Osc1(props){
     const callback = () =>{
         osc.set({
             frequency: props.note,
+            // detune: props.detune
             
         })
     
         osc2.set({
+            amplitude: props.mod,
+            
     
 
       })
@@ -37,7 +40,7 @@ export default function Osc1(props){
     // // synth2.connect(props.output);
 
     osc.connect(props.output);
-    osc2.connect(osc.frequency);
+    // osc2.connect(osc.frequency);
 
     const ref = useRef(false);
 
