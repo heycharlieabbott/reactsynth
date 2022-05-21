@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css'
-import Slider from './slider';
+import Navbar from './synth1/navbar';
+import Slider from './synth1/slider';
 
 
 function App(){
@@ -10,11 +12,16 @@ function App(){
 
 
       return (
+       
+        <BrowserRouter>
+        <Navbar/>
         <div>
           
         <Slider/>
 
         </div>
+
+        </BrowserRouter>
       )
     
   }

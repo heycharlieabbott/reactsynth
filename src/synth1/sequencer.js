@@ -6,7 +6,7 @@ import { Scale } from "@tonaljs/tonal";
 
 
 const loop = new Tone.Loop();
-
+const recorder = new Tone.Recorder();
 
 
 export default function(props){
@@ -161,6 +161,26 @@ function loopstep(time){
   
 }
 
+//RECORDING FUNCTION
+const [buttontext, setButtonText] = useState('RECORD 10 SECONDS')
+const record = () =>{
+    recorder.start();
+    setButtonText('NOW RECORDING');
+    setTimeout(async () => {
+    // the recorded audio is returned as a blob
+    const recording = await recorder.stop();
+    // download the recording by creating an anchor element and blob url
+    const url = URL.createObjectURL(recording);
+    const anchor = document.createElement("a");
+    anchor.download = "recording.webm";
+    anchor.href = url;
+    anchor.click();
+    setButtonText('RECORD 10 SECONDS')
+    }, 10000);
+
+}
+   
+
 
 
 
@@ -185,10 +205,12 @@ return(
                 notelength={notelength}
                 mod={props.mod}
                 par2={props.par2}
-                filter={props.filter}/>
+                filter={props.filter}
+                recorder={recorder}/>
 
         <button className="card1" onClick={() => startclock()}>START LOOOP</button>
         <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button>
+        <button className='card1' onClick={() => record()}> {buttontext}</button>
         
         
     </div>

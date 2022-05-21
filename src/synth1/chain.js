@@ -1,5 +1,5 @@
 import React, { useState , useRef, useEffect} from 'react';
-import './index.css';
+import '../index.css';
 import Osc1 from './osc1';
 import Osc2 from './osc2';
 import Verbo from './verbo';
@@ -32,7 +32,7 @@ export default function Chain(props){
  env2.connect(volume1);
 //  volume1.connect(merge);
 //merge.connect(lim);
- lim.connect(Tone.Destination);
+ lim.fan(props.recorder,Tone.Destination);
 
 const playSynth = (time, offset) =>{
   setTimeout(() =>{
@@ -66,6 +66,7 @@ const playSynth = (time, offset) =>{
       const playNote = () =>{
         env.triggerAttackRelease(props.notelength);
         env2.triggerAttackRelease(props.notelength);
+      
       }
 
  
@@ -108,6 +109,8 @@ const playSynth = (time, offset) =>{
           mod={props.mod}/>
           
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
+          
+          
 
         </div>
       )

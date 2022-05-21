@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import Chain from "./chain";
-import Sequencer from "./sequencer"
+
+import Sequencer from "./sequencer";
 
 
 
@@ -243,7 +243,7 @@ export default function Slider(props){
         </div>
         
         <div className="centerui">
-            <button onClick={() => toggler()}>STYLE</button>
+            <button onClick={() => toggler()}>SCALES</button>
             
             <ul className="dropdown" style={liststyle}>
             <li onClick={() => click0()}>SCALE 1</li>
