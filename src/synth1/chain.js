@@ -64,6 +64,7 @@ const playSynth = (time, offset) =>{
 
     
       const playNote = () =>{
+        Tone.start();
         env.triggerAttackRelease(props.notelength);
         env2.triggerAttackRelease(props.notelength);
       

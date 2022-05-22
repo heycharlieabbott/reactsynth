@@ -35,8 +35,7 @@ export default function Osc2(props){
 
     }
 
-    osc.start();
-   
+    
 
     osc.connect(props.output);
     osc2.connect(lfovol);
@@ -66,6 +65,10 @@ export default function Osc2(props){
         
         else{
             ref.current = true;
+            osc.start();
+            osc2.start();
+   
+   
         }
 
         },[props.trigger]);

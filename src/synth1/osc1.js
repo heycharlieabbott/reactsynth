@@ -46,8 +46,7 @@ export default function Osc1(props){
 
     }
 
-    osc.start();
-    osc2.start(); 
+  
 
     // osc.set({
     //     detune: props.detune,
@@ -89,6 +88,8 @@ export default function Osc1(props){
         
         else{
             ref.current = true;
+            osc.start();
+            osc2.start(); 
         }
 
         },[props.trigger]);
