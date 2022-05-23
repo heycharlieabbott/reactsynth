@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css'
-import Navbar from './synth1/navbar';
+import Navbar from './navbar';
 import Slider from './synth1/slider';
+import Slidertwo from './synth2/slidertwo'
+import Error from './error';
 
 
 function App(){
@@ -14,12 +16,17 @@ function App(){
       return (
        
         <BrowserRouter>
-        <Navbar/>
-        <div>
-          
-        <Slider/>
 
-        </div>
+
+        <Navbar/>
+
+        <Routes>
+
+        <Route path="/" element={<Slider />}/>
+        <Route path="/synth2" element={<Slidertwo />}/>
+        <Route path='*' element={<Error />}></Route>
+
+        </Routes>
 
         </BrowserRouter>
       )

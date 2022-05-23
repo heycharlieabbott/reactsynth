@@ -1,35 +1,25 @@
-.app{
-  position: relative;
-  padding: 0px;
-  top: 0;
-  width: 100%;
-  
-
-}
+/* GLOBAL STYLES */
 
 body{
   margin: 0;
   padding: 0;
-  /* background-image: linear-gradient(60deg, #64b3f4 0%, #c2e59c 100%); */
-  /* background-image: linear-gradient(to right, #3ab5b0 0%, #3d99be 31%, #56317a 100%); */
-
-  /* background-color: #CDDCDC; */
- /* background-image: radial-gradient(at 50% 100%, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), linear-gradient(to bottom, rgba(255,255,255,0.25) 0%, rgba(0,0,0,0.25) 100%); */
- background-blend-mode: screen, overlay;
- background: #181B1C0D;
- /* overflow: hidden; */
-
-}
+  background-blend-mode: screen, overlay;
+  background: #181B1C0D;
+   /* overflow: hidden; */
+  
+  }
 
 
 .navbar{
   display: flex;
-  width: 60%;
-  margin-left: 5%;
-
+  justify-content: space-evenly;
+  width: 40%;
+  /* margin-left: 5%;
+  margin-top: 10px; */
+ 
   font-size: 1em;
   padding: 0;
-  margin-top: 10px;
+ 
   z-index: 90;
 }
 
@@ -37,8 +27,15 @@ body{
   background-color: #026873;
 }
 
-.navbar > li{
-  display: none;
+/* SYNTH1 STYLES */
+
+.app{
+  position: relative;
+  padding: 0px;
+  top: 0;
+  width: 100%;
+  
+
 }
 
 .card1{
@@ -78,8 +75,6 @@ body{
 
   
 }
-
-
 
 /* centerui */
 
@@ -153,9 +148,6 @@ ul{
   
 }
 
-
-
-
 /* stepseq */
 
 .notelength{
@@ -170,20 +162,13 @@ ul{
   position: absolute;
   width: 100%;
   top: 90%;
-  /* background-color: black; */
 }
 
 
 .steps > ul{
   display: flex;
   justify-content: center;
-  /* margin-left: 10px;
-  margin-right: 10px; */
-  margin-top: 50px;
- 
- 
-
-  
+  margin-top: 50px;  
   
 }
 
@@ -194,21 +179,17 @@ ul{
   width: 70px;
   height: 70px;
   border-radius: 10px;
-  margin-left: 30px;
- 
- 
-  
+  margin-left: 30px; 
 }
 
 .steps > ul > li:hover{
   background-color: aquamarine;
-  
+
 }
 
 
 .sq{
   background-color: #1B4D61;
-  
 }
 
 .sqa{
@@ -216,9 +197,7 @@ ul{
   background-color: #85CAE6;
   top: -10px;
   z-index: 20;
-  box-shadow: 0 0 150px #385561;
-  
-  
+  box-shadow: 0 0 150px #385561; 
 }
 
 .sqtst{
@@ -231,7 +210,6 @@ ul{
   right: 0;
   top: 75%;
   width: 40%;
- 
 }
 
 .offsetslider{
@@ -254,27 +232,11 @@ ul{
   font-family: 'Advent Pro', sans-serif;
   font-size: 18px;
   user-select: none;
-
-  
 }
 
 
 
 .shufflebutton{
-  
-  
-  /* position: relative;
-  top: 0px;
-
-
-  color: white;
-  background-color: #318AAD;
-  border-radius: 5px;
-  font-size: 2rem;
-  width: 170px;
-  text-align: center;
-  margin: 30px;
-  font-family: 'Advent Pro', sans-serif; */
 
   color: white;
   background-color: #318AAD;
@@ -296,13 +258,13 @@ ul{
 }
 
 
-
 /* sliders */
+
+
 .sliders{
   display: grid;
   grid-template-columns: 200px 200px;
   margin: 20px;
-  /* background-color: aqua; */
   
 }
 
@@ -322,7 +284,6 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   box-shadow: 3px 2px 1px #181B1C80, 0px 1px 1px #181B1C40;
   margin: -5px;
-  ;
   
 }
 
@@ -343,13 +304,8 @@ input[type=range]::-webkit-slider-runnable-track {
 
  
   border-color: transparent;
-  color: transparent;
-  
+  color: transparent; 
 }
-
-
-
-
 
 .uielement{
  
@@ -372,7 +328,6 @@ input[type=range]::-webkit-slider-runnable-track {
 .uielement2{
  position: absolute;
  background: #026873;
-
 
   width: 25%;
   height: 5.5em;
@@ -438,3 +393,6 @@ input[type=range]::-webkit-slider-runnable-track {
   }
 
 }
+
+
+/* !!!!!!!!SYNTH 2 STYLES!!!!!!!! */
