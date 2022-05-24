@@ -29,8 +29,9 @@ export default function Chaintwo(props){
   env2.release = props.r;
 
  env.connect(volume1);
- env2.connect(volume1);
- lim.fan(props.recorder,Tone.Destination);
+ volume1.connect(Tone.Destination);
+//  env2.connect(volume1);
+ //lim.fan(props.recorder,Tone.Destination);
 
 const playSynth = (time) =>{
   setTimeout(() =>{
@@ -49,8 +50,9 @@ const playSynth = (time) =>{
 
   useEffect(()=> {
       if (ref.current){
+        Tone.start();
           playSynth(props.looptime);
-          
+         
           
       }
       
@@ -64,7 +66,7 @@ const playSynth = (time) =>{
       const playNote = () =>{
         Tone.start();
         env.triggerAttackRelease(props.notelength);
-        env2.triggerAttackRelease(props.notelength);
+
       
       }
 
@@ -94,7 +96,7 @@ const playSynth = (time) =>{
                   notelength={props.notelength}
                   mod={props.mod}/>
           
-          <Osc2two 
+          {/* <Osc2two 
           ctrl={props.ctrl} 
           output={env2} 
           freq={props.freq} 
@@ -105,7 +107,7 @@ const playSynth = (time) =>{
           transport={props.transport}
           detune={props.freq}
           notelength={props.notelength}
-          mod={props.mod}/>
+          mod={props.mod}/> */}
           
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
           

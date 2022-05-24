@@ -165,6 +165,7 @@ return(
         <button className="card1" onClick={() => startclock()}>START LOOOP</button>
         <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button>
         <button className='card1' onClick={() => record()}> {buttontext}</button>
+        <button className='card1' onClick={() => setSteps(steps + 1)}> PLAY3</button>
         
         
     </div>
@@ -175,10 +176,10 @@ return(
         
       
 
-    <div className="offsetslider">
+    {/* <div className="offsetslider">
         <input type="range" min="-.5" max=".5" value={offsetslider} onChange={slideOffset} class="slider"  step={0.1} ></input>
         <p>OFFSET</p>
-        </div>
+        </div> */}
        
     </div>  
 
