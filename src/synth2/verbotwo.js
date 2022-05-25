@@ -11,7 +11,7 @@ export default function Verbotwo(props){
 
     verb.roomSize.value = props.roomSize;
 
-    verb.wet.value = props.par2;
+    // verb.wet.value = props.par2;
 
 
     filter.set({

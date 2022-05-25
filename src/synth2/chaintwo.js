@@ -4,7 +4,7 @@ import * as Tone from 'tone';
 import Osc1two from './osc1two';
 import Osc2two from './osc2two';
 import Verbotwo from './verbotwo';
-import audio1 from './sound1.wav'
+import audio1 from './audio1.mp3'
 
 
 
@@ -63,10 +63,24 @@ const playSynth = (time) =>{
 
       },[props.trigger]);
 
+      
+      const [ltime1, setLTime1] = useState(1000);
+
+      const timeswitch = ((event) =>{
+        setLTime1(3000);
+      })
     
       const playNote = () =>{
-        Tone.start();
+        
         env.triggerAttackRelease(props.notelength);
+
+        setTimeout(() =>{
+          
+          playNote();
+          
+        },1000)
+
+       
 
       
       }
@@ -80,7 +94,7 @@ const playSynth = (time) =>{
           <Verbotwo input={volume1} 
           output={lim} 
           roomSize={props.vol2}
-          par2={props.par2}
+          // par2={props.par2}
           filter={props.filter}
           note={props.note}
           trigger={props.trigger} />
@@ -96,7 +110,8 @@ const playSynth = (time) =>{
                   detune={props.freq}
                   notelength={props.notelength}
                   mod={props.mod}
-                  aud={audio1}/>
+                  aud={audio1}
+                  filter={props.filter}/>
           
           {/* <Osc2two 
           ctrl={props.ctrl} 
@@ -111,11 +126,9 @@ const playSynth = (time) =>{
           notelength={props.notelength}
           mod={props.mod}/> */}
           
-          <button className='card1' onClick={playNote}> PLAY NOTE</button>
-          <audio
-     
-        src={audio1}>
-         </audio>
+          <button className='card1' onClick={ () =>playNote()}> PLAY NOTE</button>
+          <button className='card1' onClick={() =>timeswitch()}> Time Switch</button>
+          <audio src={audio1}></audio>
           
           
 

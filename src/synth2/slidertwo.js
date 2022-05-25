@@ -75,14 +75,21 @@ export default function Slidertwo(props){
        }
 
        //DRY / WET Slider
-       const [Par2slide, setPar2SliderVal] = useState(0);
+       const [Par2slide, setPar2SliderVal] = useState(1000);
+
+    //    function slidePar2(event){
+    //        if (event.target.value >= 0.09){
+    //         setPar2SliderVal(() => event.target.value);
+    //        }
+    //         else setPar2SliderVal(0);
+    //    }
 
        function slidePar2(event){
-           if (event.target.value >= 0.09){
-            setPar2SliderVal(() => event.target.value);
-           }
-            else setPar2SliderVal(0);
-       }
+    
+         setPar2SliderVal(() => event.target.value);
+         
+       
+    }
 
        //Filter Slider
        const [filterslide, setFilterSliderVal] = useState(0.5);
@@ -179,6 +186,21 @@ export default function Slidertwo(props){
         <input type="range" min="-2000" max="2000" value={freqslide} onChange={slideFreq} className="slider"></input>
         <p>PITCH</p>
         </div>
+
+
+        <div className="uielement">
+        <input type="range" min="0.08" max=".5" value={filterslide} onChange={slideFilter} className="slider" step={0.001}></input>
+        <p>GRAIN</p>
+        </div>
+
+
+        <div className="uielement">
+        <input type="range" min="1000" max="8000" value={Par2slide} onChange={slidePar2} className="slider" step={10}></input>
+        <p>LOOOP TIME 1</p>
+        </div>
+
+
+        
         
     
        
