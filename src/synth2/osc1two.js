@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState} from "react";
 import * as Tone from 'tone';
+// import audio1 from '../public/audio1.mp3'
 
 
 
@@ -9,7 +10,11 @@ import * as Tone from 'tone';
 
 // const osc = new Tone.GrainPlayer(buf)
 
-const osc = new Tone.Player('https://tonejs.github.io/audio/berklee/arpeggio3crazy.mp3');
+// const osc = new Tone.Player('https://tonejs.github.io/audio/berklee/arpeggio3crazy.mp3');
+const osc = new Tone.GrainPlayer();
+
+const buf = new Tone.ToneAudioBuffer();
+
 
 osc.autostart = true;
 
@@ -21,12 +26,21 @@ const sigone = new Tone.Signal(1);
 const sigprops = new Tone.Signal();
 
 export default function Osc1two(props){
+     buf.load(props.aud);
+    osc.set({
+        buffer:buf,
+        loopStart: 0.,
+        loopEnd: .75,
+        loop: true
+    })
 
-   const hey = fetch('/audio1.mp3').then(console.log('hey'));
-   console.log(hey);
+    osc.start();
 
-    sigprops.set({
-        value: props.freq
+   
+   
+
+    osc.set({
+        detune: props.freq
         
     })
     

@@ -173,10 +173,7 @@ export default function Slidertwo(props){
         <p>VOLUME</p>
         </div>
 
-        <div className="uielement">
-        <input type="range" min="50" max="700" value={temposlide} onChange={slideTempo} className="slider"   ></input>
-        <p>TEMPO: {temposlide}</p>
-        </div>
+    
 
         <div className="uielement">
         <input type="range" min="-2000" max="2000" value={freqslide} onChange={slideFreq} className="slider"></input>
@@ -184,15 +181,9 @@ export default function Slidertwo(props){
         </div>
         
     
-        <div className="uielement">
-        <input type="range" min="0" max="1" value={modslide} onChange={slideMod} className="slider" step={0.01}  ></input>
-        <p>MODULATION</p>
-        </div>
+       
 
-        <div className="uielement">
-        <input type="range" min="0" max="1" value={vol2slide} onChange={slideVol2} className="slider" step={0.01}></input>
-        <p>VERB TIME</p>
-        </div>     
+         
 
 
         </div>
@@ -223,21 +214,14 @@ export default function Slidertwo(props){
         </div>
 
 
-        <div className="uielement">
-        <input type="range" min="0" max="1" value={Par2slide} onChange={slidePar2} className="slider" step={0.01}  ></input>
-        <p>DRY / WET</p>
-        </div>
+    
 
        
         
 
         </div>
 
-        <div className="uielement2">
-        <input type="range" min="0.1" max="1" value={filterslide} onChange={slideFilter} className="slider" step={0.01}  ></input>
-        <p>FILTER DELAY</p>
-        </div>
-        
+      
 
         </div>
         

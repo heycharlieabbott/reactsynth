@@ -4,6 +4,7 @@ import * as Tone from 'tone';
 import Osc1two from './osc1two';
 import Osc2two from './osc2two';
 import Verbotwo from './verbotwo';
+import audio1 from './sound1.wav'
 
 
 
@@ -94,7 +95,8 @@ const playSynth = (time) =>{
                   transport={props.transport}
                   detune={props.freq}
                   notelength={props.notelength}
-                  mod={props.mod}/>
+                  mod={props.mod}
+                  aud={audio1}/>
           
           {/* <Osc2two 
           ctrl={props.ctrl} 
@@ -110,6 +112,10 @@ const playSynth = (time) =>{
           mod={props.mod}/> */}
           
           <button className='card1' onClick={playNote}> PLAY NOTE</button>
+          <audio
+     
+        src={audio1}>
+         </audio>
           
           
 
