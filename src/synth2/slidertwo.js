@@ -1,19 +1,46 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useReducer } from "react";
 import Sequencertwo from "./sequencertwo";
 
-
+const reducer = (state, action) => {
+    switch (action.type){
+        
+        case 'par1':
+            return{...state,  par1: action.payload};
+            
+        
+        case 'par2':
+            return{...state,  par2: action.payload};
+            
+        case 'par3':
+            return{...state,  par3: action.payload};
+            
+            
+        case 'par4':
+            return{...state,  par4: action.payload};
+            
+        
+        default:
+            throw new Error();
+    }
+}
 
 
 export default function Slidertwo(props){
 
+    const [state, dispatch] = useReducer(reducer, {
+        par1: -20,
+        par2: -200,
+        par3: 0.5,
+        par4: 1000})
+
     //SLIDERBANK1
 
     //Frequency Slider
-    const [freqslide, setFreqSliderVal] = useState(-200);
+    // const [freqslide, setFreqSliderVal] = useState(-200);
 
-    function slideFreq(event){
-        setFreqSliderVal(() => event.target.value);  
-    }
+    // function slideFreq(event){
+    //     setFreqSliderVal(() => event.target.value);  
+    // }
 
     //Osc Volume Slider
     const [volslide, setVolSliderVal] = useState(-20);
@@ -104,9 +131,9 @@ export default function Slidertwo(props){
 
 
     const ctrlinterface = {
-        freq: freqslide, 
-        vol: volslide, 
-        vol2: vol2slide
+        // freq: freqslide, 
+        // vol: volslide, 
+        // vol2: vol2slide
     };
 
 
@@ -176,26 +203,26 @@ export default function Slidertwo(props){
         <div className="sliderset1">
 
         <div className="uielement">
-        <input type="range" min="-80" max="-10" value={volslide} onChange={slideVol} className="slider"></input>
+        <input type="range" min="-80" max="-10" value={state.par1} onChange={(e) => dispatch({type: 'par1', payload: e.target.value})} className="slider"></input>
         <p>VOLUME</p>
         </div>
 
     
 
         <div className="uielement">
-        <input type="range" min="-2000" max="2000" value={freqslide} onChange={slideFreq} className="slider"></input>
+        <input type="range" min="-2000" max="2000" value={state.par2} onChange={(e) => dispatch({type: 'par2', payload: e.target.value})} className="slider"></input>
         <p>PITCH</p>
         </div>
 
 
         <div className="uielement">
-        <input type="range" min="0.08" max=".5" value={filterslide} onChange={slideFilter} className="slider" step={0.001}></input>
+        <input type="range" min="0.08" max=".5" value={state.par3} onChange={(e) => dispatch({type: 'par3', payload: e.target.value})} className="slider" step={0.001}></input>
         <p>GRAIN</p>
         </div>
 
 
         <div className="uielement">
-        <input type="range" min="1000" max="8000" value={Par2slide} onChange={slidePar2} className="slider" step={10}></input>
+        <input type="range" min="1000" max="8000" value={state.par4} onChange={(e) => dispatch({type: 'par4', payload: e.target.value})} className="slider" step={10}></input>
         <p>LOOOP TIME 1</p>
         </div>
 
@@ -247,7 +274,7 @@ export default function Slidertwo(props){
 
         </div>
         
-        <div className="centerui">
+        {/* <div className="centerui">
             <button onClick={() => toggler()}>SCALES</button>
             
             <ul className="dropdown" style={liststyle}>
@@ -258,11 +285,13 @@ export default function Slidertwo(props){
             <li onClick={() => click4()}>SCALE 5</li>
             </ul>
 
-        </div>
+        </div> */}
         
         
-        <Sequencertwo freq={freqslide} 
-                    vol={volslide} 
+        <Sequencertwo  
+                    vol={state.par1} 
+                    freq={state.par2}
+                    filter={state.par3}
                     vol2={vol2slide} 
                     ctrl={ctrlinterface} 
                     tempo={temposlide} 
@@ -273,7 +302,7 @@ export default function Slidertwo(props){
                     scaler={scale}
                     mod={modslide}
                     par2={Par2slide}
-                    filter={filterslide}/>
+                    />
         
        
        

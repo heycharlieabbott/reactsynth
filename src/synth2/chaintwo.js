@@ -127,7 +127,7 @@ const playSynth = (time) =>{
           mod={props.mod}/> */}
           
           <button className='card1' onClick={ () =>playNote()}> PLAY NOTE</button>
-          <button className='card1' onClick={() =>timeswitch()}> Time Switch</button>
+          {/* <button className='card1' onClick={() =>timeswitch()}> Time Switch</button> */}
           <audio src={audio1}></audio>
           
           

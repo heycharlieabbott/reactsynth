@@ -142,7 +142,7 @@ return(
     <div>
 
     <div  className="sequencer">
-    <button className="shufflebutton" onClick={() => setNotes(shuffle(notes))}> SHUFFLE</button>
+    {/* <button className="shufflebutton" onClick={() => setNotes(shuffle(notes))}> SHUFFLE</button> */}
     
         <Chaintwo freq={props.freq} 
                 vol={props.vol} 
@@ -161,10 +161,10 @@ return(
                 filter={props.filter}
                 recorder={recorder}/>
 
-        <button className="card1" onClick={() => startclock()}>START LOOOP</button>
-        <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button>
+        {/* <button className="card1" onClick={() => startclock()}>START LOOOP</button>
+        <button className="card1" onClick={() => stopclock()}>STOP LOOOP</button> */}
         <button className='card1' onClick={() => record()}> {buttontext}</button>
-        <button className='card1' onClick={() => setSteps(steps + 1)}> PLAY3</button>
+        {/* <button className='card1' onClick={() => setSteps(steps + 1)}> PLAY3</button> */}
         
         
     </div>
