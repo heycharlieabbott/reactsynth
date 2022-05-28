@@ -1,12 +1,12 @@
-import React, { useEffect, useRef, useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import Sequencertwo from "./sequencertwo";
+import Synth2Context from './synth2context';
 
 const reducer = (state, action) => {
+    
     switch (action.type){
-        
         case 'par1':
-            return{...state,  par1: action.payload};
-            
+            return{...state,  par1: action.payload};    
         
         case 'par2':
             return{...state,  par2: action.payload};
@@ -14,11 +14,22 @@ const reducer = (state, action) => {
         case 'par3':
             return{...state,  par3: action.payload};
             
-            
         case 'par4':
             return{...state,  par4: action.payload};
-            
         
+        case 'par5':
+            return{...state,  par5: action.payload};    
+        
+        case 'par6':
+            return{...state,  par6: action.payload};
+            
+        case 'par7':
+            return{...state,  par7: action.payload};
+            
+        case 'par8':
+            return{...state,  par8: action.payload};
+        case 'notelegth':
+            return{...state, notelength: state.notelength}
         default:
             throw new Error();
     }
@@ -28,174 +39,31 @@ const reducer = (state, action) => {
 export default function Slidertwo(props){
 
     const [state, dispatch] = useReducer(reducer, {
+        //volume
         par1: -20,
+        //detune
         par2: -200,
+        //grain
         par3: 0.5,
-        par4: 1000})
-
-    //SLIDERBANK1
-
-    //Frequency Slider
-    // const [freqslide, setFreqSliderVal] = useState(-200);
-
-    // function slideFreq(event){
-    //     setFreqSliderVal(() => event.target.value);  
-    // }
-
-    //Osc Volume Slider
-    const [volslide, setVolSliderVal] = useState(-20);
-
-    function slideVol(event){
-        setVolSliderVal(() => event.target.value);  
-    }
-
-    //Verb roomSize Slider
-    const [vol2slide, setVol2SliderVal] = useState(.75);
-
-    function slideVol2(event){
-        setVol2SliderVal(() => event.target.value);  
-    }
-
-
-       //Tempo Slider
-       const [temposlide, setTempoSliderVal] = useState(120);
-
-       function slideTempo(event){
-           setTempoSliderVal(() => event.target.value);  
-       }
-
-       const [modslide, setModSliderVal] = useState(0.);
-
-       function slideMod(event){
-           setModSliderVal(() => event.target.value);  
-       }
-
-    //SLIDERBANK2
-
-    //Attack Slider
-    const [Aslide, setASliderVal] = useState(0);
-
-    function slideA(event){
-        setASliderVal(() => event.target.value);  
-    }
-
-    //Decay Slider
-    const [Dslide, setDSliderVal] = useState(0.5);
-
-    function slideD(event){
-        setDSliderVal(() => event.target.value);  
-    }
-
-    //Sustain Slider
-    const [Sslide, setSSliderVal] = useState(0.);
-
-    function slideS(event){
-        setSSliderVal(() => event.target.value);  
-    }
-
-
-       //Release Slider
-       const [Rslide, setRSliderVal] = useState(0);
-
-       function slideR(event){
-           setRSliderVal(() => event.target.value);  
-       }
-
-       //DRY / WET Slider
-       const [Par2slide, setPar2SliderVal] = useState(1000);
-
-    //    function slidePar2(event){
-    //        if (event.target.value >= 0.09){
-    //         setPar2SliderVal(() => event.target.value);
-    //        }
-    //         else setPar2SliderVal(0);
-    //    }
-
-       function slidePar2(event){
+        //looptime
+        par4: 1000,
+        //Attack
+        par5: 0,
+        //Decay
+        par6: 0.5,
+        //Sustain
+        par7: 0,
+        //Release
+        par8: 0,
+        notelength: 1
+    })
     
-         setPar2SliderVal(() => event.target.value);
-         
-       
+    const sliderchange = (e, parnum) =>{
+        dispatch ({type: parnum, payload: e.target.value})
     }
-
-       //Filter Slider
-       const [filterslide, setFilterSliderVal] = useState(0.5);
-
-       function slideFilter(event){
-         
-            setFilterSliderVal(() => event.target.value);
-         
-       }
-
-
-
-
-    const ctrlinterface = {
-        // freq: freqslide, 
-        // vol: volslide, 
-        // vol2: vol2slide
-    };
-
-
-    const [scale, setScale] = useState(0);
-
-    function click0(event){
-        setScale(0);
-        
-    }
-
-    function click1(event){
-    
-        setScale(1);
-        
-    }
-
-    function click2(event){
-    
-        setScale(2);
-        
-    }
-
-    function click3(event){
-    
-        setScale(3);
-        
-    }
-
-    function click4(event){
-    
-        setScale(4);
-        
-    }
-
-
-
-    const [liststyle, setListStyle] = useState({
-        'opacity': 0 });
-
-    function changestyle() {
-        
-        setListStyle({'opacity': 100})
-    }
-
-    function changestyle2(){
-        
-        setListStyle({'opacity': 0})
-    }
-
-    const[toggle, setToggle] = useState(true);
-
-    function toggler(){
-        setToggle(!toggle);
-        toggle ? changestyle() : changestyle2();
-       
-        
-        
-    }
-
-    
 
     return(
+        <Synth2Context.Provider value={state}>
         <div className="app">
 
         <div className="sliders">
@@ -203,113 +71,58 @@ export default function Slidertwo(props){
         <div className="sliderset1">
 
         <div className="uielement">
-        <input type="range" min="-80" max="-10" value={state.par1} onChange={(e) => dispatch({type: 'par1', payload: e.target.value})} className="slider"></input>
+        <input type="range" min="-80" max="-10" value={state.par1} onChange={(e) => sliderchange(e,'par1')} className="slider"></input>
         <p>VOLUME</p>
         </div>
 
-    
-
         <div className="uielement">
-        <input type="range" min="-2000" max="2000" value={state.par2} onChange={(e) => dispatch({type: 'par2', payload: e.target.value})} className="slider"></input>
+        <input type="range" min="-2000" max="2000" value={state.par2} onChange={(e) => sliderchange(e, 'par2')} className="slider"></input>
         <p>PITCH</p>
         </div>
 
-
         <div className="uielement">
-        <input type="range" min="0.08" max=".5" value={state.par3} onChange={(e) => dispatch({type: 'par3', payload: e.target.value})} className="slider" step={0.001}></input>
+        <input type="range" min="0.08" max=".5" value={state.par3} onChange={(e) => sliderchange(e, 'par3')} className="slider" step={0.001}></input>
         <p>GRAIN</p>
         </div>
 
-
         <div className="uielement">
-        <input type="range" min="1000" max="8000" value={state.par4} onChange={(e) => dispatch({type: 'par4', payload: e.target.value})} className="slider" step={10}></input>
+        <input type="range" min="1000" max="8000" value={state.par4} onChange={(e) => sliderchange(e, 'par4')} className="slider" step={10}></input>
         <p>LOOOP TIME 1</p>
         </div>
-
-
-        
-        
-    
-       
-
-         
-
 
         </div>
 
         <div className="sliderset2">
 
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Aslide} onChange={slideA} className="slider" step={0.01}></input>
+        <input type="range" min="0" max="3" value={state.par5} onChange={(e) => sliderchange(e, 'par5')} className="slider" step={0.01}></input>
         <p>ATTACK</p>
         </div>
         
 
         <div className="uielement">
-        <input type="range" min="0.01" max="3" value={Dslide} onChange={slideD} className="slider" step={0.01}></input>
+        <input type="range" min="0.01" max="3" value={state.par6} onChange={(e) => sliderchange(e, 'par6')} className="slider" step={0.01}></input>
         <p>DECAY</p>
         </div>
         
 
         <div className="uielement">
-        <input type="range" min="0" max="1" value={Sslide} onChange={slideS} className="slider" step={0.01}></input>
+        <input type="range" min="0" max="1" value={state.par7} onChange={(e) => sliderchange(e, 'par7')} className="slider" step={0.01}></input>
         <p>SUSTAIN</p>
         </div>
       
         
         <div className="uielement">
-        <input type="range" min="0" max="3" value={Rslide} onChange={slideR} className="slider" step={0.01}  ></input>
+        <input type="range" min="0" max="3" value={state.par8} onChange={(e) => sliderchange(e, 'par8')} className="slider" step={0.01}  ></input>
         <p>RELEASE</p>
         </div>
-
-
-    
-
-       
         
-
         </div>
-
-      
-
         </div>
         
-        {/* <div className="centerui">
-            <button onClick={() => toggler()}>SCALES</button>
-            
-            <ul className="dropdown" style={liststyle}>
-            <li onClick={() => click0()}>SCALE 1</li>
-            <li onClick={() => click1()}>SCALE 2</li>
-            <li onClick={() => click2()}>SCALE 3</li>
-            <li onClick={() => click3()}>SCALE 4</li>
-            <li onClick={() => click4()}>SCALE 5</li>
-            </ul>
-
-        </div> */}
-        
-        
-        <Sequencertwo  
-                    vol={state.par1} 
-                    freq={state.par2}
-                    filter={state.par3}
-                    vol2={vol2slide} 
-                    ctrl={ctrlinterface} 
-                    tempo={temposlide} 
-                    a={Aslide} 
-                    d ={Dslide} 
-                    s={Sslide} 
-                    r={Rslide} 
-                    scaler={scale}
-                    mod={modslide}
-                    par2={Par2slide}
-                    />
-        
-       
-       
-
-           
-
+        <Sequencertwo/>
         </div>
+        </Synth2Context.Provider>
     )
 
 }

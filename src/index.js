@@ -24,7 +24,7 @@ function App(){
 
         <Route path="/" element={<Slider />}/>
         <Route path="/synth2" element={<Slidertwo />}/>
-        <Route path='*' element={<Error />}></Route>
+        {/* <Route path='*' element={<Error />}></Route> */}
 
         </Routes>
 

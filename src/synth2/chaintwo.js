@@ -1,10 +1,9 @@
-import React, { useState , useRef, useEffect} from 'react';
+import React, { useRef, useEffect, useContext, useState} from 'react';
 import '../index.css';
 import * as Tone from 'tone';
 import Osc1two from './osc1two';
-import Osc2two from './osc2two';
-import Verbotwo from './verbotwo';
 import audio1 from './audio1.mp3'
+import synth2Context from "./synth2context";
 
 
 
@@ -14,20 +13,20 @@ const env2 = new Tone.AmplitudeEnvelope();
 const lim = new Tone.Limiter(-50);
 
 
-
-
-
 export default function Chaintwo(props){
-  
-  env.attack = props.a;
-  env.decay = props.d;
-  env.sustain = props.s;
-  env.release = props.r;
+  const state = useContext(synth2Context);
 
-  env2.attack = props.a;
-  env2.decay = props.d;
-  env2.sustain = props.s;
-  env2.release = props.r;
+  const [aud, setAud] = useState(audio1);
+  
+  env.attack = state.par5;
+  env.decay = state.par6;
+  env.sustain = state.par7;
+  env.release = state.par8;
+
+  env2.attack = state.par5;
+  env2.decay = state.par6;
+  env2.sustain = state.par7;
+  env2.release = state.par8;
 
  env.connect(volume1);
  volume1.connect(Tone.Destination);
@@ -36,12 +35,10 @@ export default function Chaintwo(props){
 
 const playSynth = (time) =>{
   setTimeout(() =>{
-    env.triggerAttackRelease(props.notelength, time);
-    env2.triggerAttackRelease(props.notelength, time);
+    env.triggerAttackRelease(state.notelength, time);
+    env2.triggerAttackRelease(state.notelength, time);
     
   },100);
-
-
 }
  
   volume1.volume.value = (props.vol);
@@ -52,8 +49,7 @@ const playSynth = (time) =>{
   useEffect(()=> {
       if (ref.current){
         Tone.start();
-          playSynth(props.looptime);
-         
+          playSynth(props.looptime);   
           
       }
       
@@ -63,75 +59,36 @@ const playSynth = (time) =>{
 
       },[props.trigger]);
 
-      
-      const [ltime1, setLTime1] = useState(1000);
-
-      const timeswitch = ((event) =>{
-        setLTime1(3000);
-      })
+  
     
       const playNote = () =>{
         
-        env.triggerAttackRelease(props.notelength);
+        env.triggerAttackRelease(state.notelength);
 
         setTimeout(() =>{
           
           playNote();
+          console.log(aud);
           
         },1000)
-
-       
-
-      
       }
-
- 
 
 
       return (
         <div className='chain'>
-          
-          <Verbotwo input={volume1} 
-          output={lim} 
-          roomSize={props.vol2}
-          // par2={props.par2}
-          filter={props.filter}
-          note={props.note}
-          trigger={props.trigger} />
-
-          <Osc1two   ctrl={props.ctrl} 
-                  output={env} 
-                  freq={props.freq} 
-                  trigger={props.trigger} 
-                  looptime={props.looptime} 
-                  note={props.note} 
-                  note2={props.note2} 
-                  transport={props.transport}
-                  detune={props.freq}
-                  notelength={props.notelength}
-                  mod={props.mod}
-                  aud={audio1}
-                  filter={props.filter}/>
-          
-          {/* <Osc2two 
-          ctrl={props.ctrl} 
-          output={env2} 
-          freq={props.freq} 
-          trigger={props.trigger} 
-          looptime={props.looptime} 
-          note={props.note2} 
-          note2={props.note2} 
-          transport={props.transport}
-          detune={props.freq}
-          notelength={props.notelength}
-          mod={props.mod}/> */}
-          
+          <Osc1two  
+                  output={env}
+                  trigger={props.trigger}
+                  aud={aud}
+                 />      
           <button className='card1' onClick={ () =>playNote()}> PLAY NOTE</button>
-          {/* <button className='card1' onClick={() =>timeswitch()}> Time Switch</button> */}
-          <audio src={audio1}></audio>
-          
-          
-
+          <input className='card1' type='file' onChange={(e)=> {
+            const url = window.URL.createObjectURL(e.target.files[0]);
+            setAud(url);
+            console.log(url);
+            
+          }}></input>
+          <audio src={aud}></audio>
         </div>
       )
 
