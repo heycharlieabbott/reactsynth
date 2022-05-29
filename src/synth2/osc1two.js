@@ -32,6 +32,8 @@ export default function Osc1two(props){
     
     }
 
+    buf.load(props.aud);
+
     osc.connect(props.output);
    
     const ref = useRef(false);
@@ -39,7 +41,7 @@ export default function Osc1two(props){
     useEffect(()=> {
         if (ref.current){
             callback();    
-            
+           
         }
         
         else{

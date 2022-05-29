@@ -3,6 +3,7 @@ import '../index.css';
 import * as Tone from 'tone';
 import Osc1two from './osc1two';
 import audio1 from './audio1.mp3'
+import audio2 from './sound1.wav'
 import synth2Context from "./synth2context";
 
 
@@ -12,11 +13,11 @@ const env = new Tone.AmplitudeEnvelope();
 const env2 = new Tone.AmplitudeEnvelope();
 const lim = new Tone.Limiter(-50);
 
-
+var a;
 export default function Chaintwo(props){
   const state = useContext(synth2Context);
 
-  const [aud, setAud] = useState(audio1);
+  const [aud, setAud] = useState(null);
   
   env.attack = state.par5;
   env.decay = state.par6;
@@ -60,6 +61,14 @@ const playSynth = (time) =>{
       },[props.trigger]);
 
   
+      const [url, setUrl] = useState(audio1);
+
+      useEffect(()=>{
+       
+          setUrl(a);
+         
+      },[a]);
+     
     
       const playNote = () =>{
         
@@ -68,10 +77,21 @@ const playSynth = (time) =>{
         setTimeout(() =>{
           
           playNote();
-          console.log(aud);
+         
+          
+         
           
         },1000)
       }
+
+      const audioset = (e) =>{
+        a = (URL.createObjectURL(e.target.files[0]));
+        setUrl(a);
+        
+      }
+      
+
+
 
 
       return (
@@ -79,16 +99,11 @@ const playSynth = (time) =>{
           <Osc1two  
                   output={env}
                   trigger={props.trigger}
-                  aud={aud}
+                  aud={url}
                  />      
           <button className='card1' onClick={ () =>playNote()}> PLAY NOTE</button>
-          <input className='card1' type='file' onChange={(e)=> {
-            const url = window.URL.createObjectURL(e.target.files[0]);
-            setAud(url);
-            console.log(url);
-            
-          }}></input>
-          <audio src={aud}></audio>
+          <input className='card1' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audioset}></input>
+          <audio src={url}></audio>
         </div>
       )
 

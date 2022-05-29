@@ -44,7 +44,7 @@ export default function Slidertwo(props){
         //detune
         par2: -200,
         //grain
-        par3: 0.5,
+        par3: 1.5,
         //looptime
         par4: 1000,
         //Attack
