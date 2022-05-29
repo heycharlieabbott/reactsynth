@@ -396,3 +396,77 @@ input[type=range]::-webkit-slider-runnable-track {
 
 
 /* !!!!!!!!SYNTH 2 STYLES!!!!!!!! */
+
+
+.sliders2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  
+  gap: 10px;
+  width: 25%;
+  margin-left: 5%;
+ 
+ 
+  
+}
+
+
+.card2{
+  color: white;
+  background-color: #318AAD;
+  border-radius: 5px;
+  margin: 30px;
+  font-size: 2rem;
+  font-family: 'Advent Pro', sans-serif;
+}
+
+.card2:active{
+  background-color: #03A64A;
+}
+
+.chain2{
+  padding: 10px;
+  margin:10px;
+  
+
+  display: flex;
+  width: 400px;
+  
+}
+
+.custom-file-input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.custom-file-input{
+  border: 3px solid #000;
+ 
+
+}
+.custom-file-input::before {
+  content: 'Upload Audio';
+  padding: 0px 5px;
+  cursor: pointer;
+
+}
+
+
+
+
+
+.ui2{
+ 
+  background: #026873;
+  width: 100%;
+  color: white;
+  border-radius: 10px;
+  font-family: sans-serif;
+  user-select: none;
+  
+}
+
+ .ui2 > p {
+  padding: 5px;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 16px;
+}

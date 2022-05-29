@@ -95,14 +95,14 @@ const playSynth = (time) =>{
 
 
       return (
-        <div className='chain'>
+        <div className='chain2'>
           <Osc1two  
                   output={env}
                   trigger={props.trigger}
                   aud={url}
                  />      
-          <button className='card1' onClick={ () =>playNote()}> PLAY NOTE</button>
-          <input className='card1' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audioset}></input>
+          <button className='card2' onClick={ () =>playNote()}> PLAY NOTE</button>
+          <input className='card2 custom-file-input' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audioset}></input>
           <audio src={url}></audio>
         </div>
       )

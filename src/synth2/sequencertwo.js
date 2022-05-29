@@ -58,7 +58,7 @@ const record = () =>{
 
 return(
     <div>
-    <div  className="sequencer">
+    
     
         <Chaintwo  
                 vol={state.par1} 
@@ -71,15 +71,10 @@ return(
                 recorder={recorder}/>
 
       
-        <button className='card1' onClick={() => record()}> {buttontext}</button>    
+        {/* <button className='card1' onClick={() => record()}> {buttontext}</button>     */}
         
     </div>
 
-    <div className="rightpatternctrl">
-       
-    </div>  
-
-    </div>
 )
 
 
