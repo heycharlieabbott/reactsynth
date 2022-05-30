@@ -398,15 +398,13 @@ input[type=range]::-webkit-slider-runnable-track {
 /* !!!!!!!!SYNTH 2 STYLES!!!!!!!! */
 
 
-.sliders2{
+/* .sliders2{
   display: grid;
   grid-template-columns: 1fr 1fr;
   
   gap: 10px;
   width: 25%;
   margin-left: 5%;
- 
- 
   
 }
 
@@ -450,10 +448,6 @@ input[type=range]::-webkit-slider-runnable-track {
 
 }
 
-
-
-
-
 .ui2{
  
   background: #026873;
@@ -469,4 +463,93 @@ input[type=range]::-webkit-slider-runnable-track {
   padding: 5px;
   font-family: 'Advent Pro', sans-serif;
   font-size: 16px;
+} */
+
+
+/* -------------------------- */
+
+/* total synth2 container */
+.app2{
+
 }
+
+/* total sliders container */
+.sliders2{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 25%;
+  gap: 2rem;
+  margin-top: 30px;
+  margin-left: 50px;
+  border: 2px solid black;
+  border-radius: 20px;
+
+}
+
+/* slider and text div */
+.ui2{
+
+}
+
+
+/* text in slider div */
+.ui2 > p{
+  text-align: center;
+
+}
+
+/* slider in slider div */
+.slider2{
+
+}
+
+/* buttons for playing and recording (chain 2) */
+.chain2{
+  display: flex;
+  margin-left: 50px;
+  padding-top: 25px;
+ 
+  width: 25%;
+  gap: 1rem;
+}
+
+/* Play Note button */
+.playbutton{
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  display: none;
+
+}
+
+/* File Uploader input */
+.custom-file-input{
+  opacity: 0;
+  width: 0.1px;
+  height: 0.1px;
+  margin: 0;
+  padding: 0;
+
+}
+
+.filelabel, .buttonlabel{
+ border: 2px solid black;
+ 
+ flex: 1;
+
+ text-align: center;
+
+}
+
+.Pan{
+  width: 25%;
+  margin-top: 25px;
+  margin-left: 50px;
+  text-align: center;
+
+}
+
+
+

@@ -9,6 +9,7 @@ const Navbar = () => {
         <Link to="/synth2">hey</Link>
         <a href='/'>menurefresh</a>
         <a href='/synth2'>synth2refresh</a>
+        <li>Instructions</li>
         
       
     </ul>

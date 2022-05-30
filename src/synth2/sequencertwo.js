@@ -57,9 +57,7 @@ const record = () =>{
 }
 
 return(
-    <div>
-    
-    
+    <>
         <Chaintwo  
                 vol={state.par1} 
              
@@ -69,11 +67,10 @@ return(
                
                 transport={Tone.Transport} 
                 recorder={recorder}/>
-
       
         {/* <button className='card1' onClick={() => record()}> {buttontext}</button>     */}
         
-    </div>
+    </>
 
 )
 
