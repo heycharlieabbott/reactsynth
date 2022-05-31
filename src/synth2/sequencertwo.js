@@ -67,8 +67,13 @@ return(
                
                 transport={Tone.Transport} 
                 recorder={recorder}/>
-      
-        {/* <button className='card1' onClick={() => record()}> {buttontext}</button>     */}
+      <div className="centersection">
+      <button className='FileLeft' id='playbutton' > Preset Left</button>
+        <button className='Record' onClick={() => record()}> {buttontext}</button>  
+        
+        <button className='FileLeft' id='playbutton' > Preset Right</button>
+    
+        </div>  
         
     </>
 

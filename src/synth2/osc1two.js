@@ -51,5 +51,7 @@ export default function Osc1two(props){
 
         },[props.trigger]);
 
+       
         
 }
+

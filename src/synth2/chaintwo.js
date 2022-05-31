@@ -95,12 +95,9 @@ const playSynth = (time) =>{
 
 
       return (
-        <div className='chain2'>
-          <Osc1two  
-                  output={env}
-                  trigger={props.trigger}
-                  aud={url}
-                 />      
+        <>
+        <div className='chain2-left'>
+           
           <button className='playbutton' id='playbutton' onClick={ () =>playNote()}> PLAY NOTE</button>
           <label className='buttonlabel' for="playbutton">Play Note</label>
 
@@ -108,6 +105,24 @@ const playSynth = (time) =>{
           <label className='filelabel' for="file">Select file</label>
           <audio src={url}></audio>
         </div>
+
+        <div className='chain2-right'>
+           
+           <button className='playbutton' id='playbutton' onClick={ () =>playNote()}> PLAY NOTE</button>
+           <label className='buttonlabel' for="playbutton">Play Note</label>
+ 
+           <input className='custom-file-input' id='file' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audioset}></input>
+           <label className='filelabel' for="file">Select file</label>
+           <audio src={url}></audio>
+         </div>
+
+
+        <Osc1two  
+                  output={env}
+                  trigger={props.trigger}
+                  aud={url}
+                 />  
+        </>
       )
 
 }
