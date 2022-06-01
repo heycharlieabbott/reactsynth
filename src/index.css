@@ -484,6 +484,9 @@ align-items: center;
 justify-items: center;
 gap: .1rem;
 overflow: hidden;
+font-family: 'Quicksand', sans-serif;
+font-weight: 500;
+
 }
 
 /* total sliders container */
@@ -568,6 +571,7 @@ overflow: hidden;
   width: 0.1px;
   height: 0.1px;
   display: none;
+  border-radius: 5px;
 
 }
 
@@ -587,6 +591,9 @@ overflow: hidden;
  flex: 1;
 
  text-align: center;
+
+ border-radius: 5px;
+
 
 }
 
@@ -630,10 +637,11 @@ overflow: hidden;
 
 .app2 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: 5px solid  #03A64A;
+  /* border: 5px solid  #03A64A; */
   height: 20px;
-  width: 5px;
+  width: 10px;
   
+  background:#026873;
   cursor: pointer;
   box-shadow: 3px 2px 1px #181B1C80, 0px 1px 1px #181B1C40;
   margin: -5px;
@@ -664,6 +672,7 @@ overflow: hidden;
   grid-column: 2/2;
   grid-row: 1/1;
   display: flex;
-  gap: 5rem;
+  gap: 3rem;
   flex-direction: column;
+  border: 10px solid #03A64A;
 }

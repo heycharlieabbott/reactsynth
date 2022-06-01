@@ -9,11 +9,15 @@ import synth2Context from "./synth2context";
 
 
 const volume1 = new Tone.Volume();
+const volume2 = new Tone.Volume();
 const env = new Tone.AmplitudeEnvelope();
 const env2 = new Tone.AmplitudeEnvelope();
 const lim = new Tone.Limiter(-50);
+const crossfade = new Tone.CrossFade();
+const meter = new Tone.Meter();
 
 var a;
+var b;
 export default function Chaintwo(props){
   const state = useContext(synth2Context);
 
@@ -47,6 +51,7 @@ const playSynth = (time) =>{
 
   const ref = useRef(false);
 
+  //set uploaded audio file for left
   useEffect(()=> {
       if (ref.current){
         Tone.start();
@@ -68,6 +73,29 @@ const playSynth = (time) =>{
           setUrl(a);
          
       },[a]);
+
+       //set uploaded audio file for right
+      useEffect(()=> {
+        if (ref.current){
+          Tone.start();
+            playSynth(props.looptime);   
+            
+        }
+        
+        else{
+            ref.current = true;
+        }
+  
+        },[props.trigger]);
+  
+    
+        // const [url, setUrl] = useState(audio1);
+  
+        useEffect(()=>{
+         
+            setUrl(b);
+           
+        },[b]);
      
     
       const playNote = () =>{

@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <div >
     <ul className='navbar'>
-        <Link to="/">synth1</Link>
-        <Link to="/synth2">synth2</Link>
+        <Link to="/">synth 1</Link>
+        <Link to="/synth2">synth 2</Link>
         {/* <a href='/'>synth1refresh</a>
         <a href='/synth2'>synth2refresh</a> */}
         <li>Instructions</li>

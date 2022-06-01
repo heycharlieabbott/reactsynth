@@ -38,7 +38,7 @@ function loopstep(time){
 }
 
 //RECORDING FUNCTION
-const [buttontext, setButtonText] = useState('RECORD 10 SECONDS')
+const [buttontext, setButtonText] = useState('Record 10 Seconds')
 const record = () =>{
     recorder.start();
     setButtonText('NOW RECORDING');
@@ -67,11 +67,31 @@ return(
                
                 transport={Tone.Transport} 
                 recorder={recorder}/>
+
       <div className="centersection">
-      <button className='FileLeft' id='playbutton' > Preset Left</button>
+      
+      <label for='fileleft'>Preset Left</label>
+      <select className='FileLeft' id='fileleft' name="Preset Left" >
+      <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+      
+
+      <label for='fileright' > Preset Right</label>
+      <select className='FileRight' id="fileright">
+      <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
         <button className='Record' onClick={() => record()}> {buttontext}</button>  
         
-        <button className='FileLeft' id='playbutton' > Preset Right</button>
+        
+
+        <button className='PlayBoth' > Play Both</button>
     
         </div>  
         
