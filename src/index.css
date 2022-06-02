@@ -27,12 +27,24 @@ body{
   font-size: 1em;
   padding: 0; 
   z-index: 50;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Quicksand', sans-serif;
 }
 
-.navbar > li:hover{
-  background-color: #026873;
+.navbar > .link{
+  color: black;
+  text-decoration: none;
 }
+
+.navbar > li:hover, .link:hover{
+  /* background-color: black; */
+  /* color: white;
+  
+  cursor: pointer; */
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
 
 /* SYNTH1 STYLES */
 
@@ -582,6 +594,7 @@ margin-top: max(20px, 2%);
   height: 0.1px;
   display: none;
   border-radius: 5px;
+ 
 
 }
 
@@ -608,12 +621,18 @@ margin-top: max(20px, 2%);
 
 }
 
+.buttonlabel:active{
+  background-color: black;
+  color: white;
+}
+
 .Pan-left{
   grid-column: 1/1;
   width: 50%;
   /* margin-top: 25px;
   margin-left: 50px; */
   text-align: center;
+  
 
 }
 
@@ -634,6 +653,7 @@ margin-top: max(20px, 2%);
   justify-content: center;
   align-content: center;
   text-align: center;
+  padding-top: 10%;
 }
 
 
@@ -685,5 +705,7 @@ margin-top: max(20px, 2%);
   display: flex;
   gap: 3rem;
   flex-direction: column;
-  border: 10px solid #03A64A;
+  padding: 9% 10%;
+  border-radius: 10px;
+  border: 2px solid black;
 }
