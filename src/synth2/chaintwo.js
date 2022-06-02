@@ -7,6 +7,8 @@ import audio1 from './audio1.mp3'
 import audio2 from './sound1.wav'
 import synth2Context from "./synth2context";
 
+const recorder = new Tone.Recorder();
+
 
 
 const volume1 = new Tone.PanVol();
@@ -45,7 +47,7 @@ export default function Chaintwo(props){
  volume2.connect(crossfade.b);
 
  crossfade.connect(meter);
- meter.fan(props.recorder, Tone.Destination)
+ meter.fan(recorder, Tone.Destination)
 
 // const playSynth = (time) =>{
 //   setTimeout(() =>{
@@ -155,18 +157,42 @@ export default function Chaintwo(props){
       }
       
 
+      const playNoteBoth = () => {
+        playNoteLeft();
+        playNoteRight();
+      }
+
+      //RECORDING FUNCTION
+const [buttontext, setButtonText] = useState('Record 10 Seconds')
+const record = () =>{
+    recorder.start();
+    setButtonText('NOW RECORDING');
+    setTimeout(async () => {
+    // the recorded audio is returned as a blob
+    const recording = await recorder.stop();
+    // download the recording by creating an anchor element and blob url
+    const url = URL.createObjectURL(recording);
+    const anchor = document.createElement("a");
+    anchor.download = "recording.webm";
+    anchor.href = url;
+    anchor.click();
+    setButtonText('RECORD 10 SECONDS')
+    }, 10000);
+
+}
 
 
 
       return (
         <>
+        
         <div className='chain2-left'>
            
           <button className='playbutton' id='playbuttonleft' onClick={ () =>playNoteLeft()}> PLAY NOTE</button>
           <label className='buttonlabel' for="playbuttonleft">Play Note</label>
 
-          <input className='custom-file-input' id='file' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audiosetLeft}></input>
-          <label className='filelabel' for="file">Select file</label>
+          <input className='custom-file-input' id='fileleft' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audiosetLeft}></input>
+          <label className='filelabel' for="fileleft">Select file</label>
           <audio src={urlLeft}></audio>
         </div>
 
@@ -175,12 +201,39 @@ export default function Chaintwo(props){
            <button className='playbutton' id='playbuttonright' onClick={ () =>playNoteRight()}> PLAY NOTE</button>
            <label className='buttonlabel' for="playbuttonright">Play Note</label>
  
-           <input className='custom-file-input' id='file' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audiosetRight}></input>
-           <label className='filelabel' for="file">Select file</label>
+           <input className='custom-file-input' id='fileright' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audiosetRight}></input>
+           <label className='filelabel' for="fileright">Select file</label>
            <audio src={urlRight}></audio>
          </div>
 
+         <div className="centersection">
+      
+      <label for='fileleft'>Preset Left</label>
+      <select className='FileLeft' id='fileleft' name="Preset Left" >
+      <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+      
 
+      <label for='fileright' > Preset Right</label>
+      <select className='FileRight' id="fileright">
+      <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+
+        <button className='Record' onClick={() => record()}> {buttontext}</button>  
+        
+        
+
+        <button className='PlayBoth' onClick={() => playNoteBoth()} > Play Both</button>
+    
+        </div>  
+
+         
         <Osc1two  
                   output={env}
                   trigger={props.trigger}

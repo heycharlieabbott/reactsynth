@@ -37,24 +37,24 @@ function loopstep(time){
   
 }
 
-//RECORDING FUNCTION
-const [buttontext, setButtonText] = useState('Record 10 Seconds')
-const record = () =>{
-    recorder.start();
-    setButtonText('NOW RECORDING');
-    setTimeout(async () => {
-    // the recorded audio is returned as a blob
-    const recording = await recorder.stop();
-    // download the recording by creating an anchor element and blob url
-    const url = URL.createObjectURL(recording);
-    const anchor = document.createElement("a");
-    anchor.download = "recording.webm";
-    anchor.href = url;
-    anchor.click();
-    setButtonText('RECORD 10 SECONDS')
-    }, 10000);
+// //RECORDING FUNCTION
+// const [buttontext, setButtonText] = useState('Record 10 Seconds')
+// const record = () =>{
+//     recorder.start();
+//     setButtonText('NOW RECORDING');
+//     setTimeout(async () => {
+//     // the recorded audio is returned as a blob
+//     const recording = await recorder.stop();
+//     // download the recording by creating an anchor element and blob url
+//     const url = URL.createObjectURL(recording);
+//     const anchor = document.createElement("a");
+//     anchor.download = "recording.webm";
+//     anchor.href = url;
+//     anchor.click();
+//     setButtonText('RECORD 10 SECONDS')
+//     }, 10000);
 
-}
+// }
 
 return(
     <>
@@ -66,34 +66,10 @@ return(
                 looptime={looptime}
                
                 transport={Tone.Transport} 
-                recorder={recorder}/>
+                // recorder={recorder}
+                />
 
-      <div className="centersection">
       
-      <label for='fileleft'>Preset Left</label>
-      <select className='FileLeft' id='fileleft' name="Preset Left" >
-      <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-      
-
-      <label for='fileright' > Preset Right</label>
-      <select className='FileRight' id="fileright">
-      <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-
-        <button className='Record' onClick={() => record()}> {buttontext}</button>  
-        
-        
-
-        <button className='PlayBoth' > Play Both</button>
-    
-        </div>  
         
     </>
 
