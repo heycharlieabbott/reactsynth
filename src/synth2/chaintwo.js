@@ -3,8 +3,8 @@ import '../index.css';
 import * as Tone from 'tone';
 import Osc1two from './osc1two';
 import Osc2two from './osc2two';
-import audio1 from './audio1.mp3'
-import audio2 from './sound1.wav'
+// import audio1 from './audio1.mp3'
+// import audio2 from './sound1.wav'
 import synth2Context from "./synth2context";
 
 const recorder = new Tone.Recorder();
@@ -81,8 +81,8 @@ export default function Chaintwo(props){
   //     },[props.trigger]);
 
   
-      const [urlLeft, setUrlLeft] = useState(audio1);
-      const [urlRight, setUrlRight] = useState(audio2);
+      const [urlLeft, setUrlLeft] = useState(null);
+      const [urlRight, setUrlRight] = useState(null);
 
       useEffect(()=>{
        
