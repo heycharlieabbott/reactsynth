@@ -3,8 +3,8 @@ import '../index.css';
 import * as Tone from 'tone';
 import Osc1two from './osc1two';
 import Osc2two from './osc2two';
-// import audio1 from './audio1.mp3'
-// import audio2 from './sound1.wav'
+// import audio1 from '../../public/audio1.mp3'
+// import audio2 from '../../public/sound1.wav'
 import synth2Context from "./synth2context";
 
 const recorder = new Tone.Recorder();
