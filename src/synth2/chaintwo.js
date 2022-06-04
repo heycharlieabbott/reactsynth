@@ -19,14 +19,14 @@ const env2 = new Tone.AmplitudeEnvelope();
 const crossfade = new Tone.CrossFade();
 const meter = new Tone.Meter();
 
-const lim = new Tone.Limiter(-50);
+// const lim = new Tone.Limiter(-50);
 
 var a;
 var b;
 export default function Chaintwo(props){
   const state = useContext(synth2Context);
 
-  const [aud, setAud] = useState(null);
+  // const [aud, setAud] = useState(null);
   
   env.attack = state.par5;
   env.decay = state.par6;
@@ -64,7 +64,7 @@ export default function Chaintwo(props){
   volume2.pan.value = (state.par10);
 
 
-  const ref = useRef(false);
+  // const ref = useRef(false);
 
   // //set uploaded audio file for left
   // useEffect(()=> {

@@ -1,8 +1,8 @@
-import React, { useEffect, useLayoutEffect, useRef, useState} from "react";
+import { useEffect, useRef} from "react";
 import * as Tone from 'tone';
 
-const synth = new Tone.AMSynth();
-const synth2 = new Tone.AMSynth();
+// const synth = new Tone.AMSynth();
+// const synth2 = new Tone.AMSynth();
 
 const osc = new Tone.Oscillator(440, 'sine');
 const osc2 = new Tone.LFO(1, 0,50);

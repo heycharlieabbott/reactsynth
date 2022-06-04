@@ -1,6 +1,6 @@
-import React, { useEffect, useLayoutEffect, useRef, useState} from "react";
+import { useEffect, useRef} from "react";
 import * as Tone from 'tone';
-import { getDefaultsFromInstance } from "tone/build/esm/core/util/Defaults";
+// import { getDefaultsFromInstance } from "tone/build/esm/core/util/Defaults";
 
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './index.css'
@@ -6,7 +6,7 @@ import Navbar from './navbar';
 import Slider from './synth1/slider';
 import Slidertwo from './synth2/slidertwo'
 import Error from './error';
-import Superslider from './synth2/superslider';
+// import Superslider from './synth2/superslider';
 
 
 function App(){

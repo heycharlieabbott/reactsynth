@@ -1,4 +1,4 @@
-import React, { useState , useRef, useEffect} from 'react';
+import React, { useRef, useEffect} from 'react';
 import '../index.css';
 import Osc1 from './osc1';
 import Osc2 from './osc2';
