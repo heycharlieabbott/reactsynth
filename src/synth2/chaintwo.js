@@ -1,17 +1,15 @@
-import React, { useRef, useEffect, useContext, useState} from 'react';
-import '../index.css';
-import * as Tone from 'tone';
-import Osc1two from './osc1two';
-import Osc2two from './osc2two';
+import React, { useRef, useEffect, useContext, useState } from "react";
+import "../index.css";
+import * as Tone from "tone";
+import Osc1two from "./osc1two";
+import Osc2two from "./osc2two";
 // import audio1 from '../../public/audio1.mp3'
 // import audio2 from '../../public/sound1.wav'
 import synth2Context from "./synth2context";
-import {getDownloadURL, getStorage, ref} from 'firebase/storage';
-import {app, storage} from '../firebase';
+import { getDownloadURL, getStorage, ref, listAll } from "firebase/storage";
+import { app, storage } from "../firebase";
 
 const recorder = new Tone.Recorder();
-
-
 
 const volume1 = new Tone.PanVol();
 const volume2 = new Tone.PanVol();
@@ -25,11 +23,28 @@ const meter = new Tone.Meter();
 
 var a;
 var b;
-export default function Chaintwo(props){
+export default function Chaintwo(props) {
   const state = useContext(synth2Context);
+  const [storedaudio, setStoredAudio] = useState([]);
+  const [urlLeft, setUrlLeft] = useState(null);
+  const [urlRight, setUrlRight] = useState(null);
 
-  // const [aud, setAud] = useState(null);
-  
+  const audiolistref = ref(storage, "/");
+  useEffect(() => {
+    listAll(audiolistref).then((response) => {
+      response.items.forEach((dl) => {
+        getDownloadURL(dl).then((url) => {
+          setStoredAudio((prev) => [...prev, url]);
+        });
+      });
+    });
+  }, []);
+
+  setTimeout(() => {
+    setUrlLeft(storedaudio[5]);
+    setUrlRight(storedaudio[10]);
+  }, 1000);
+
   env.attack = state.par5;
   env.decay = state.par6;
   env.sustain = state.par7;
@@ -42,221 +57,202 @@ export default function Chaintwo(props){
 
   crossfade.fade.value = state.crossfade;
 
- env.connect(volume1);
- volume1.connect(crossfade.a);
+  env.connect(volume1);
+  volume1.connect(crossfade.a);
 
- env2.connect(volume2);
- volume2.connect(crossfade.b);
+  env2.connect(volume2);
+  volume2.connect(crossfade.b);
 
- crossfade.connect(meter);
- meter.fan(recorder, Tone.Destination)
+  crossfade.connect(meter);
+  meter.fan(recorder, Tone.Destination);
 
-// const playSynth = (time) =>{
-//   setTimeout(() =>{
-//     env.triggerAttackRelease(state.notelength, time);
-//     env2.triggerAttackRelease(state.notelength, time);
-    
-//   },100);
-// }
- 
-  volume1.volume.value = (state.par1);
-  volume1.pan.value = (state.par9);
+  // const playSynth = (time) =>{
+  //   setTimeout(() =>{
+  //     env.triggerAttackRelease(state.notelength, time);
+  //     env2.triggerAttackRelease(state.notelength, time);
 
-  volume2.volume.value = (state.par11);
-  volume2.pan.value = (state.par10);
+  //   },100);
+  // }
 
+  volume1.volume.value = state.par1;
+  volume1.pan.value = state.par9;
 
-  // const ref = useRef(false);
+  volume2.volume.value = state.par11;
+  volume2.pan.value = state.par10;
 
-  // //set uploaded audio file for left
-  // useEffect(()=> {
-  //     if (ref.current){
-  //       Tone.start();
-  //         playSynth(props.looptime);   
-          
-  //     }
-      
-  //     else{
-  //         ref.current = true;
-  //     }
+  const pathRefa = ref(storage, "soundsprite2.mp3");
+  const pathRefb = ref(storage, "audio1.mp3");
 
-  //     },[props.trigger]);
+  // const setfromstora = (e) => {
+  //   getDownloadURL(pathRefa).then((response) => {
 
-  // const storage = getStorage();
-  const pathRefa = ref(storage, 'soundsprite2.mp3');
-  const pathRefb = ref(storage, 'audio1.mp3');
+  //     a = response;
+  //     console.log(e.nativeEvent.target.selectedIndex);
+  //     setUrlLeft(a);
+  //   });
+  // };
 
-  
-  
-      const [urlLeft, setUrlLeft] = useState(null);
-      const [urlRight, setUrlRight] = useState(null);
-
-    
-    const setfromstora = () =>{
-      getDownloadURL(pathRefa).then((response) =>{
-        // setUrlLeft(response);
-        // console.log(urlLeft);
-        a = response;
-        console.log(a);
-        setUrlLeft(a);
-        })
-
+  const setfromstora = (e) => {
+    if (e.nativeEvent.target.selectedIndex === 1) {
+      a = storedaudio[1];
+      setUrlLeft(a);
     }
+  };
 
-    const setfromstorb = () =>{
-      getDownloadURL(pathRefb).then((response) =>{
-        // setUrlLeft(response);
-        // console.log(urlLeft);
-        b = response;
-        console.log(b);
-        setUrlLeft(b);
-        })
+  const setfromstorb = () => {
+    getDownloadURL(pathRefb).then((response) => {
+      b = response;
+      setUrlLeft(b);
+    });
+  };
 
-    }
+  useEffect(() => {
+    setUrlLeft(a);
+  }, [a]);
 
-      useEffect(()=>{
-       
-          setUrlLeft(a);
-         
-      },[a]);
+  useEffect(() => {
+    setUrlRight(b);
+  }, [b]);
 
-        useEffect(()=>{
-         
-            setUrlRight(b);
-           
-        },[b]);
-     
-    
-      const playNoteLeft = () =>{
-        
-        env.triggerAttackRelease(state.notelength);
+  const playNoteLeft = () => {
+    env.triggerAttackRelease(state.notelength);
 
-        setTimeout(() =>{
-          Tone.start();
-          
-          playNoteLeft();
-          
-        },1000)
-      }
+    setTimeout(() => {
+      Tone.start();
 
-      const playNoteRight = () =>{
-        Tone.start();
-        
-        env2.triggerAttackRelease(state.notelength);
+      playNoteLeft();
+    }, 1000);
+  };
 
-        setTimeout(() =>{
-          
-          playNoteRight();
-         
-          
-         
-          
-        },1000)
-      }
+  const playNoteRight = () => {
+    Tone.start();
 
-      const audiosetLeft = (e) =>{
-        a = (URL.createObjectURL(e.target.files[0]));
-        setUrlLeft(a);
-        
-      }
+    env2.triggerAttackRelease(state.notelength);
 
-      const audiosetRight = (e) =>{
-        b = (URL.createObjectURL(e.target.files[0]));
-        setUrlRight(b);
-        
-      }
-      
+    setTimeout(() => {
+      playNoteRight();
+    }, 1000);
+  };
 
-      const playNoteBoth = () => {
-        playNoteLeft();
-        playNoteRight();
-      }
+  const audiosetLeft = (e) => {
+    a = URL.createObjectURL(e.target.files[0]);
+    setUrlLeft(a);
+  };
 
-      //RECORDING FUNCTION
-const [buttontext, setButtonText] = useState('Record 10 Seconds')
-const record = () =>{
+  const audiosetRight = (e) => {
+    b = URL.createObjectURL(e.target.files[0]);
+    setUrlRight(b);
+  };
+
+  const playNoteBoth = () => {
+    playNoteLeft();
+    playNoteRight();
+  };
+
+  //RECORDING FUNCTION
+  const [buttontext, setButtonText] = useState("Record 10 Seconds");
+  const record = () => {
     recorder.start();
-    setButtonText('NOW RECORDING');
+    setButtonText("NOW RECORDING");
     setTimeout(async () => {
-    // the recorded audio is returned as a blob
-    const recording = await recorder.stop();
-    // download the recording by creating an anchor element and blob url
-    const url = URL.createObjectURL(recording);
-    const anchor = document.createElement("a");
-    anchor.download = "recording.webm";
-    anchor.href = url;
-    anchor.click();
-    setButtonText('RECORD 10 SECONDS')
+      // the recorded audio is returned as a blob
+      const recording = await recorder.stop();
+      // download the recording by creating an anchor element and blob url
+      const url = URL.createObjectURL(recording);
+      const anchor = document.createElement("a");
+      anchor.download = "recording.webm";
+      anchor.href = url;
+      anchor.click();
+      setButtonText("RECORD 10 SECONDS");
     }, 10000);
+  };
 
-}
+  return (
+    <>
+      <div className="chain2-left">
+        <button
+          className="playbutton"
+          id="playbuttonleft"
+          onClick={() => playNoteLeft()}
+        >
+          PLAY NOTE
+        </button>
+        <label className="buttonlabel" for="playbuttonleft">
+          Play Note
+        </label>
 
+        <input
+          className="custom-file-input"
+          id="fileleft"
+          type="file"
+          accept=".wav, .mp3, .aiff, .flac"
+          onChange={audiosetLeft}
+        ></input>
+        <label className="filelabel" for="fileleft">
+          Upload file
+        </label>
+        <audio src={urlLeft}></audio>
+      </div>
 
+      <div className="chain2-right">
+        <button
+          className="playbutton"
+          id="playbuttonright"
+          onClick={() => playNoteRight()}
+        >
+          PLAY NOTE
+        </button>
+        <label className="buttonlabel" for="playbuttonright">
+          Play Note
+        </label>
 
-      return (
-        <>
-        
-        <div className='chain2-left'>
-           
-          <button className='playbutton' id='playbuttonleft' onClick={ () =>playNoteLeft()}> PLAY NOTE</button>
-          <label className='buttonlabel' for="playbuttonleft">Play Note</label>
+        <input
+          className="custom-file-input"
+          id="fileright"
+          type="file"
+          accept=".wav, .mp3, .aiff, .flac"
+          onChange={audiosetRight}
+        ></input>
+        <label className="filelabel" for="fileright">
+          Upload file
+        </label>
+        <audio src={urlRight}></audio>
+      </div>
 
-          <input className='custom-file-input' id='fileleft' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audiosetLeft}></input>
-          <label className='filelabel' for="fileleft">Select file</label>
-          <audio src={urlLeft}></audio>
-        </div>
+      <div className="centersection">
+        <label for="fileleft">Preset Left</label>
+        <select
+          className="FileLeft"
+          id="fileleft"
+          name="Preset Left"
+          onChange={setfromstora}
+        >
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
 
-        <div className='chain2-right'>
-           
-           <button className='playbutton' id='playbuttonright' onClick={ () =>playNoteRight()}> PLAY NOTE</button>
-           <label className='buttonlabel' for="playbuttonright">Play Note</label>
- 
-           <input className='custom-file-input' id='fileright' type='file' accept=".wav, .mp3, .aiff, .flac" onChange={audiosetRight}></input>
-           <label className='filelabel' for="fileright">Select file</label>
-           <audio src={urlRight}></audio>
-         </div>
+        <label for="fileright"> Preset Right</label>
+        <select className="FileRight" id="fileright" onChange={setfromstorb}>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="mercedes">Mercedes</option>
+          <option value="audi">Audi</option>
+        </select>
 
-         <div className="centersection">
-      
-      <label for='fileleft'>Preset Left</label>
-      <select className='FileLeft' id='fileleft' name="Preset Left" onChange={setfromstora} >
-      <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
-      
+        <button className="Record" onClick={() => record()}>
+          {buttontext}
+        </button>
 
-      <label for='fileright' > Preset Right</label>
-      <select className='FileRight' id="fileright" onChange={setfromstorb}>
-      <option value="volvo">Volvo</option>
-        <option value="saab">Saab</option>
-        <option value="mercedes">Mercedes</option>
-        <option value="audi">Audi</option>
-      </select>
+        <button className="PlayBoth" onClick={() => playNoteBoth()}>
+          Play Both
+        </button>
+      </div>
 
-        <button className='Record' onClick={() => record()}> {buttontext}</button>  
-        
-        
+      <Osc1two output={env} trigger={props.trigger} aud={urlLeft} />
 
-        <button className='PlayBoth' onClick={() => playNoteBoth()} > Play Both</button>
-    
-        </div>  
-
-         
-        <Osc1two  
-                  output={env}
-                  trigger={props.trigger}
-                  aud={urlLeft}
-                 />  
-
-        <Osc2two  
-                  output={env2}
-                  trigger={props.trigger}
-                  aud={urlRight}
-                 />   
-        </>
-
-      )
-
+      <Osc2two output={env2} trigger={props.trigger} aud={urlRight} />
+    </>
+  );
 }
