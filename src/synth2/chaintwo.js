@@ -6,6 +6,8 @@ import Osc2two from './osc2two';
 // import audio1 from '../../public/audio1.mp3'
 // import audio2 from '../../public/sound1.wav'
 import synth2Context from "./synth2context";
+import {getDownloadURL, getStorage, ref} from 'firebase/storage';
+import {app, storage} from '../firebase';
 
 const recorder = new Tone.Recorder();
 
@@ -80,9 +82,37 @@ export default function Chaintwo(props){
 
   //     },[props.trigger]);
 
+  // const storage = getStorage();
+  const pathRefa = ref(storage, 'soundsprite2.mp3');
+  const pathRefb = ref(storage, 'audio1.mp3');
+
+  
   
       const [urlLeft, setUrlLeft] = useState(null);
       const [urlRight, setUrlRight] = useState(null);
+
+    
+    const setfromstora = () =>{
+      getDownloadURL(pathRefa).then((response) =>{
+        // setUrlLeft(response);
+        // console.log(urlLeft);
+        a = response;
+        console.log(a);
+        setUrlLeft(a);
+        })
+
+    }
+
+    const setfromstorb = () =>{
+      getDownloadURL(pathRefb).then((response) =>{
+        // setUrlLeft(response);
+        // console.log(urlLeft);
+        b = response;
+        console.log(b);
+        setUrlLeft(b);
+        })
+
+    }
 
       useEffect(()=>{
        
@@ -90,23 +120,6 @@ export default function Chaintwo(props){
          
       },[a]);
 
-       //set uploaded audio file for right
-      // useEffect(()=> {
-      //   if (ref.current){
-      //     Tone.start();
-      //       playSynth(props.looptime);   
-            
-      //   }
-        
-      //   else{
-      //       ref.current = true;
-      //   }
-  
-      //   },[props.trigger]);
-  
-    
-        // const [url, setUrl] = useState(audio1);
-  
         useEffect(()=>{
          
             setUrlRight(b);
@@ -122,9 +135,6 @@ export default function Chaintwo(props){
           Tone.start();
           
           playNoteLeft();
-         
-          
-         
           
         },1000)
       }
@@ -209,7 +219,7 @@ const record = () =>{
          <div className="centersection">
       
       <label for='fileleft'>Preset Left</label>
-      <select className='FileLeft' id='fileleft' name="Preset Left" >
+      <select className='FileLeft' id='fileleft' name="Preset Left" onChange={setfromstora} >
       <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>
         <option value="mercedes">Mercedes</option>
@@ -218,7 +228,7 @@ const record = () =>{
       
 
       <label for='fileright' > Preset Right</label>
-      <select className='FileRight' id="fileright">
+      <select className='FileRight' id="fileright" onChange={setfromstorb}>
       <option value="volvo">Volvo</option>
         <option value="saab">Saab</option>
         <option value="mercedes">Mercedes</option>
