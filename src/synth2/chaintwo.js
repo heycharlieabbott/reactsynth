@@ -3,8 +3,6 @@ import "../index.css";
 import * as Tone from "tone";
 import Osc1two from "./osc1two";
 import Osc2two from "./osc2two";
-// import audio1 from '../../public/audio1.mp3'
-// import audio2 from '../../public/sound1.wav'
 import synth2Context from "./synth2context";
 import { getDownloadURL, getStorage, ref, listAll } from "firebase/storage";
 import { app, storage } from "../firebase";
@@ -17,7 +15,7 @@ const env = new Tone.AmplitudeEnvelope();
 const env2 = new Tone.AmplitudeEnvelope();
 
 const crossfade = new Tone.CrossFade();
-const meter = new Tone.Meter();
+const meter = new Tone.Meter({ channels: 2, normalRange: true, smoothing: 0 });
 
 // const lim = new Tone.Limiter(-50);
 
@@ -28,6 +26,11 @@ export default function Chaintwo(props) {
   const [storedaudio, setStoredAudio] = useState([]);
   const [urlLeft, setUrlLeft] = useState(null);
   const [urlRight, setUrlRight] = useState(null);
+
+  const [meterleft, setMeterLeft] = useState(0);
+  const [meterright, setMeterRight] = useState(0);
+
+  const [meterval, setMeterVal] = useState([]);
 
   const audiolistref = ref(storage, "/");
   useEffect(() => {
@@ -66,14 +69,6 @@ export default function Chaintwo(props) {
   crossfade.connect(meter);
   meter.fan(recorder, Tone.Destination);
 
-  // const playSynth = (time) =>{
-  //   setTimeout(() =>{
-  //     env.triggerAttackRelease(state.notelength, time);
-  //     env2.triggerAttackRelease(state.notelength, time);
-
-  //   },100);
-  // }
-
   volume1.volume.value = state.par1;
   volume1.pan.value = state.par9;
 
@@ -83,26 +78,15 @@ export default function Chaintwo(props) {
   const pathRefa = ref(storage, "soundsprite2.mp3");
   const pathRefb = ref(storage, "audio1.mp3");
 
-  // const setfromstora = (e) => {
-  //   getDownloadURL(pathRefa).then((response) => {
-
-  //     a = response;
-  //     console.log(e.nativeEvent.target.selectedIndex);
-  //     setUrlLeft(a);
-  //   });
-  // };
-
   const setfromstora = (e) => {
-    if (e.nativeEvent.target.selectedIndex === 1) {
-      a = storedaudio[1];
-      setUrlLeft(a);
-    }
+    a = storedaudio[e.nativeEvent.target.selectedIndex];
+    // setUrlLeft(a);
   };
 
   const setfromstorb = () => {
     getDownloadURL(pathRefb).then((response) => {
       b = response;
-      setUrlLeft(b);
+      // setUrlLeft(b);
     });
   };
 
@@ -166,6 +150,15 @@ export default function Chaintwo(props) {
       setButtonText("RECORD 10 SECONDS");
     }, 10000);
   };
+
+  setInterval(() => {
+    const mete = meter.getValue();
+
+    setMeterLeft(Math.floor(Math.abs(mete[0] * 50)));
+    // console.log(meterleft + "L");
+    setMeterRight(Math.floor(Math.abs(mete[1] * 50)));
+    // console.log(meterright + "R");
+  }, 500);
 
   return (
     <>
@@ -248,6 +241,11 @@ export default function Chaintwo(props) {
         <button className="PlayBoth" onClick={() => playNoteBoth()}>
           Play Both
         </button>
+      </div>
+
+      <div className="Meter">
+        <li className="R" style={{ height: `${meterright}%` }}></li>
+        <li className="L" style={{ height: `${meterleft}%` }}></li>
       </div>
 
       <Osc1two output={env} trigger={props.trigger} aud={urlLeft} />
