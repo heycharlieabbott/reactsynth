@@ -9,6 +9,7 @@ import { app, storage } from "../firebase";
 
 const recorder = new Tone.Recorder();
 
+const reverb = new Tone.Reverb({ decay: 100 });
 const volume1 = new Tone.PanVol();
 const volume2 = new Tone.PanVol();
 const env = new Tone.AmplitudeEnvelope();
@@ -30,23 +31,24 @@ export default function Chaintwo(props) {
   const [meterleft, setMeterLeft] = useState(0);
   const [meterright, setMeterRight] = useState(0);
 
-  const [meterval, setMeterVal] = useState([]);
-
   const audiolistref = ref(storage, "/");
   useEffect(() => {
-    listAll(audiolistref).then((response) => {
-      response.items.forEach((dl) => {
-        getDownloadURL(dl).then((url) => {
-          setStoredAudio((prev) => [...prev, url]);
-        });
-      });
-    });
-  }, []);
+    // listAll(audiolistref).then((response) => {
+    //   response.items.forEach((dl) => {
+    //     getDownloadURL(dl).then((url) => {
+    //       setStoredAudio((prev) => [...prev, url]);
+    //     });
+    //   });
+    // });
+    // console.log("loadfiles");
+    // setTimeout(() => {
+    //   setUrlLeft(storedaudio[5]);
+    //   console.log("loadfiles");
+    //   setUrlRight(storedaudio[10]);
+    // }, 1000);
 
-  setTimeout(() => {
-    setUrlLeft(storedaudio[5]);
-    setUrlRight(storedaudio[10]);
-  }, 1000);
+    console.log("loadfiles");
+  }, []);
 
   env.attack = state.par5;
   env.decay = state.par6;
@@ -66,8 +68,10 @@ export default function Chaintwo(props) {
   env2.connect(volume2);
   volume2.connect(crossfade.b);
 
-  crossfade.connect(meter);
+  crossfade.connect(reverb);
   meter.fan(recorder, Tone.Destination);
+
+  reverb.connect(meter);
 
   volume1.volume.value = state.par1;
   volume1.pan.value = state.par9;
@@ -75,27 +79,38 @@ export default function Chaintwo(props) {
   volume2.volume.value = state.par11;
   volume2.pan.value = state.par10;
 
-  const pathRefa = ref(storage, "soundsprite2.mp3");
-  const pathRefb = ref(storage, "audio1.mp3");
+  // const pathRefa = ref(storage, "soundsprite2.mp3");
+  // const pathRefb = ref(storage, "audio1.mp3");
+
+  // useEffect(() => {
+
+  // }, [third])
 
   const setfromstora = (e) => {
     a = storedaudio[e.nativeEvent.target.selectedIndex];
-    // setUrlLeft(a);
+    setUrlLeft(a);
+    console.log("seta");
   };
 
-  const setfromstorb = () => {
-    getDownloadURL(pathRefb).then((response) => {
-      b = response;
-      // setUrlLeft(b);
-    });
+  const setfromstorb = (e) => {
+    // getDownloadURL(pathRefb).then((response) => {
+    //   b = response;
+    //   // setUrlLeft(b);
+    // });
+
+    b = storedaudio[e.nativeEvent.target.selectedIndex];
+    setUrlRight(b);
+    console.log("setb");
   };
 
   useEffect(() => {
-    setUrlLeft(a);
+    // setUrlLeft(a);
+    console.log("lefthey");
   }, [a]);
 
   useEffect(() => {
-    setUrlRight(b);
+    // setUrlRight(b);
+    console.log("righthey");
   }, [b]);
 
   const playNoteLeft = () => {
@@ -154,9 +169,9 @@ export default function Chaintwo(props) {
   setInterval(() => {
     const mete = meter.getValue();
 
-    setMeterLeft(Math.floor(Math.abs(mete[0] * 50)));
+    setMeterLeft(Math.floor(Math.abs(mete[0] * 100)));
     // console.log(meterleft + "L");
-    setMeterRight(Math.floor(Math.abs(mete[1] * 50)));
+    setMeterRight(Math.floor(Math.abs(mete[1] * 100)));
     // console.log(meterright + "R");
   }, 500);
 

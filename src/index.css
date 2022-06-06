@@ -443,11 +443,14 @@ ul {
 .app2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+
   /* justify-content: center;
 align-content: center; */
   align-items: center;
   justify-items: center;
-  gap: 0.1rem;
+  gap: 1.1rem;
+
   overflow: hidden;
   font-family: "Quicksand", sans-serif;
   font-weight: 500;
@@ -457,6 +460,7 @@ align-content: center; */
 /* total sliders container */
 .sliders2-left {
   grid-column: 1 / 1;
+  height: 95%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 80%;
@@ -473,6 +477,7 @@ align-content: center; */
   grid-column: 3/3;
   grid-row: 1/1;
   display: grid;
+  height: 95%;
   grid-template-columns: 1fr 1fr;
   width: 80%;
   min-width: 200px;
@@ -601,9 +606,11 @@ align-content: center; */
   width: 50%;
   height: 20%;
   list-style: none;
+  transition: height 100ms;
 }
 
 .L {
+  transition: height 100ms;
   background-color: green;
   width: 50%;
   height: 10%;
@@ -650,7 +657,7 @@ align-content: center; */
   grid-column: 2/2;
   grid-row: 1/1;
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   flex-direction: column;
   padding: 9% 10%;
   border-radius: 10px;
