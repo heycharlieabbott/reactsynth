@@ -9,7 +9,8 @@ import { app, storage } from "../firebase";
 
 const recorder = new Tone.Recorder();
 
-const reverb = new Tone.Reverb({ decay: 100 });
+const reverbleft = new Tone.Reverb({ decay: 100 });
+const reverbright = new Tone.Reverb({ decay: 100 });
 const volume1 = new Tone.PanVol();
 const volume2 = new Tone.PanVol();
 const env = new Tone.AmplitudeEnvelope();
@@ -33,22 +34,35 @@ export default function Chaintwo(props) {
 
   const audiolistref = ref(storage, "/");
   useEffect(() => {
-    // listAll(audiolistref).then((response) => {
-    //   response.items.forEach((dl) => {
-    //     getDownloadURL(dl).then((url) => {
-    //       setStoredAudio((prev) => [...prev, url]);
-    //     });
-    //   });
-    // });
-    // console.log("loadfiles");
-    // setTimeout(() => {
-    //   setUrlLeft(storedaudio[5]);
-    //   console.log("loadfiles");
-    //   setUrlRight(storedaudio[10]);
-    // }, 1000);
+    listAll(audiolistref).then((response) => {
+      response.items.forEach((dl) => {
+        getDownloadURL(dl).then((url) => {
+          setStoredAudio((prev) => [...prev, url]);
+        });
+      });
+    });
+    console.log("loadfiles");
 
     console.log("loadfiles");
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setUrlLeft(storedaudio[5]);
+      console.log(storedaudio[5]);
+      // setUrlRight(storedaudio[10]);
+      // console.log(storedaudio[10]);
+    }, 100);
+  }, [storedaudio[5]]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      // setUrlLeft(storedaudio[5]);
+      // console.log(storedaudio[5]);
+      setUrlRight(storedaudio[10]);
+      console.log(storedaudio[10]);
+    }, 100);
+  }, [storedaudio[10]]);
 
   env.attack = state.par5;
   env.decay = state.par6;
@@ -62,16 +76,16 @@ export default function Chaintwo(props) {
 
   crossfade.fade.value = state.crossfade;
 
-  env.connect(volume1);
+  env.connect(reverbleft);
+  reverbleft.connect(volume1);
   volume1.connect(crossfade.a);
 
-  env2.connect(volume2);
+  env2.connect(reverbright);
+  reverbright.connect(volume2);
   volume2.connect(crossfade.b);
 
-  crossfade.connect(reverb);
+  crossfade.connect(meter);
   meter.fan(recorder, Tone.Destination);
-
-  reverb.connect(meter);
 
   volume1.volume.value = state.par1;
   volume1.pan.value = state.par9;
@@ -114,11 +128,10 @@ export default function Chaintwo(props) {
   }, [b]);
 
   const playNoteLeft = () => {
+    Tone.start();
     env.triggerAttackRelease(state.notelength);
 
     setTimeout(() => {
-      Tone.start();
-
       playNoteLeft();
     }, 1000);
   };
@@ -144,6 +157,7 @@ export default function Chaintwo(props) {
   };
 
   const playNoteBoth = () => {
+    Tone.start();
     playNoteLeft();
     playNoteRight();
   };
@@ -174,6 +188,14 @@ export default function Chaintwo(props) {
     setMeterRight(Math.floor(Math.abs(mete[1] * 100)));
     // console.log(meterright + "R");
   }, 500);
+
+  reverbleft.set({
+    wet: state.par4,
+  });
+
+  reverbright.set({
+    wet: state.par14,
+  });
 
   return (
     <>

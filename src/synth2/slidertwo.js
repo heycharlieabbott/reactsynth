@@ -1,6 +1,7 @@
 import React, { useReducer } from "react";
 import Sequencertwo from "./sequencertwo";
 import Synth2Context from "./synth2context";
+import { useSearchParams } from "react-router-dom";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -81,7 +82,7 @@ export default function Slidertwo(props) {
     //grain L
     par3: 0.5,
     //looptime L
-    par4: 1000,
+    par4: 0,
     //Attack L
     par5: 0,
     //Decay L
@@ -106,7 +107,7 @@ export default function Slidertwo(props) {
     //grain r
     par13: 0.5,
     //looptime R
-    par14: 1000,
+    par14: 0,
     //Attack R
     par15: 0,
     //Decay R
@@ -206,12 +207,12 @@ export default function Slidertwo(props) {
           <div className="ui2">
             <input
               type="range"
-              min="1000"
-              max="8000"
+              min="0"
+              max="1"
               value={state.par4}
               onChange={(e) => sliderchange(e, "par4")}
               className="slider2"
-              step={10}
+              step={0.01}
             ></input>
             <p>LOOOP</p>
           </div>
@@ -324,12 +325,12 @@ export default function Slidertwo(props) {
           <div className="ui2">
             <input
               type="range"
-              min="1000"
-              max="8000"
+              min="0"
+              max="1"
               value={state.par14}
               onChange={(e) => sliderchange(e, "par14")}
               className="slider2"
-              step={10}
+              step={0.01}
             ></input>
             <p>LOOOP</p>
           </div>
