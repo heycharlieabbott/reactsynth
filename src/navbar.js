@@ -15,14 +15,20 @@ const Navbar = () => {
   return (
     <div>
       <ul className="navbar">
-        <Link to="/" className="link" onClick={() => setModalContent(0)}>
+        {/* <Link to="/" className="link" onClick={() => setModalContent(0)}>
           synth 1
         </Link>
         <Link to="/synth2" className="link" onClick={() => setModalContent(1)}>
           synth 2
-        </Link>
-        {/* <a href='/'>synth1refresh</a>
-        <a href='/synth2'>synth2refresh</a> */}
+        </Link> */}
+
+        <a href="/" className="link" onClick={() => setModalContent(0)}>
+          synth 1
+        </a>
+        <a href="/synth2" className="link" onClick={() => setModalContent(1)}>
+          synth 2
+        </a>
+
         <li onClick={() => instructionsmodal()}>Instructions</li>
         <div
           onClick={() => setToggleInstructions(false)}

@@ -10,7 +10,7 @@ import { app, storage } from "../firebase";
 const recorder = new Tone.Recorder();
 
 const reverbleft = new Tone.Reverb({ decay: 100 });
-const reverbright = new Tone.Reverb({ decay: 100 });
+const reverbright = new Tone.FeedbackDelay("4n", 0.5);
 const volume1 = new Tone.PanVol();
 const volume2 = new Tone.PanVol();
 const env = new Tone.AmplitudeEnvelope();
@@ -19,7 +19,7 @@ const env2 = new Tone.AmplitudeEnvelope();
 const crossfade = new Tone.CrossFade();
 const meter = new Tone.Meter({ channels: 2, normalRange: true, smoothing: 0 });
 
-// const lim = new Tone.Limiter(-50);
+const lim = new Tone.Limiter(-30);
 
 var a;
 var b;
@@ -32,7 +32,7 @@ export default function Chaintwo(props) {
   const [meterleft, setMeterLeft] = useState(0);
   const [meterright, setMeterRight] = useState(0);
 
-  const audiolistref = ref(storage, "/");
+  const audiolistref = ref(storage, "/Grains/");
   useEffect(() => {
     listAll(audiolistref).then((response) => {
       response.items.forEach((dl) => {
@@ -41,28 +41,28 @@ export default function Chaintwo(props) {
         });
       });
     });
-    console.log("loadfiles");
+    // console.log("loadfiles");
 
-    console.log("loadfiles");
+    // console.log("loadfiles");
   }, []);
 
   useEffect(() => {
     setTimeout(() => {
-      setUrlLeft(storedaudio[5]);
-      console.log(storedaudio[5]);
+      setUrlLeft(storedaudio[4]);
+      // console.log(storedaudio[4]);
       // setUrlRight(storedaudio[10]);
       // console.log(storedaudio[10]);
     }, 100);
-  }, [storedaudio[5]]);
+  }, [storedaudio[4]]);
 
   useEffect(() => {
     setTimeout(() => {
       // setUrlLeft(storedaudio[5]);
       // console.log(storedaudio[5]);
-      setUrlRight(storedaudio[10]);
-      console.log(storedaudio[10]);
+      setUrlRight(storedaudio[1]);
+      // console.log(storedaudio[1]);
     }, 100);
-  }, [storedaudio[10]]);
+  }, [storedaudio[1]]);
 
   env.attack = state.par5;
   env.decay = state.par6;
@@ -84,7 +84,8 @@ export default function Chaintwo(props) {
   reverbright.connect(volume2);
   volume2.connect(crossfade.b);
 
-  crossfade.connect(meter);
+  crossfade.connect(lim);
+  lim.connect(meter);
   meter.fan(recorder, Tone.Destination);
 
   volume1.volume.value = state.par1;
@@ -103,7 +104,7 @@ export default function Chaintwo(props) {
   const setfromstora = (e) => {
     a = storedaudio[e.nativeEvent.target.selectedIndex];
     setUrlLeft(a);
-    console.log("seta");
+    // console.log("seta");
   };
 
   const setfromstorb = (e) => {
@@ -114,17 +115,17 @@ export default function Chaintwo(props) {
 
     b = storedaudio[e.nativeEvent.target.selectedIndex];
     setUrlRight(b);
-    console.log("setb");
+    // console.log("setb");
   };
 
   useEffect(() => {
     // setUrlLeft(a);
-    console.log("lefthey");
+    // console.log("lefthey");
   }, [a]);
 
   useEffect(() => {
     // setUrlRight(b);
-    console.log("righthey");
+    // console.log("righthey");
   }, [b]);
 
   const playNoteLeft = () => {
@@ -183,9 +184,9 @@ export default function Chaintwo(props) {
   setInterval(() => {
     const mete = meter.getValue();
 
-    setMeterLeft(Math.floor(Math.abs(mete[0] * 100)));
+    setMeterLeft(Math.floor(Math.abs(mete[0] * 150)));
     // console.log(meterleft + "L");
-    setMeterRight(Math.floor(Math.abs(mete[1] * 100)));
+    setMeterRight(Math.floor(Math.abs(mete[1] * 150)));
     // console.log(meterright + "R");
   }, 500);
 
@@ -195,6 +196,7 @@ export default function Chaintwo(props) {
 
   reverbright.set({
     wet: state.par14,
+    feedback: state.par14,
   });
 
   return (
@@ -250,25 +252,27 @@ export default function Chaintwo(props) {
       </div>
 
       <div className="centersection">
-        <label for="fileleft">Preset Left</label>
+        <label for="fileleft">Server File Left</label>
         <select
           className="FileLeft"
           id="fileleft"
           name="Preset Left"
           onChange={setfromstora}
         >
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option value="volvo">File 1</option>
+          <option value="saab">File 2</option>
+          <option value="mercedes">File 3</option>
+          <option value="audi">File 4</option>
+          <option value="audi">File 5</option>
         </select>
 
-        <label for="fileright"> Preset Right</label>
+        <label for="fileright"> Server File Right</label>
         <select className="FileRight" id="fileright" onChange={setfromstorb}>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
+          <option value="volvo">File 1</option>
+          <option value="saab">File 2</option>
+          <option value="mercedes">File 3</option>
+          <option value="audi">File 4</option>
+          <option value="audi">File 5</option>
         </select>
 
         <button className="Record" onClick={() => record()}>

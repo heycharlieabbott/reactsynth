@@ -76,7 +76,7 @@ const reducer = (state, action) => {
 export default function Slidertwo(props) {
   const [state, dispatch] = useReducer(reducer, {
     //volume L
-    par1: -20,
+    par1: 0,
     //detune L
     par2: -200,
     //grain L
@@ -88,7 +88,7 @@ export default function Slidertwo(props) {
     //Decay L
     par6: 0.5,
     //Sustain L
-    par7: 0,
+    par7: 1,
     //Release L
     par8: 0,
     //Pan Left L
@@ -101,7 +101,7 @@ export default function Slidertwo(props) {
     //Pan Right R
     par10: 0,
     //volume R
-    par11: -20,
+    par11: 0,
     //detune R
     par12: -200,
     //grain r
@@ -113,7 +113,7 @@ export default function Slidertwo(props) {
     //Decay R
     par16: 0.5,
     //Sustain R
-    par17: 0,
+    par17: 1,
     //Release R
     par18: 0,
     //Pan Left R
@@ -173,7 +173,7 @@ export default function Slidertwo(props) {
               value={state.par6}
               onChange={(e) => sliderchange(e, "par6")}
               className="slider2"
-              step={0.01}
+              step={0.1}
             ></input>
             <p>DECAY</p>
           </div>
@@ -186,7 +186,7 @@ export default function Slidertwo(props) {
               value={state.par3}
               onChange={(e) => sliderchange(e, "par3")}
               className="slider2"
-              step={0.001}
+              step={0.01}
             ></input>
             <p>GRAIN</p>
           </div>
@@ -199,7 +199,7 @@ export default function Slidertwo(props) {
               value={state.par7}
               onChange={(e) => sliderchange(e, "par7")}
               className="slider2"
-              step={0.01}
+              step={0.1}
             ></input>
             <p>SUSTAIN</p>
           </div>
@@ -214,7 +214,7 @@ export default function Slidertwo(props) {
               className="slider2"
               step={0.01}
             ></input>
-            <p>LOOOP</p>
+            <p>DRY / WET</p>
           </div>
 
           <div className="ui2">
@@ -332,7 +332,7 @@ export default function Slidertwo(props) {
               className="slider2"
               step={0.01}
             ></input>
-            <p>LOOOP</p>
+            <p>DRY / WET</p>
           </div>
 
           <div className="ui2">
@@ -372,7 +372,7 @@ export default function Slidertwo(props) {
             className="slider2"
             step={0.01}
           ></input>
-          <p>CROSSFADE</p>
+          <p>left ||||| CROSSFADE ||||| right</p>
         </div>
       </div>
     </Synth2Context.Provider>
