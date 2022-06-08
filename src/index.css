@@ -2,21 +2,19 @@
 
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
   background-blend-mode: screen, overlay;
-  background: #181B1C0D;
-   /* overflow: hidden; */
-  
-  }
+  background: #181b1c0d;
+  /* overflow: hidden; */
+}
 
-
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-evenly;
   width: 100%;
@@ -25,17 +23,18 @@ body{
   box-shadow: 0px 2px 2px #e6e4e4;
   margin: 0;
   font-size: 1em;
-  padding: 0; 
+  padding: 0;
   z-index: 50;
-  font-family: 'Quicksand', sans-serif;
+  font-family: "Quicksand", sans-serif;
 }
 
-.navbar > .link{
+.navbar > .link {
   color: black;
   text-decoration: none;
 }
 
-.navbar > li:hover, .link:hover{
+.navbar > li:hover,
+.link:hover {
   /* background-color: black; */
   /* color: white;
   
@@ -44,23 +43,38 @@ body{
   cursor: pointer;
 }
 
+.modalbackground {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 60;
+  padding: 25%;
+}
 
+.modalcontent {
+  transform: translate(0, -60%);
 
+  text-align: center;
+  background-color: white;
+  border: solid 2px black;
+  border-radius: 10px;
+  padding: 10%;
+  z-index: 61;
+}
 /* SYNTH1 STYLES */
 
-.app{
+.app {
   position: relative;
   padding: 0px;
   top: 0;
   width: 100%;
- 
-  
-
 }
 
-.card1{
+.card1 {
   color: white;
-  background-color: #318AAD;
+  background-color: #318aad;
   border-radius: 5px;
   font-size: 2rem;
   max-width: 200px;
@@ -69,85 +83,71 @@ body{
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 30px;
-  font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
 }
 
-.card1:active{
-  background-color: #03A64A;
+.card1:active {
+  background-color: #03a64a;
 }
-.sequencer{
+.sequencer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  
 
   position: absolute;
   top: 0%;
   right: 0%;
   /* background-color: yellow; */
-  
- 
-
 }
 
-.chain{
+.chain {
   padding: 0;
   margin: 0;
-
-  
 }
 
 /* centerui */
 
-.centerui{
+.centerui {
   position: absolute;
   display: flex;
   top: 7%;
   left: 50%;
-  transform: translate(-50%,-0%);
+  transform: translate(-50%, -0%);
   justify-content: center;
   align-items: center;
   user-select: none;
 
-
   padding: 0;
   margin: 0%;
   height: 5%;
-  
-
 }
-.centerui > button{
+.centerui > button {
   /* position: absolute; */
   font-size: 4rem;
   z-index: 10;
-  font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
   margin-left: 20%;
   padding: 0;
-
-
 }
-.centerui > button:hover{
-  background: linear-gradient(180deg, #03A64A 0%, #026873 100%);
-
- 
+.centerui > button:hover {
+  background: linear-gradient(180deg, #03a64a 0%, #026873 100%);
 }
 
-.centerui > ul > li{
-  position:relative;
+.centerui > ul > li {
+  position: relative;
   left: -180%;
   top: 200px;
   width: 100%;
 
   display: flex;
-  
+
   font-size: 1.5rem;
   border: solid;
   margin: 10px;
   padding: 3px;
-  font-family: 'Advent Pro', sans-serif;
-
+  font-family: "Advent Pro", sans-serif;
 }
 
-.centerui > ul > button{
+.centerui > ul > button {
   position: relative;
   top: 220px;
   font-size: 2rem;
@@ -155,46 +155,41 @@ body{
   margin: 10px;
   padding: 5px;
   z-index: 20;
-  
-
 }
 
-.dropdown > li:hover{
-  background-color:  #03A64A;
+.dropdown > li:hover {
+  background-color: #03a64a;
 }
 
-ul{
+ul {
   list-style-type: none;
 }
 
-.dropdown{
+.dropdown {
   opacity: 100;
-  transition: opacity 300ms; 
-  
+  transition: opacity 300ms;
 }
 
 /* stepseq */
 
-.notelength{
+.notelength {
   position: absolute;
   bottom: 0;
   margin: 20px;
-  font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
 }
 
-.steps{
- user-select: none;
+.steps {
+  user-select: none;
   position: absolute;
   width: 100%;
   top: 90%;
 }
 
-
-.steps > ul{
+.steps > ul {
   display: flex;
   justify-content: center;
-  margin-top: 50px;  
-  
+  margin-top: 50px;
 }
 
 .steps > ul > li {
@@ -204,67 +199,62 @@ ul{
   width: 70px;
   height: 70px;
   border-radius: 10px;
-  margin-left: 30px; 
+  margin-left: 30px;
 }
 
-.steps > ul > li:hover{
+.steps > ul > li:hover {
   background-color: aquamarine;
-
 }
 
-
-.sq{
-  background-color: #1B4D61;
+.sq {
+  background-color: #1b4d61;
 }
 
-.sqa{
+.sqa {
   position: relative;
-  background-color: #85CAE6;
+  background-color: #85cae6;
   top: -10px;
   z-index: 20;
-  box-shadow: 0 0 150px #385561; 
+  box-shadow: 0 0 150px #385561;
 }
 
-.sqtst{
+.sqtst {
   background-color: yellow;
 }
 
 /* sequncerui */
-.rightpatternctrl{
+.rightpatternctrl {
   position: absolute;
   right: 0;
   top: 75%;
   width: 40%;
 }
 
-.offsetslider{
+.offsetslider {
   display: block;
   position: absolute;
   right: 15%;
-  
+
   width: 30%;
-  height: 60px;
+  height: 70px;
   color: white;
   border-radius: 10px;
-  padding: 5px;
+  padding: 0px;
   margin-top: -30px;
   margin-left: 0px;
   margin-right: 20px;
 
-  background: #181B1CBF;
+  background: #181b1cbf;
   color: white;
   border-radius: 10px;
-  font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
   font-size: 18px;
   user-select: none;
 }
 
-
-
-.shufflebutton{
-
+.shufflebutton {
   color: white;
-  background-color: #318AAD;
+  background-color: #318aad;
   border-radius: 5px;
   font-size: 2rem;
   max-width: 200px;
@@ -273,51 +263,43 @@ ul{
   margin-left: 30px;
   margin-right: 30px;
   margin-top: 30px;
-  font-family: 'Advent Pro', sans-serif;
-  
+  font-family: "Advent Pro", sans-serif;
 }
 
-.shufflebutton:active{
-  background-color: #03A64A;
-  
+.shufflebutton:active {
+  background-color: #03a64a;
 }
-
 
 /* sliders */
 
-
-.sliders{
+.sliders {
   display: grid;
   grid-template-columns: 200px 200px;
   margin: 20px;
-  
 }
 
-
-.app input[type=range] {
+.app input[type="range"] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
 }
 
-.app input[type=range]::-webkit-slider-thumb {
+.app input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  border: 5px solid  #03A64A;
+  border: 5px solid #03a64a;
   height: 20px;
   width: 5px;
-  
+
   cursor: pointer;
-  box-shadow: 3px 2px 1px #181B1C80, 0px 1px 1px #181B1C40;
+  box-shadow: 3px 2px 1px #181b1c80, 0px 1px 1px #181b1c40;
   margin: -5px;
-  
 }
 
-.app input[type=range]:focus {
-  outline:none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+.app input[type="range"]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
 
-.app input[type=range]::-webkit-slider-runnable-track {
-  
+.app input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
@@ -325,34 +307,30 @@ ul{
   margin-right: 10px;
 
   /* Hides the slider so custom styles can be added */
-  background: #181B1C;
+  background: #181b1c;
 
- 
   border-color: transparent;
-  color: transparent; 
+  color: transparent;
 }
 
-.uielement{
- 
+.uielement {
   background: #026873;
   width: 70%;
   color: white;
   border-radius: 10px;
   font-family: sans-serif;
   user-select: none;
-  
 }
 
- .uielement > p {
+.uielement > p {
   padding: 5px;
-  font-family: 'Advent Pro', sans-serif;
+  font-family: "Advent Pro", sans-serif;
   font-size: 18px;
 }
 
-
-.uielement2{
- position: absolute;
- background: #026873;
+.uielement2 {
+  position: absolute;
+  background: #026873;
 
   width: 25%;
   height: 5.5em;
@@ -362,66 +340,55 @@ ul{
   user-select: none;
   right: 49%;
   top: 50%;
-  transform:  rotate(-90deg);
-  
-
+  transform: rotate(-90deg);
 }
 
- .uielement2 > p {
+.uielement2 > p {
   padding: 5px;
-  
-  font-family: 'Advent Pro', sans-serif;
+
+  font-family: "Advent Pro", sans-serif;
   font-size: 30px;
   letter-spacing: 5px;
 }
 
-.uielement2 > input[type=range]::-webkit-slider-thumb {
+.uielement2 > input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: 5px solid 03A64A;
   height: 20px;
   width: 5px;
-  
+
   cursor: pointer;
-  box-shadow: 3px 2px 1px #181B1C80, 0px 1px 1px #181B1C40;
+  box-shadow: 3px 2px 1px #181b1c80, 0px 1px 1px #181b1c40;
   margin: -5px;
-  
 }
 
-
 @media (min-width: 0px) {
-  .app{
+  .app {
     width: 1280px;
   }
 }
 
-@media (min-width: 1200px){
-  .app{
-    
+@media (min-width: 1200px) {
+  .app {
     width: 100%;
-
-
   }
 
-  .app > .uielement2{
+  .app > .uielement2 {
     left: 300px;
     width: 300px;
   }
 
-  .app > .offsetslider{
+  .app > .offsetslider {
     width: 150px;
     right: 80px;
-
   }
 
- .app > .centerui > ul > li{
+  .app > .centerui > ul > li {
     top: 220px;
   }
-
 }
 
-
 /* !!!!!!!!SYNTH 2 STYLES!!!!!!!! */
-
 
 /* .sliders2{
   display: grid;
@@ -490,28 +457,30 @@ ul{
   font-size: 16px;
 } */
 
-
 /* -------------------------- */
 
 /* total synth2 container */
-.app2{
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-/* justify-content: center;
-align-content: center; */
-align-items: center;
-justify-items: center;
-gap: .1rem;
-overflow: hidden;
-font-family: 'Quicksand', sans-serif;
-font-weight: 500;
-margin-top: max(20px, 2%);
+.app2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
 
+  /* justify-content: center;
+align-content: center; */
+  align-items: center;
+  justify-items: center;
+  gap: 1.1rem;
+
+  overflow: hidden;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 500;
+  margin-top: max(20px, 2%);
 }
 
 /* total sliders container */
-.sliders2-left{
+.sliders2-left {
   grid-column: 1 / 1;
+  height: 95%;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 80%;
@@ -522,14 +491,13 @@ margin-top: max(20px, 2%);
   border: 2px solid black;
   border-radius: 20px;
   padding: 20px;
-  
-
 }
 
-.sliders2-right{
+.sliders2-right {
   grid-column: 3/3;
   grid-row: 1/1;
   display: grid;
+  height: 95%;
   grid-template-columns: 1fr 1fr;
   width: 80%;
   min-width: 200px;
@@ -539,54 +507,47 @@ margin-top: max(20px, 2%);
   border: 2px solid black;
   border-radius: 20px;
   padding: 20px;
-  
-
 }
 
 /* slider and text div */
-.ui2{
-
+.ui2 {
 }
 
-
 /* text in slider div */
-.ui2 > p{
+.ui2 > p {
   text-align: center;
-
+  user-select: none;
 }
 
 /* slider in slider div */
-.slider2{
+.slider2 {
   padding: 3% 20% 3% 20%;
-
+  user-select: none;
 }
 
 /* buttons for playing and recording (chain 2) */
-.chain2-left{
+.chain2-left {
   grid-column: 1/1;
   display: flex;
   /* margin-left: 50px;
   padding-top: 25px; */
- 
+  user-select: none;
   width: 50%;
   gap: 1rem;
 }
 
-.chain2-right{
+.chain2-right {
   grid-column: 3/3;
   display: flex;
   /* margin-left: 50px;
   padding-top: 25px; */
- 
+  user-select: none;
   width: 50%;
   gap: 1rem;
 }
 
-
-
-
 /* Play Note button */
-.playbutton{
+.playbutton {
   margin: 0;
   padding: 0;
   opacity: 0;
@@ -594,61 +555,63 @@ margin-top: max(20px, 2%);
   height: 0.1px;
   display: none;
   border-radius: 5px;
- 
-
 }
 
 /* File Uploader input */
-.custom-file-input{
+.custom-file-input {
   opacity: 0;
   width: 0.1px;
   height: 0.1px;
   margin: 0;
   padding: 0;
-
 }
 
-.filelabel, .buttonlabel{
- border: 2px solid black;
- padding: 5px 10px;
- 
- flex: 1;
+.filelabel,
+.buttonlabel {
+  border: 2px solid black;
+  padding: 5px 10px;
+  user-select: none;
+  flex: 1;
 
- text-align: center;
+  text-align: center;
 
- border-radius: 20px;
-
-
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+}
+.buttonlabel:hover {
+  /* background-color: rgba(0, 0, 0, 0.3); */
+  background-color: lightblue;
 }
 
-.buttonlabel:active{
+.filelabel:hover {
+  background-color: lightgreen;
+}
+
+.buttonlabel:active {
   background-color: black;
   color: white;
 }
 
-.Pan-left{
+.Pan-left {
   grid-column: 1/1;
   width: 50%;
   /* margin-top: 25px;
   margin-left: 50px; */
   text-align: center;
-  
-
 }
 
-.Pan-right{
+.Pan-right {
   grid-column: 3/3;
-  
+
   width: 50%;
   /* margin-top: 25px;
   margin-left: 50px; */
   text-align: center;
-
 }
 
-.Crossfade{
+.Crossfade {
   grid-column: 2/2;
-  grid-row: 2/2;
+  grid-row: 3/3;
   width: 100%;
   justify-content: center;
   align-content: center;
@@ -656,56 +619,110 @@ margin-top: max(20px, 2%);
   padding-top: 10%;
 }
 
+.Meter {
+  /* background-color: #03a64a; */
+  /* justify-content: left;
+  align-content: left;
+  text-align: left; */
+  grid-column: 2/2;
+  grid-row: 2/2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  transform: rotate(-180deg);
+  gap: 1.05em;
+}
 
+.R {
+  background-color: red;
+  width: 50%;
+  height: 20%;
+  list-style: none;
+  transition: height 100ms;
+  border: 2px solid black;
+  box-shadow: inset 0 0 50px #fff, /* inner white */ inset 20px 0 80px #f0f,
+    /* inner left magenta short */ inset -20px 0 80px #0ff,
+    /* inner right cyan short */ inset 20px 0 300px #f0f,
+    /* inner left magenta broad */ inset -20px 0 300px #0ff,
+    /* inner right cyan broad */ 0 0 50px #fff,
+    /* outer white */ 0px 8px 10px #f0f,
+    /* outer left magenta */ 0px 2px 10px #0ff; /* outer right cyan */
+}
+
+.L {
+  transition: height 100ms;
+  background-color: green;
+  width: 50%;
+  height: 10%;
+  list-style: none;
+  border: 2px solid black;
+  box-shadow: inset 0 0 50px #fff,
+    /* inner white */ inset 20px 0 80px rgb(151, 47, 151),
+    /* inner left magenta short */ inset -90px 0 80px #0ff,
+    /* inner right cyan short */ inset 20px 0 300px #f0f,
+    /* inner left magenta broad */ inset -20px 0 300px #0ff,
+    /* inner right cyan broad */ 0 0 50px #fff,
+    /* outer white */ 0px 8px 20px #f0f,
+    /* outer left magenta */ 0px 2px 20px #0ff; /* outer right cyan */
+
+  box-shadow: inset 0 0 50px #fff, /* inner white */ inset 20px 0 80px #f0f,
+    /* inner left magenta short */ inset -20px 0 80px #0ff,
+    /* inner right cyan short */ inset 20px 0 300px #f0f,
+    /* inner left magenta broad */ inset -20px 0 300px #0ff,
+    /* inner right cyan broad */ 0 0 50px #fff,
+    /* outer white */ 0px 8px 10px #f0f,
+    /* outer left magenta */ 0px 2px 10px #0ff; /* outer right cyan */
+}
 
 /* SLIDER STYLING */
 
-.app2 input[type=range] {
+.app2 input[type="range"] {
   -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
   width: 100%; /* Specific width is required for Firefox. */
   background: transparent; /* Otherwise white in Chrome */
 }
 
-.app2 input[type=range]::-webkit-slider-thumb {
+.app2 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   /* border: 5px solid  #03A64A; */
   height: 20px;
   width: 10px;
-  
-  background:#026873;
+
+  background: #026873;
   cursor: pointer;
-  box-shadow: 3px 2px 1px #181B1C80, 0px 1px 1px #181B1C40;
+  box-shadow: 3px 2px 1px #181b1c80, 0px 1px 1px #181b1c40;
   margin: -5px;
-  
 }
 
-.app2 input[type=range]:focus {
-  outline:none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+.app2 input[type="range"]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
 
-.app2 input[type=range]::-webkit-slider-runnable-track {
-  
+.app2 input[type="range"]::-webkit-slider-runnable-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
- 
 
   /* Hides the slider so custom styles can be added */
-  background: #181B1C;
+  background: #181b1c;
 
- 
   border-color: transparent;
-  color: transparent; 
+  color: transparent;
 }
 
-
-.centersection{
+.centersection {
   grid-column: 2/2;
   grid-row: 1/1;
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   flex-direction: column;
   padding: 9% 10%;
   border-radius: 10px;
   border: 2px solid black;
+}
+
+@media (max-width: 1000px) {
+  .modalbackground {
+    padding-top: 250px;
+  }
 }

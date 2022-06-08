@@ -1,21 +1,79 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
+import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  return (
-    <div >
-    <ul className='navbar'>
-        <Link to="/" className='link'>synth 1</Link>
-        <Link to="/synth2" className='link'>synth 2</Link>
-        {/* <a href='/'>synth1refresh</a>
-        <a href='/synth2'>synth2refresh</a> */}
-        <li>Instructions</li>
-        
-      
-    </ul>
-    
-    </div>
-  )
-}
+  const [toggleinstructions, setToggleInstructions] = useState(false);
+  const instructionsmodal = () => {
+    setToggleInstructions(true);
+  };
 
-export default Navbar
+  const [modalcontent, setModalContent] = useState(
+    window.location.href.includes("synth2") ? 1 : 0
+  );
+  // const modalcontentchange = () => {
+  //   setToggleInstructions(true);
+  // };
+
+  return (
+    <div>
+      <ul className="navbar">
+        {/* <Link to="/" className="link" onClick={() => setModalContent(0)}>
+          synth 1
+        </Link>
+        <Link to="/synth2" className="link" onClick={() => setModalContent(1)}>
+          synth 2
+        </Link> */}
+
+        <a href="/" className="link" onClick={() => setModalContent(0)}>
+          step synth
+        </a>
+        <a
+          href="/synth2"
+          className="link"
+          onClick={() => {
+            setModalContent(1);
+          }}
+        >
+          texture gen
+        </a>
+
+        <li onClick={() => instructionsmodal()}>Instructions</li>
+        <div
+          onClick={() => setToggleInstructions(false)}
+          className="modalbackground"
+          style={{ display: `${toggleinstructions ? "block" : "none"}` }}
+        >
+          <div className="modalcontent">
+            <div
+              className="synth1text"
+              style={{ display: `${modalcontent === 0 ? "block" : "none"}` }}
+            >
+              <h1>SYNTH 1</h1>
+              <p>
+                this synthesizer has a step sequencer and two oscillator
+                harmonizer
+              </p>
+            </div>
+            <div
+              className="synth2text"
+              style={{ display: `${modalcontent === 1 ? "block" : "none"}` }}
+            >
+              <h1>SYNTH 2</h1>
+              <p>
+                this synthesizer uses two granular samplers, which can be panned
+                left and right and faded between using the crossfade slider
+              </p>
+              <h2>Interface and Recording</h2>
+              <p>
+                this synthesizer uses two granular samplers, which can be panned
+                left and right and faded between using the crossfade slider
+              </p>
+            </div>
+          </div>
+        </div>
+      </ul>
+    </div>
+  );
+};
+
+export default Navbar;
