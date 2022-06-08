@@ -1,6 +1,6 @@
 // import React, { useState } from 'react';
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import "./index.css";
 import Navbar from "./navbar";
 import Slider from "./synth1/slider";
@@ -14,7 +14,11 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route path="/" element={<Slider />} />
+        <Route
+          path="/"
+          element={<Navigate replace to="/synth1"></Navigate>}
+        ></Route>
+        <Route path="/synth1" element={<Slider />} />
         <Route path="/synth2" element={<Slidertwo />} />
         <Route path="*" element={<Error />}></Route>
       </Routes>
