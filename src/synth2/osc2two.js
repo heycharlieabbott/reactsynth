@@ -24,7 +24,7 @@ export default function Osc2two(props) {
 
   useEffect(() => {
     buf.load(props.aud);
-    console.log("loading buf1 osc2");
+    // console.log("loading buf1 osc2");
     osc.set({ buffer: buf });
   }, [props.aud]);
 
@@ -38,7 +38,7 @@ export default function Osc2two(props) {
     } else {
       ref.current = true;
       buf.load(props.aud);
-      console.log("loading buf2 osc2");
+      // console.log("loading buf2 osc2");
     }
   }, [props.trigger]);
 }

@@ -7,7 +7,9 @@ const Navbar = () => {
     setToggleInstructions(true);
   };
 
-  const [modalcontent, setModalContent] = useState(0);
+  const [modalcontent, setModalContent] = useState(
+    window.location.href.includes("synth2") ? 1 : 0
+  );
   // const modalcontentchange = () => {
   //   setToggleInstructions(true);
   // };
@@ -23,10 +25,16 @@ const Navbar = () => {
         </Link> */}
 
         <a href="/" className="link" onClick={() => setModalContent(0)}>
-          synth 1
+          step synth
         </a>
-        <a href="/synth2" className="link" onClick={() => setModalContent(1)}>
-          synth 2
+        <a
+          href="/synth2"
+          className="link"
+          onClick={() => {
+            setModalContent(1);
+          }}
+        >
+          texture gen
         </a>
 
         <li onClick={() => instructionsmodal()}>Instructions</li>
@@ -51,6 +59,11 @@ const Navbar = () => {
               style={{ display: `${modalcontent === 1 ? "block" : "none"}` }}
             >
               <h1>SYNTH 2</h1>
+              <p>
+                this synthesizer uses two granular samplers, which can be panned
+                left and right and faded between using the crossfade slider
+              </p>
+              <h2>Interface and Recording</h2>
               <p>
                 this synthesizer uses two granular samplers, which can be panned
                 left and right and faded between using the crossfade slider

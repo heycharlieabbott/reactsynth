@@ -78,19 +78,19 @@ export default function Slidertwo(props) {
     //volume L
     par1: 0,
     //detune L
-    par2: -200,
+    par2: 0,
     //grain L
-    par3: 0.5,
+    par3: 0.3,
     //looptime L
     par4: 0,
     //Attack L
-    par5: 0,
+    par5: 0.3,
     //Decay L
-    par6: 0.5,
+    par6: 0.9,
     //Sustain L
-    par7: 1,
+    par7: 0,
     //Release L
-    par8: 0,
+    par8: 0.5,
     //Pan Left L
     par9: 0,
     //Length of ADSR Impulse
@@ -103,19 +103,19 @@ export default function Slidertwo(props) {
     //volume R
     par11: 0,
     //detune R
-    par12: -200,
+    par12: 0,
     //grain r
     par13: 0.5,
     //looptime R
     par14: 0,
     //Attack R
-    par15: 0,
+    par15: 0.3,
     //Decay R
     par16: 0.5,
     //Sustain R
-    par17: 1,
+    par17: 0,
     //Release R
-    par18: 0,
+    par18: 0.3,
     //Pan Left R
     par19: 0,
   });
@@ -232,6 +232,7 @@ export default function Slidertwo(props) {
         </div>
 
         <Sequencertwo />
+
         <div className="Pan-left">
           <input
             type="range"
@@ -372,7 +373,7 @@ export default function Slidertwo(props) {
             className="slider2"
             step={0.01}
           ></input>
-          <p>left ||||| CROSSFADE ||||| right</p>
+          <p>CROSSFADE</p>
         </div>
       </div>
     </Synth2Context.Provider>

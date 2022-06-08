@@ -275,11 +275,18 @@ export default function Chaintwo(props) {
           <option value="audi">File 5</option>
         </select>
 
-        <button className="Record" onClick={() => record()}>
+        <button className="buttonlabel Record" onClick={() => record()}>
           {buttontext}
         </button>
 
-        <button className="PlayBoth" onClick={() => playNoteBoth()}>
+        {/* <button
+          className="buttonlabel Randomize"
+          onClick={() => playNoteBoth()}
+        >
+          Randomize
+        </button> */}
+
+        <button className="buttonlabel PlayBoth" onClick={() => playNoteBoth()}>
           Play Both
         </button>
       </div>
