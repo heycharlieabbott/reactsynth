@@ -69,7 +69,7 @@ const Navbar = () => {
               className="synth2text"
               style={{ display: `${modalcontent === 1 ? "block" : "none"}` }}
             >
-              <h1>SYNTH 2</h1>
+              <h1>TEXTURE GEN</h1>
               <p>
                 Two granular samplers, panned left and right and/or crossfaded.
                 Left sampler DRY/WET is for reverb, right sampler DRY/WET is for
