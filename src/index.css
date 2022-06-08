@@ -60,7 +60,7 @@ body {
   background-color: white;
   border: solid 2px black;
   border-radius: 10px;
-  padding: 10%;
+  padding: 5%;
   z-index: 61;
 }
 /* SYNTH1 STYLES */
@@ -721,8 +721,8 @@ align-content: center; */
   border: 2px solid black;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1150px) {
   .modalbackground {
-    padding-top: 250px;
+    padding-top: 350px;
   }
 }

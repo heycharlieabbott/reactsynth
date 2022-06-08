@@ -25,7 +25,7 @@ const Navbar = () => {
         </Link> */}
 
         <a href="/" className="link" onClick={() => setModalContent(0)}>
-          step synth
+          osc steps
         </a>
         <a
           href="/synth2"
@@ -48,10 +48,21 @@ const Navbar = () => {
               className="synth1text"
               style={{ display: `${modalcontent === 0 ? "block" : "none"}` }}
             >
-              <h1>SYNTH 1</h1>
+              <h1>OSC STEPS</h1>
               <p>
-                this synthesizer has a step sequencer and two oscillator
-                harmonizer
+                A step sequencer and two oscillators in harmony, run through a
+                reverb and comb filter delay.
+              </p>
+              <h2>Interface and Recording</h2>
+              <p>
+                Play single step by pressing the PLAY NOTE button. Start and
+                stop the step sequencer by pressing START LOOOP and STOP LOOOP
+                buttons. Select step sequencer scale from the SCALES dropdown
+                menu. Timbre, envelope, tempo controls on left.
+                <br />
+                <br /> Press RECORD 10 SECONDS to download next 10 seconds of
+                audio in .webm format. Convert .webm format to .wav/.mp3/etc. at{" "}
+                <a href="https://cloudconvert.com/">cloud-convert</a>
               </p>
             </div>
             <div
@@ -60,13 +71,21 @@ const Navbar = () => {
             >
               <h1>SYNTH 2</h1>
               <p>
-                this synthesizer uses two granular samplers, which can be panned
-                left and right and faded between using the crossfade slider
+                Two granular samplers, panned left and right and/or crossfaded.
+                Left sampler DRY/WET is for reverb, right sampler DRY/WET is for
+                delay.
               </p>
               <h2>Interface and Recording</h2>
               <p>
-                this synthesizer uses two granular samplers, which can be panned
-                left and right and faded between using the crossfade slider
+                Select preset audio files to be loaded from the server. Play
+                Both to start looping the left and right sampler at the same
+                time. Upload audio files from your computer to either sampler
+                using Upload File buttons. Play each sampler individually using
+                Play Note buttons.
+                <br />
+                <br /> Press RECORD 10 SECONDS to download next 10 seconds of
+                audio in .webm format. Convert .webm format to .wav/.mp3/etc. at{" "}
+                <a href="https://cloudconvert.com/">cloud-convert</a>
               </p>
             </div>
           </div>

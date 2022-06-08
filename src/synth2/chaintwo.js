@@ -221,7 +221,7 @@ export default function Chaintwo(props) {
           onChange={audiosetLeft}
         ></input>
         <label className="filelabel" for="fileleft">
-          Upload file
+          Upload File
         </label>
         <audio src={urlLeft}></audio>
       </div>
@@ -246,7 +246,7 @@ export default function Chaintwo(props) {
           onChange={audiosetRight}
         ></input>
         <label className="filelabel" for="fileright">
-          Upload file
+          Upload File
         </label>
         <audio src={urlRight}></audio>
       </div>
