@@ -7,6 +7,11 @@ const Navbar = () => {
     setToggleInstructions(true);
   };
 
+  const [toggleabout, setToggleAbout] = useState(false);
+  const aboutmodal = () => {
+    setToggleAbout(true);
+  };
+
   const [modalcontent, setModalContent] = useState(
     window.location.href.includes("synth2") ? 1 : 0
   );
@@ -62,7 +67,9 @@ const Navbar = () => {
                 <br />
                 <br /> Press RECORD 10 SECONDS to download next 10 seconds of
                 audio in .webm format. Convert .webm format to .wav/.mp3/etc. at{" "}
-                <a href="https://cloudconvert.com/">cloud-convert</a>
+                <a href="https://cloudconvert.com/" target={"_blank"}>
+                  cloud-convert
+                </a>
               </p>
             </div>
             <div
@@ -85,8 +92,71 @@ const Navbar = () => {
                 <br />
                 <br /> Press RECORD 10 SECONDS to download next 10 seconds of
                 audio in .webm format. Convert .webm format to .wav/.mp3/etc. at{" "}
-                <a href="https://cloudconvert.com/">cloud-convert</a>
+                <a href="https://cloudconvert.com/" target={"_blank"}>
+                  cloud-convert
+                </a>
               </p>
+            </div>
+          </div>
+        </div>
+
+        <li onClick={() => aboutmodal()}>About</li>
+        <div
+          onClick={() => setToggleAbout(false)}
+          className="modalbackground"
+          style={{ display: `${toggleabout ? "block" : "none"}` }}
+        >
+          <div className="modalcontent">
+            <h1>Web Synthesizer App</h1>
+            <p>Created by Charlie Abbott</p>
+            <br />
+            <div className="about-link-content">
+              <div>
+                <i class="fa-brands fa-itch-io"></i>
+                <a href="https://heycharlieabbott.itch.io" target={"_blank"}>
+                  itch.io
+                </a>
+                <br />
+              </div>
+              <div>
+                <i class="fa-brands fa-soundcloud"></i>
+                <a
+                  href="https://soundcloud.com/heycharlieabbott"
+                  target={"_blank"}
+                >
+                  soundcloud
+                </a>
+                <br />
+              </div>
+              <div>
+                <i class="fa-brands fa-instagram"></i>
+                <a
+                  href="https://instagram.com/heycharlieabbott"
+                  target={"_blank"}
+                >
+                  instagram
+                </a>
+                <br />
+              </div>
+              <div>
+                <i class="fa-brands fa-github"></i>
+                <a href="https://github.com/heycharlieabbott" target={"_blank"}>
+                  github
+                </a>
+              </div>
+              <div>
+                <i class="fa-brands fa-twitter"></i>
+                <a href="https://twitter.com/hicharlieabbott" target={"_blank"}>
+                  twitter
+                </a>
+              </div>
+              {/* <i class="fa-brands fa-linkedin"></i>
+              <a
+                href="https://linkedin.com/in/heycharlieabbott"
+                target={"_blank"}
+              >
+                linkedin
+              </a> */}
             </div>
           </div>
         </div>

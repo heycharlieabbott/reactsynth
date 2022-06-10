@@ -7,7 +7,7 @@
 }
 
 body {
-  margin: 0;
+  margin-top: 0;
   padding: 0;
   background-blend-mode: screen, overlay;
   background: #181b1c0d;
@@ -63,6 +63,28 @@ body {
   padding: 5%;
   z-index: 61;
 }
+
+.about-link-content {
+  text-align: left;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.about-link-content > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+.about-link-content > div > a:link {
+  color: black;
+}
+
+.about-link-content > div > a:visited {
+  color: black;
+}
+
 /* SYNTH1 STYLES */
 
 .app {
@@ -70,6 +92,7 @@ body {
   padding: 0px;
   top: 0;
   width: 100%;
+  margin-top: 2%;
 }
 
 .card1 {
@@ -109,24 +132,27 @@ body {
 .centerui {
   position: absolute;
   display: flex;
-  top: 7%;
-  left: 50%;
+  top: 0%;
+  left: 46%;
   transform: translate(-50%, -0%);
   justify-content: center;
   align-items: center;
   user-select: none;
 
   padding: 0;
-  margin: 0%;
-  height: 5%;
+  margin: 0;
+  height: 20%;
 }
 .centerui > button {
   /* position: absolute; */
-  font-size: 4rem;
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
   z-index: 10;
   font-family: "Advent Pro", sans-serif;
-  margin-left: 20%;
+  margin-left: 0;
   padding: 0;
+  border-radius: 10px;
 }
 .centerui > button:hover {
   background: linear-gradient(180deg, #03a64a 0%, #026873 100%);
@@ -134,8 +160,9 @@ body {
 
 .centerui > ul > li {
   position: relative;
-  left: -180%;
-  top: 200px;
+  left: 10%;
+  top: 80px;
+
   width: 100%;
 
   display: flex;
@@ -149,7 +176,7 @@ body {
 
 .centerui > ul > button {
   position: relative;
-  top: 220px;
+
   font-size: 2rem;
   border: solid;
   margin: 10px;
@@ -295,11 +322,36 @@ ul {
   margin: -5px;
 }
 
+.app input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: 5px solid #03a64a;
+  height: 20px;
+  width: 5px;
+
+  cursor: pointer;
+  box-shadow: 3px 2px 1px #181b1c80, 0px 1px 1px #181b1c40;
+  margin: -5px;
+}
+
 .app input[type="range"]:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
 
 .app input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  /* Hides the slider so custom styles can be added */
+  background: #181b1c;
+
+  border-color: transparent;
+  color: transparent;
+}
+
+.app input[type="range"]::-moz-range-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
@@ -332,7 +384,7 @@ ul {
   position: absolute;
   background: #026873;
 
-  width: 25%;
+  width: 20%;
   height: 5.5em;
   color: white;
   border-radius: 10px;
@@ -362,6 +414,17 @@ ul {
   margin: -5px;
 }
 
+.uielement2 > input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: 5px solid 03A64A;
+  height: 20px;
+  width: 5px;
+
+  cursor: pointer;
+  box-shadow: 3px 2px 1px #181b1c80, 0px 1px 1px #181b1c40;
+  margin: -5px;
+}
+
 @media (min-width: 0px) {
   .app {
     width: 1280px;
@@ -373,19 +436,19 @@ ul {
     width: 100%;
   }
 
-  .app > .uielement2 {
+  /* .app > .uielement2 {
     left: 300px;
     width: 300px;
-  }
+  } */
 
   .app > .offsetslider {
     width: 150px;
     right: 80px;
   }
 
-  .app > .centerui > ul > li {
+  /* .app > .centerui > ul > li {
     top: 220px;
-  }
+  } */
 }
 
 /* !!!!!!!!SYNTH 2 STYLES!!!!!!!! */
@@ -694,11 +757,35 @@ align-content: center; */
   margin: -5px;
 }
 
+.app2 input[type="range"]::-moz-range-thumb {
+  -webkit-appearance: none;
+  /* border: 5px solid  #03A64A; */
+  height: 20px;
+  width: 10px;
+
+  background: #026873;
+  cursor: pointer;
+  box-shadow: 3px 2px 1px #181b1c80, 0px 1px 1px #181b1c40;
+  margin: -5px;
+}
+
 .app2 input[type="range"]:focus {
   outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
 }
 
 .app2 input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 5px;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: #181b1c;
+
+  border-color: transparent;
+  color: transparent;
+}
+
+.app2 input[type="range"]::-moz-range-track {
   width: 100%;
   height: 5px;
   cursor: pointer;
