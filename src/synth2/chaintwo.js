@@ -23,8 +23,14 @@ const lim = new Tone.Limiter(-30);
 
 var a;
 var b;
+
+function RandRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 export default function Chaintwo(props) {
   const state = useContext(synth2Context);
+
   const [storedaudio, setStoredAudio] = useState([]);
   const [urlLeft, setUrlLeft] = useState(null);
   const [urlRight, setUrlRight] = useState(null);
@@ -64,17 +70,17 @@ export default function Chaintwo(props) {
     }, 100);
   }, [storedaudio[1]]);
 
-  env.attack = state.par5;
-  env.decay = state.par6;
-  env.sustain = state.par7;
-  env.release = state.par8;
+  env.attack = state.state.par5;
+  env.decay = state.state.par6;
+  env.sustain = state.state.par7;
+  env.release = state.state.par8;
 
-  env2.attack = state.par15;
-  env2.decay = state.par16;
-  env2.sustain = state.par17;
-  env2.release = state.par18;
+  env2.attack = state.state.par15;
+  env2.decay = state.state.par16;
+  env2.sustain = state.state.par17;
+  env2.release = state.state.par18;
 
-  crossfade.fade.value = state.crossfade;
+  crossfade.fade.value = state.state.crossfade;
 
   env.connect(reverbleft);
   reverbleft.connect(volume1);
@@ -88,11 +94,11 @@ export default function Chaintwo(props) {
   lim.connect(meter);
   meter.fan(recorder, Tone.Destination);
 
-  volume1.volume.value = state.par1;
-  volume1.pan.value = state.par9;
+  volume1.volume.value = state.state.par1;
+  volume1.pan.value = state.state.par9;
 
-  volume2.volume.value = state.par11;
-  volume2.pan.value = state.par10;
+  volume2.volume.value = state.state.par11;
+  volume2.pan.value = state.state.par10;
 
   // const pathRefa = ref(storage, "soundsprite2.mp3");
   // const pathRefb = ref(storage, "audio1.mp3");
@@ -130,7 +136,7 @@ export default function Chaintwo(props) {
 
   const playNoteLeft = () => {
     Tone.start();
-    env.triggerAttackRelease(state.notelength);
+    env.triggerAttackRelease(state.state.notelength);
 
     setTimeout(() => {
       playNoteLeft();
@@ -140,7 +146,7 @@ export default function Chaintwo(props) {
   const playNoteRight = () => {
     Tone.start();
 
-    env2.triggerAttackRelease(state.notelength);
+    env2.triggerAttackRelease(state.state.notelength);
 
     setTimeout(() => {
       playNoteRight();
@@ -191,13 +197,38 @@ export default function Chaintwo(props) {
   }, 500);
 
   reverbleft.set({
-    wet: state.par4,
+    wet: state.state.par4,
   });
 
   reverbright.set({
-    wet: state.par14,
-    feedback: state.par14,
+    wet: state.state.par14,
+    feedback: state.state.par14,
   });
+
+  const randomize = () => {
+    //Volume randomization isn't great
+    // dispatch({ type: "par1", payload: Math.random() * -80 });
+    state.dispatch({ type: "par2", payload: RandRange(-2000, 2000) });
+    state.dispatch({ type: "par3", payload: RandRange(0.08, 0.5) });
+    state.dispatch({ type: "par4", payload: RandRange(0, 1) });
+    state.dispatch({ type: "par5", payload: RandRange(0, 3) });
+    state.dispatch({ type: "par6", payload: RandRange(0.01, 3) });
+    state.dispatch({ type: "par7", payload: RandRange(0, 1) });
+    state.dispatch({ type: "par8", payload: RandRange(0, 3) });
+    state.dispatch({ type: "par9", payload: RandRange(-1, 1) });
+    state.dispatch({ type: "par10", payload: RandRange(-1, 1) });
+    //Volume automation (par 11) isn't great
+    state.dispatch({ type: "par12", payload: RandRange(0.01, 3) });
+    state.dispatch({ type: "par13", payload: RandRange(0.08, 0.5) });
+    state.dispatch({ type: "par14", payload: RandRange(0, 1) });
+    state.dispatch({ type: "par15", payload: RandRange(0, 3) });
+    state.dispatch({ type: "par16", payload: RandRange(0.01, 3) });
+    state.dispatch({ type: "par17", payload: RandRange(0, 1) });
+    state.dispatch({ type: "par18", payload: RandRange(0, 3) });
+    state.dispatch({ type: "par19", payload: RandRange(-1, 1) });
+    state.dispatch({ type: "notelength", payload: RandRange(0.5, 1.5) });
+    state.dispatch({ type: "crossfade", payload: RandRange(0, 1) });
+  };
 
   return (
     <>
@@ -279,12 +310,9 @@ export default function Chaintwo(props) {
           {buttontext}
         </button>
 
-        {/* <button
-          className="buttonlabel Randomize"
-          onClick={() => playNoteBoth()}
-        >
+        <button className="buttonlabel Randomize" onClick={randomize}>
           Randomize
-        </button> */}
+        </button>
 
         <button className="buttonlabel PlayBoth" onClick={() => playNoteBoth()}>
           Play Both

@@ -797,11 +797,16 @@ align-content: center; */
   color: transparent;
 }
 
+.randomize {
+  grid-column: 2/2;
+  grid-row: 1/1;
+}
+
 .centersection {
   grid-column: 2/2;
   grid-row: 1/1;
   display: flex;
-  gap: 2.5rem;
+  gap: 1.7rem;
   flex-direction: column;
   padding: 9% 10%;
   border-radius: 10px;

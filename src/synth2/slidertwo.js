@@ -35,7 +35,7 @@ const reducer = (state, action) => {
     case "crossfade":
       return { ...state, crossfade: action.payload };
 
-    case "notelegth":
+    case "notelength":
       return { ...state, notelength: state.notelength };
 
     case "par10":
@@ -73,6 +73,10 @@ const reducer = (state, action) => {
   }
 };
 
+function RandRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+
 export default function Slidertwo(props) {
   const [state, dispatch] = useReducer(reducer, {
     //volume L
@@ -80,11 +84,11 @@ export default function Slidertwo(props) {
     //detune L
     par2: 0,
     //grain L
-    par3: 0.3,
-    //looptime L
-    par4: 0,
+    par3: 1,
+    //DRY/WET L
+    par4: 0.3,
     //Attack L
-    par5: 0.3,
+    par5: 0.5,
     //Decay L
     par6: 0.9,
     //Sustain L
@@ -94,7 +98,7 @@ export default function Slidertwo(props) {
     //Pan Left L
     par9: 0,
     //Length of ADSR Impulse
-    notelength: 1,
+    notelength: 1.5,
     //Crossfade
     crossfade: 0.5,
 
@@ -105,15 +109,15 @@ export default function Slidertwo(props) {
     //detune R
     par12: 0,
     //grain r
-    par13: 0.5,
-    //looptime R
-    par14: 0,
+    par13: 1,
+    //DRY/WET R
+    par14: 0.4,
     //Attack R
-    par15: 0.3,
+    par15: 0.5,
     //Decay R
     par16: 0.5,
     //Sustain R
-    par17: 0,
+    par17: 0.5,
     //Release R
     par18: 0.3,
     //Pan Left R
@@ -124,8 +128,36 @@ export default function Slidertwo(props) {
     dispatch({ type: parnum, payload: e.target.value });
   };
 
+  const randomize = () => {
+    //Volume randomization isn't great
+    // dispatch({ type: "par1", payload: Math.random() * -80 });
+    dispatch({ type: "par2", payload: RandRange(-2000, 2000) });
+    dispatch({ type: "par3", payload: RandRange(0.08, 0.5) });
+    dispatch({ type: "par4", payload: RandRange(0, 1) });
+    dispatch({ type: "par5", payload: RandRange(0, 3) });
+    dispatch({ type: "par6", payload: RandRange(0.01, 3) });
+    dispatch({ type: "par7", payload: RandRange(0, 1) });
+    dispatch({ type: "par8", payload: RandRange(0, 3) });
+    dispatch({ type: "par9", payload: RandRange(-1, 1) });
+    dispatch({ type: "par10", payload: RandRange(-1, 1) });
+    //Volume automation (par 11) isn't great
+    dispatch({ type: "par12", payload: RandRange(0.01, 3) });
+    dispatch({ type: "par13", payload: RandRange(0.08, 0.5) });
+    dispatch({ type: "par14", payload: RandRange(0, 1) });
+    dispatch({ type: "par15", payload: RandRange(0, 3) });
+    dispatch({ type: "par16", payload: RandRange(0.01, 3) });
+    dispatch({ type: "par17", payload: RandRange(0, 1) });
+    dispatch({ type: "par18", payload: RandRange(0, 3) });
+    dispatch({ type: "par19", payload: RandRange(-1, 1) });
+    dispatch({ type: "notelength", payload: RandRange(0.5, 1.5) });
+    dispatch({ type: "crossfade", payload: RandRange(0, 1) });
+  };
+
   return (
-    <Synth2Context.Provider value={state}>
+    <Synth2Context.Provider value={{ state, dispatch }}>
+      {/* <button onClick={randomize} className={"randomize buttonlabel"}>
+        RANDOMIZE
+      </button> */}
       <div className="app2">
         <div className="sliders2-left">
           <div className="ui2">

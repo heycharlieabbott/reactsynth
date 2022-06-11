@@ -12,10 +12,10 @@ export default function Osc1two(props) {
   osc.set({
     loop: true,
     loopStart: 0.01,
-    loopEnd: state.par3,
-    playbackRate: state.par3,
-    grainSize: state.par3,
-    detune: state.par2,
+    loopEnd: state.state.par3,
+    playbackRate: state.state.par3,
+    grainSize: state.state.par3,
+    detune: state.state.par2,
   });
 
   osc.start();

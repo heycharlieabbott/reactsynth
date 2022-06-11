@@ -88,7 +88,8 @@ const Navbar = () => {
                 Both to start looping the left and right sampler at the same
                 time. Upload audio files from your computer to either sampler
                 using Upload File buttons. Play each sampler individually using
-                Play Note buttons.
+                Play Note buttons. Randomize changes everything except for file
+                selection and volume.
                 <br />
                 <br /> Press RECORD 10 SECONDS to download next 10 seconds of
                 audio in .webm format. Convert .webm format to .wav/.mp3/etc. at{" "}
