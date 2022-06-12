@@ -7,7 +7,6 @@ const osc = new Tone.GrainPlayer();
 // osc.autostart = true;
 
 export default function Osc1two(props) {
-  Tone.start();
   const state = useContext(synth2Context);
 
   osc.set({
@@ -35,6 +34,7 @@ export default function Osc1two(props) {
 
   useEffect(() => {
     if (ref.current) {
+      Tone.start();
       callback();
     } else {
       ref.current = true;
