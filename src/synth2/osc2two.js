@@ -7,6 +7,7 @@ const buf = new Tone.ToneAudioBuffer();
 // osc.autostart = true;
 
 export default function Osc2two(props) {
+  Tone.start();
   const state = useContext(synth2Context);
 
   osc.set({

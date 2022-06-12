@@ -7,6 +7,7 @@ const osc = new Tone.GrainPlayer();
 // osc.autostart = true;
 
 export default function Osc1two(props) {
+  Tone.start();
   const state = useContext(synth2Context);
 
   osc.set({
