@@ -16,10 +16,10 @@ function App() {
       <Routes>
         <Route
           path="/"
-          element={<Navigate replace to="/synth1"></Navigate>}
+          element={<Navigate replace to="/texturegen"></Navigate>}
         ></Route>
-        <Route path="/synth1" element={<Slider />} />
-        <Route path="/synth2" element={<Slidertwo />} />
+        <Route path="/texturegen" element={<Slidertwo />} />
+        <Route path="/oscsteps" element={<Slider />} />
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>

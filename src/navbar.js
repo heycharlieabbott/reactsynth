@@ -29,11 +29,11 @@ const Navbar = () => {
           synth 2
         </Link> */}
 
-        <a href="/" className="link" onClick={() => setModalContent(0)}>
+        <a href="/oscsteps" className="link" onClick={() => setModalContent(0)}>
           osc steps
         </a>
         <a
-          href="/synth2"
+          href="/texturegen"
           className="link"
           onClick={() => {
             setModalContent(1);
