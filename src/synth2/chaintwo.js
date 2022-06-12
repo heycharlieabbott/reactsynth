@@ -137,21 +137,21 @@ export default function Chaintwo(props) {
 
   const playNoteLeft = () => {
     // Tone.start();
-    env.triggerAttackRelease(state.state.notelength);
+    env.triggerAttackRelease(state.state.notelength, Tone.now());
 
-    setTimeout(() => {
-      playNoteLeft();
-    }, 1000);
+    // setTimeout(() => {
+    // playNoteLeft();
+    // }, 1000);
   };
 
   const playNoteRight = () => {
     // Tone.start();
 
-    env2.triggerAttackRelease(state.state.notelength);
+    env2.triggerAttackRelease(state.state.notelength, Tone.now());
 
-    setTimeout(() => {
-      playNoteRight();
-    }, 1000);
+    // setTimeout(() => {
+    // playNoteRight();
+    // }, 1000);
   };
 
   const audiosetLeft = (e) => {

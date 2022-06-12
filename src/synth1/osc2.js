@@ -45,8 +45,8 @@ export default function Osc2(props) {
   useEffect(() => {
     if (ref.current) {
       callback();
-      osc.start();
-      osc2.start();
+      //   osc.start();
+      //   osc2.start();
     } else {
       ref.current = true;
       osc.start();
