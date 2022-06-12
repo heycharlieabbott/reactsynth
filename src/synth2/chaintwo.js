@@ -29,7 +29,7 @@ function RandRange(min, max) {
 }
 
 export default function Chaintwo(props) {
-  Tone.start();
+  Tone.Transport.start();
   const state = useContext(synth2Context);
 
   const [storedaudio, setStoredAudio] = useState([]);
