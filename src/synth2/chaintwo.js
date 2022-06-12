@@ -29,7 +29,6 @@ function RandRange(min, max) {
 }
 
 export default function Chaintwo(props) {
-  Tone.Transport.start();
   const state = useContext(synth2Context);
 
   const [storedaudio, setStoredAudio] = useState([]);
@@ -49,7 +48,7 @@ export default function Chaintwo(props) {
       });
     });
     // console.log("loadfiles");
-
+    // Tone.Transport.start(Tone.now());
     // console.log("loadfiles");
   }, []);
 
@@ -136,7 +135,7 @@ export default function Chaintwo(props) {
   }, [b]);
 
   const playNoteLeft = () => {
-    // Tone.start();
+    Tone.start();
     env.triggerAttackRelease(state.state.notelength, Tone.now());
 
     // setTimeout(() => {
@@ -145,7 +144,7 @@ export default function Chaintwo(props) {
   };
 
   const playNoteRight = () => {
-    // Tone.start();
+    Tone.start();
 
     env2.triggerAttackRelease(state.state.notelength, Tone.now());
 

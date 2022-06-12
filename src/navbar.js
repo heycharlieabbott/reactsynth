@@ -29,22 +29,18 @@ const Navbar = () => {
           synth 2
         </Link> */}
 
-        <Link
-          to="/oscsteps"
-          className="link"
-          onClick={() => setModalContent(0)}
-        >
+        <a href="/oscsteps" className="link" onClick={() => setModalContent(0)}>
           osc steps
-        </Link>
-        <Link
-          to="/texturegen"
+        </a>
+        <a
+          href="/texturegen"
           className="link"
           onClick={() => {
             setModalContent(1);
           }}
         >
           texture gen
-        </Link>
+        </a>
 
         <li onClick={() => instructionsmodal()}>Instructions</li>
         <div

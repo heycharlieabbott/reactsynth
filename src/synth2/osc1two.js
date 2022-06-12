@@ -18,7 +18,7 @@ export default function Osc1two(props) {
     detune: state.state.par2,
   });
 
-  osc.start();
+  // osc.start();
 
   const callback = () => {};
 
@@ -34,11 +34,12 @@ export default function Osc1two(props) {
 
   useEffect(() => {
     if (ref.current) {
-      Tone.Transport.start();
+      // Tone.Transport.start();
       callback();
     } else {
       ref.current = true;
       buf.load(props.aud);
+      osc.start();
       // console.log("loading buf2");
     }
   }, [props.trigger]);
