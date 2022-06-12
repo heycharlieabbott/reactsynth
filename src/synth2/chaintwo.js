@@ -138,9 +138,9 @@ export default function Chaintwo(props) {
     Tone.start();
     env.triggerAttackRelease(state.state.notelength, Tone.now());
 
-    // setTimeout(() => {
-    // playNoteLeft();
-    // }, 1000);
+    setTimeout(() => {
+      playNoteLeft();
+    }, 1000);
   };
 
   const playNoteRight = () => {
@@ -148,9 +148,9 @@ export default function Chaintwo(props) {
 
     env2.triggerAttackRelease(state.state.notelength, Tone.now());
 
-    // setTimeout(() => {
-    // playNoteRight();
-    // }, 1000);
+    setTimeout(() => {
+      playNoteRight();
+    }, 1000);
   };
 
   const audiosetLeft = (e) => {
