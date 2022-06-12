@@ -35,7 +35,7 @@ export default function Osc2two(props) {
 
   useEffect(() => {
     if (ref.current) {
-      Tone.start();
+      Tone.Transport.start();
       callback();
     } else {
       ref.current = true;
