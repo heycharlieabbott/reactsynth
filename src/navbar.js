@@ -113,9 +113,9 @@ const Navbar = () => {
             <br />
             <div className="about-link-content">
               <div>
-                <i class="fa-brands fa-itch-io"></i>
-                <a href="https://heycharlieabbott.itch.io" target={"_blank"}>
-                  itch.io
+                <i class="fa-solid fa-globe"></i>
+                <a href="https://heycharlieabbott.com" target={"_blank"}>
+                  website
                 </a>
                 <br />
               </div>
