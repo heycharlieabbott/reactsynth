@@ -1,6 +1,6 @@
 # Web Synthesizer
 
-This is a toolkit for experimental music production in the browser made using React.JS, Tone.JS, and Firebase.
+This is a toolkit for experimental music production in the browser made using React, Tone.JS, and Firebase.
 
 ## [Live Site](https://websynthesizer.netlify.app/)
 
