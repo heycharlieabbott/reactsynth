@@ -23,8 +23,7 @@ export default function Chain(props) {
 
   env.connect(volume1);
   env2.connect(volume1);
-  //  volume1.connect(merge);
-  //merge.connect(lim);
+  
   lim.fan(props.recorder, Tone.Destination);
 
   const playSynth = (time, offset) => {

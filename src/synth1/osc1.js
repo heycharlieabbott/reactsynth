@@ -1,8 +1,5 @@
 import { useEffect, useRef} from "react";
 import * as Tone from 'tone';
-// import { getDefaultsFromInstance } from "tone/build/esm/core/util/Defaults";
-
-
 
 const osc = new Tone.Oscillator(700, 'sine4');
 const osc2 = new Tone.LFO(1, 0,50);
@@ -24,34 +21,21 @@ export default function Osc1(props){
             frequency: props.note,
             detune: props.detune
             
-
-            
         })
 
         sigprops.set({
             value: props.note
             
-        })
-
-        
-        
+        }) 
     
         osc2.set({
             amplitude: props.mod,
-            
-    
 
       })
        
 
     }
 
-  
-
-    // osc.set({
-    //     detune: props.detune,
-        
-    // })
 
     osc.connect(props.output);
     osc2.connect(lfovol);
@@ -68,11 +52,6 @@ export default function Osc1(props){
       
        
         sigprops.connect(osc.frequency);
-
-
-        
-
-       
         
     }
         
@@ -93,7 +72,5 @@ export default function Osc1(props){
         }
 
         },[props.trigger]);
-    
 
-  
 }

@@ -64,14 +64,8 @@ export default function Verbo(props){
         }
 
         },[props.trigger]);
-
-
-    
-    
     
     verb.fan(filter, fade.a);
-   
-
     
     filter.connect(filter2);
     filter2.connect(fade.b);

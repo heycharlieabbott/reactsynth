@@ -3,8 +3,6 @@ import * as Tone from "tone";
 import Chain from "./chain";
 import { Scale } from "@tonaljs/tonal";
 
-
-
 const loop = new Tone.Loop();
 const recorder = new Tone.Recorder();
 
@@ -71,10 +69,6 @@ useEffect(() =>{
 
 },[props.scaler])
 
-
-
-
-
 const [note,setNote] = useState(notes[0]);
 const [note2,setNote2] = useState(notes[1]);
 
@@ -105,9 +99,6 @@ const [_STEPS, set_STEPS] = useState(8);
 
 
 Tone.Transport.bpm.value = props.tempo;
-
-//const[tempo, setTempo] = useState(Tone.Transport.bpm.value);
-
 
 
 loop.callback = loopstep;
@@ -181,10 +172,6 @@ const record = () =>{
 }
    
 
-
-
-
-
 return(
     <div>
 
@@ -216,10 +203,6 @@ return(
     </div>
 
     <div className="rightpatternctrl">
-
-  
-        
-      
 
     <div className="offsetslider">
         <input type="range" min="-.5" max=".5" value={offsetslider} onChange={slideOffset} class="slider"  step={0.1} ></input>

@@ -47,26 +47,19 @@ export default function Chaintwo(props) {
         });
       });
     });
-    // console.log("loadfiles");
-    // Tone.Transport.start(Tone.now());
-    // console.log("loadfiles");
+
   }, []);
 
   useEffect(() => {
     setTimeout(() => {
       setUrlLeft(storedaudio[4]);
-      // console.log(storedaudio[4]);
-      // setUrlRight(storedaudio[10]);
-      // console.log(storedaudio[10]);
+    
     }, 100);
   }, [storedaudio[4]]);
 
   useEffect(() => {
     setTimeout(() => {
-      // setUrlLeft(storedaudio[5]);
-      // console.log(storedaudio[5]);
       setUrlRight(storedaudio[1]);
-      // console.log(storedaudio[1]);
     }, 100);
   }, [storedaudio[1]]);
 
@@ -100,39 +93,19 @@ export default function Chaintwo(props) {
   volume2.volume.value = state.state.par11;
   volume2.pan.value = state.state.par10;
 
-  // const pathRefa = ref(storage, "soundsprite2.mp3");
-  // const pathRefb = ref(storage, "audio1.mp3");
-
-  // useEffect(() => {
-
-  // }, [third])
-
   const setfromstora = (e) => {
     a = storedaudio[e.nativeEvent.target.selectedIndex];
     setUrlLeft(a);
-    // console.log("seta");
+  
   };
 
   const setfromstorb = (e) => {
-    // getDownloadURL(pathRefb).then((response) => {
-    //   b = response;
-    //   // setUrlLeft(b);
-    // });
 
     b = storedaudio[e.nativeEvent.target.selectedIndex];
     setUrlRight(b);
-    // console.log("setb");
+   
   };
 
-  useEffect(() => {
-    // setUrlLeft(a);
-    // console.log("lefthey");
-  }, [a]);
-
-  useEffect(() => {
-    // setUrlRight(b);
-    // console.log("righthey");
-  }, [b]);
 
   const playNoteLeft = () => {
     Tone.start();
@@ -191,9 +164,7 @@ export default function Chaintwo(props) {
     const mete = meter.getValue();
 
     setMeterLeft(Math.floor(Math.abs(mete[0] * 150)));
-    // console.log(meterleft + "L");
     setMeterRight(Math.floor(Math.abs(mete[1] * 150)));
-    // console.log(meterright + "R");
   }, 500);
 
   reverbleft.set({
@@ -206,8 +177,7 @@ export default function Chaintwo(props) {
   });
 
   const randomize = () => {
-    //Volume randomization isn't great
-    // dispatch({ type: "par1", payload: Math.random() * -80 });
+   
     state.dispatch({ type: "par2", payload: RandRange(-2000, 2000) });
     state.dispatch({ type: "par3", payload: RandRange(0.08, 0.5) });
     state.dispatch({ type: "par4", payload: RandRange(0, 1) });
@@ -217,7 +187,7 @@ export default function Chaintwo(props) {
     state.dispatch({ type: "par8", payload: RandRange(0, 3) });
     state.dispatch({ type: "par9", payload: RandRange(-1, 1) });
     state.dispatch({ type: "par10", payload: RandRange(-1, 1) });
-    //Volume automation (par 11) isn't great
+    //Volume automation (par 11) removed
     state.dispatch({ type: "par12", payload: RandRange(0.01, 3) });
     state.dispatch({ type: "par13", payload: RandRange(0.08, 0.5) });
     state.dispatch({ type: "par14", payload: RandRange(0, 1) });
@@ -290,20 +260,20 @@ export default function Chaintwo(props) {
           name="Preset Left"
           onChange={setfromstora}
         >
-          <option value="volvo">File 1</option>
-          <option value="saab">File 2</option>
-          <option value="mercedes">File 3</option>
-          <option value="audi">File 4</option>
-          <option value="audi">File 5</option>
+          <option>File 1</option>
+          <option>File 2</option>
+          <option>File 3</option>
+          <option>File 4</option>
+          <option>File 5</option>
         </select>
 
         <label for="fileright"> Server File Right</label>
         <select className="FileRight" id="fileright" onChange={setfromstorb}>
-          <option value="volvo">File 1</option>
-          <option value="saab">File 2</option>
-          <option value="mercedes">File 3</option>
-          <option value="audi">File 4</option>
-          <option value="audi">File 5</option>
+          <option>File 1</option>
+          <option>File 2</option>
+          <option>File 3</option>
+          <option>File 4</option>
+          <option>File 5</option>
         </select>
 
         <button className="buttonlabel Record" onClick={() => record()}>

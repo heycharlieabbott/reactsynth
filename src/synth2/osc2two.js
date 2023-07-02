@@ -4,10 +4,8 @@ import synth2Context from "./synth2context";
 
 const osc = new Tone.GrainPlayer();
 const buf = new Tone.ToneAudioBuffer();
-// osc.autostart = true;
 
 export default function Osc2two(props) {
-  // Tone.start();
   const state = useContext(synth2Context);
 
   osc.set({
@@ -19,13 +17,11 @@ export default function Osc2two(props) {
     detune: state.state.par12,
   });
 
-  // osc.start();
 
   const callback = () => {};
 
   useEffect(() => {
     buf.load(props.aud);
-    // console.log("loading buf1 osc2");
     osc.set({ buffer: buf });
   }, [props.aud]);
 
@@ -35,13 +31,11 @@ export default function Osc2two(props) {
 
   useEffect(() => {
     if (ref.current) {
-      // Tone.Transport.start();
       callback();
     } else {
       ref.current = true;
       buf.load(props.aud);
       osc.start();
-      // console.log("loading buf2 osc2");
     }
   }, [props.trigger]);
 }

@@ -129,8 +129,6 @@ export default function Slidertwo(props) {
   };
 
   const randomize = () => {
-    //Volume randomization isn't great
-    // dispatch({ type: "par1", payload: Math.random() * -80 });
     dispatch({ type: "par2", payload: RandRange(-2000, 2000) });
     dispatch({ type: "par3", payload: RandRange(0.08, 0.5) });
     dispatch({ type: "par4", payload: RandRange(0, 1) });
@@ -140,7 +138,7 @@ export default function Slidertwo(props) {
     dispatch({ type: "par8", payload: RandRange(0, 3) });
     dispatch({ type: "par9", payload: RandRange(-1, 1) });
     dispatch({ type: "par10", payload: RandRange(-1, 1) });
-    //Volume automation (par 11) isn't great
+    //Volume automation (par 11)
     dispatch({ type: "par12", payload: RandRange(0.01, 3) });
     dispatch({ type: "par13", payload: RandRange(0.08, 0.5) });
     dispatch({ type: "par14", payload: RandRange(0, 1) });
@@ -155,9 +153,7 @@ export default function Slidertwo(props) {
 
   return (
     <Synth2Context.Provider value={{ state, dispatch }}>
-      {/* <button onClick={randomize} className={"randomize buttonlabel"}>
-        RANDOMIZE
-      </button> */}
+     
       <div className="app2">
         <div className="sliders2-left">
           <div className="ui2">

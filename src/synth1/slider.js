@@ -229,9 +229,6 @@ export default function Slider(props){
         <p>DRY / WET</p>
         </div>
 
-       
-        
-
         </div>
 
         <div className="uielement2">

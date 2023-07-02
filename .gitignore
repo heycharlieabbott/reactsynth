@@ -24,3 +24,5 @@ yarn-error.log*
 
 *.wav
 *.mp3
+
+firebase.js

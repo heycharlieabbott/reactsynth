@@ -37,25 +37,6 @@ function loopstep(time){
   
 }
 
-// //RECORDING FUNCTION
-// const [buttontext, setButtonText] = useState('Record 10 Seconds')
-// const record = () =>{
-//     recorder.start();
-//     setButtonText('NOW RECORDING');
-//     setTimeout(async () => {
-//     // the recorded audio is returned as a blob
-//     const recording = await recorder.stop();
-//     // download the recording by creating an anchor element and blob url
-//     const url = URL.createObjectURL(recording);
-//     const anchor = document.createElement("a");
-//     anchor.download = "recording.webm";
-//     anchor.href = url;
-//     anchor.click();
-//     setButtonText('RECORD 10 SECONDS')
-//     }, 10000);
-
-// }
-
 return(
     <>
         <Chaintwo  
@@ -66,7 +47,6 @@ return(
                 looptime={looptime}
                
                 transport={Tone.Transport} 
-                // recorder={recorder}
                 />
 
       
