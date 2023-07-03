@@ -2,6 +2,8 @@
 
 This is a toolkit for experimental music production in the browser made using React, Tone.JS, and Firebase.
 
+![websynthimage](https://github.com/heycharlieabbott/reactsynth/assets/52185182/9b9822a0-d742-431c-9cb0-b8a266ae9d41)
+
 ## [Live Site](https://websynthesizer.netlify.app/)
 
 There are currently two synthesizers called "osc steps" and "texture gen", with more in development. Each synthesizer has a similar organizational structure that mimics traditional hardware synthesizer design. The structure from top to bottom is as follows:
